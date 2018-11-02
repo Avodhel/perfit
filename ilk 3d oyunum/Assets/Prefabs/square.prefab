@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23261635415217636}
   - component: {fileID: 54453506991095466}
   - component: {fileID: 64108144062857902}
+  - component: {fileID: 114342364378267466}
   m_Layer: 0
   m_Name: square
-  m_TagString: Untagged
+  m_TagString: squareTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +94,7 @@ Rigidbody:
   m_GameObject: {fileID: 1356349892201912}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 7
+  m_Drag: 11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -114,3 +115,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8e9d2246c0cf89c4ca9ff39eed5c4484, type: 3}
+--- !u!114 &114342364378267466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356349892201912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015e83de720c4e940983407306bb50b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
