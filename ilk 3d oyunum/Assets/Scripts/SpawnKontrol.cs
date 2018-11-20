@@ -11,11 +11,6 @@ public class SpawnKontrol : MonoBehaviour {
         StartCoroutine(sekilOlustur());
     }
 	
-	void Update ()
-    {
-        
-    }
-
     IEnumerator sekilOlustur()
     {
         while (true)
