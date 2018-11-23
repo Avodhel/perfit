@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelKontrol : MonoBehaviour {
 
     float speed = 40;
-	
-	void Update ()
+    public Text heightText;
+
+    void Start()
     {
+        
+    }
+
+    void Update ()
+    {
+        heightText.text = transform.localScale.y + " m";
         panelHareket();
     }
 

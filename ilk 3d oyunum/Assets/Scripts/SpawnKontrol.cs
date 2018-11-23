@@ -17,7 +17,7 @@ public class SpawnKontrol : MonoBehaviour {
         {
             Instantiate(sekil, transform.position, Quaternion.identity);
 
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(10);
         }
     }
 }
