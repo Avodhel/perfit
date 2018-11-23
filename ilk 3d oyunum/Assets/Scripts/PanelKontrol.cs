@@ -16,7 +16,7 @@ public class PanelKontrol : MonoBehaviour {
         transform.Rotate(0, Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0); //sağa veya sola döndür
     }
 
-    void OnCollisionEnter(Collision col) //palete carpan sekillerin hangi acidan carptigini saptama
+    void OnCollisionEnter(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
     {
         if (col.gameObject.tag.Equals("squareTag"))
         {

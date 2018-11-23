@@ -7,6 +7,7 @@ public class SekilKontrol : MonoBehaviour {
     float donmeHizi = 0.1f;
     float donmeYonu = 1f;
     GameObject Panel;
+    bool sekliPaneleSabitleKontrol = false;
 
     void Start()
     {
@@ -17,11 +18,12 @@ public class SekilKontrol : MonoBehaviour {
     void Update ()
     {
         sekilDondur();
+        sekliPaneleSabitle();
 	}
 
     void sekilDonmeYonu()
     {
-        Debug.Log(Random.value);
+        //Debug.Log(Random.value);
         if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
             donmeYonu = 1; //sola donmesi icin
         else
@@ -30,7 +32,18 @@ public class SekilKontrol : MonoBehaviour {
 
     void sekilDondur()
     {
-        transform.Rotate(new Vector3(0, Random.Range(0, 360f), 0) * ((Time.deltaTime * donmeYonu) * donmeHizi));
+        if (!sekliPaneleSabitleKontrol)
+        {
+            transform.Rotate(new Vector3(0, Random.Range(0, 360f), 0) * ((Time.deltaTime * donmeYonu) * donmeHizi));
+        }
+    }
+
+    void sekliPaneleSabitle()
+    {
+        if (sekliPaneleSabitleKontrol)
+        {
+            transform.localRotation = Panel.transform.localRotation;
+        }
     }
 
     void OnTriggerEnter(Collider other) //gecirgen yuzeye temas ettiginde
@@ -39,6 +52,8 @@ public class SekilKontrol : MonoBehaviour {
         {
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
+            sekliPaneleSabitleKontrol = true;
         }
     }
+
 }
