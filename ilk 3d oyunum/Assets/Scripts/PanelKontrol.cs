@@ -15,7 +15,7 @@ public class PanelKontrol : MonoBehaviour {
 
     void Update ()
     {
-        heightText.text = transform.localScale.y + " m";
+        heightText.text = transform.localScale.y + " M";
         panelHareket();
     }
 
@@ -40,7 +40,7 @@ public class PanelKontrol : MonoBehaviour {
             if (Mathf.Approximately(angle, 180))
             {
                 //Up
-                //Debug.Log("Up");
+                Debug.Log("Up");
             }
             if (Mathf.Approximately(angle, 90))
             {

@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 5116c19bcd6f8ea41893191d50d7e38d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Vitreous
+  fontNames:
+  - Vitreous
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 291010800b9f7c347876df40b22919b8, type: 3}
+  - {fileID: 12800000, guid: 48bb143b6db8d394d90f3875ede63d61, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
