@@ -56,4 +56,22 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
+    //void OnTriggerExit(Collider other) //gecirgen yuzey ile olan temas bittiginde
+    //{
+    //    if (other.name == "FitPoint")
+    //    {
+    //        Debug.Log(transform.position.y);
+    //        Panel.transform.localScale = new Vector3(1.7f, transform.position.y + 0.2f, 1.7f);
+    //    }
+    //}
+
+    //void OnCollisionEnter(Collision collision) //gecirgen olmayan yuzeye temas edildiginde
+    //{
+    //    if (
+    //        collision.transform.tag == "squareTag")
+    //    {
+    //        Debug.Log(transform.position.y);
+    //    }
+    //}
+
 }
