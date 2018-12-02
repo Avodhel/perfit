@@ -10,6 +10,7 @@ public class KameraKontrol : MonoBehaviour {
 	void Start ()
     {
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+
         aradakiMesafe = transform.position - fitPoint.transform.position;
 	}
 	
@@ -17,4 +18,5 @@ public class KameraKontrol : MonoBehaviour {
     {
         transform.position = fitPoint.transform.position + aradakiMesafe; //kameranın fitpointle birlikte hareket etmesi
 	}
+
 }

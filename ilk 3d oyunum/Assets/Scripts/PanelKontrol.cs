@@ -8,11 +8,6 @@ public class PanelKontrol : MonoBehaviour {
     float speed = 40;
     public Text heightText;
 
-    void Start()
-    {
-        
-    }
-
     void Update ()
     {
         heightText.text = transform.localScale.y + " M";
@@ -40,7 +35,7 @@ public class PanelKontrol : MonoBehaviour {
             if (Mathf.Approximately(angle, 180))
             {
                 //Up
-                Debug.Log("Up");
+                //Debug.Log("Up");
             }
             if (Mathf.Approximately(angle, 90))
             {

@@ -8,17 +8,19 @@ public class SekilKontrol : MonoBehaviour {
     float donmeYonu = 1f;
     GameObject Panel;
     bool sekliPaneleSabitleKontrol = false;
+    GameObject cutPoint;
 
     void Start()
     {
         Panel = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
         sekilDonmeYonu();
     }
 
     void Update ()
     {
         sekilDondur();
-        sekliPaneleSabitle();
+        paneleSabitle();
 	}
 
     void sekilDonmeYonu()
@@ -38,12 +40,14 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
-    void sekliPaneleSabitle()
+    void paneleSabitle() //objeleri panele sabitleyerek onunla birlikte hereket etmesini sağlayan fonksiyon
     {
         if (sekliPaneleSabitleKontrol)
         {
-            transform.localRotation = Panel.transform.localRotation;
+            transform.localRotation = Panel.transform.localRotation; //şeklin panele sabitlenmesi
         }
+
+        cutPoint.transform.localRotation = Panel.transform.localRotation; //cutpointin panele sabitlenmesi
     }
 
     void OnTriggerEnter(Collider other) //gecirgen yuzeye temas ettiginde
@@ -56,22 +60,12 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
-    //void OnTriggerExit(Collider other) //gecirgen yuzey ile olan temas bittiginde
-    //{
-    //    if (other.name == "FitPoint")
-    //    {
-    //        Debug.Log(transform.position.y);
-    //        Panel.transform.localScale = new Vector3(1.7f, transform.position.y + 0.2f, 1.7f);
-    //    }
-    //}
-
-    //void OnCollisionEnter(Collision collision) //gecirgen olmayan yuzeye temas edildiginde
-    //{
-    //    if (
-    //        collision.transform.tag == "squareTag")
-    //    {
-    //        Debug.Log(transform.position.y);
-    //    }
-    //}
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "cutPointTag")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
