@@ -60,8 +60,8 @@ GameObject:
   - component: {fileID: 23109671918133854}
   - component: {fileID: 64737611941505092}
   m_Layer: 0
-  m_Name: UpPoint
-  m_TagString: upPointTag
+  m_Name: TopPoint
+  m_TagString: topPointTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
