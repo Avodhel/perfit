@@ -9,11 +9,13 @@ public class SekilKontrol : MonoBehaviour {
     GameObject Panel;
     bool sekliPaneleSabitleKontrol = false;
     GameObject cutPoint;
+    GameObject fitPoint;
 
     void Start()
     {
         Panel = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
         sekilDonmeYonu();
     }
 
@@ -48,6 +50,7 @@ public class SekilKontrol : MonoBehaviour {
         }
 
         cutPoint.transform.localRotation = Panel.transform.localRotation; //cutpointin panele sabitlenmesi
+        fitPoint.transform.localRotation = Panel.transform.localRotation; //fitpointin panele sabitlenmesi
     }
 
     void OnTriggerEnter(Collider other) //gecirgen yuzeye temas ettiginde

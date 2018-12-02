@@ -9,6 +9,7 @@ TagManager:
   - fitPointTag
   - bottomPointTag
   - cutPointTag
+  - upPointTag
   layers:
   - Default
   - TransparentFX
