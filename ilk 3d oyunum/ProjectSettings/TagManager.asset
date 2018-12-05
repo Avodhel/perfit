@@ -12,6 +12,7 @@ TagManager:
   - topPointTag
   - lightTag
   - spawnPointTag
+  - arkaplanTag
   layers:
   - Default
   - TransparentFX
