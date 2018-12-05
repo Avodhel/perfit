@@ -10,6 +10,8 @@ TagManager:
   - bottomPointTag
   - cutPointTag
   - topPointTag
+  - lightTag
+  - spawnPointTag
   layers:
   - Default
   - TransparentFX

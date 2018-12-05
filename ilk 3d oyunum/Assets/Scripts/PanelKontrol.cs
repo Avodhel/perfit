@@ -7,27 +7,11 @@ public class PanelKontrol : MonoBehaviour {
 
     float speed = 40;
     public Text heightText;
-    Vector3 fitVeTopAradakiMesafe;
-    GameObject fitPoint;
-    GameObject topPoint;
-
-    void Start()
-    {
-        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
-        topPoint = GameObject.FindGameObjectWithTag("topPointTag");
-
-        fitVeTopAradakiMesafe = fitPoint.transform.position - topPoint.transform.position;
-    }
 
     void Update ()
     {
         heightText.text = transform.localScale.y + " M";
         panelHareket();
-    }
-
-    void LateUpdate()
-    {
-        fitPoint.transform.position = topPoint.transform.position + fitVeTopAradakiMesafe; //fitpoint ile uppoint arasındaki mesafe
     }
 
     void panelHareket()
