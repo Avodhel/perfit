@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 1234846289}
   - component: {fileID: 1234846288}
   - component: {fileID: 1234846287}
+  - component: {fileID: 1234846291}
   m_Layer: 0
   m_Name: Arkaplan
   m_TagString: arkaplanTag
@@ -501,6 +502,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 30, y: -30, z: 0}
+--- !u!114 &1234846291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234846286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88bc36f0d4c6eb45a1e2858e7f12221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1251051839
 GameObject:
   m_ObjectHideFlags: 0
