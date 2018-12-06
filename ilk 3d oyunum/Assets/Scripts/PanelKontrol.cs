@@ -8,10 +8,29 @@ public class PanelKontrol : MonoBehaviour {
     float speed = 40;
     public Text heightText;
 
+    Vector3 panelBoyut;
+    float yukseklik;
+    string yukseklikStr;
+
     void Update ()
     {
-        heightText.text = transform.localScale.y + " M";
+        yukseklikGoster();
         panelHareket();
+    }
+
+    void yukseklikGoster()
+    {
+        panelBoyut = transform.localScale;
+        yukseklik = panelBoyut.y;
+        yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
+        for (int i = 0; i <= 4; i++)
+        {
+            if (yukseklikStr.Length < i) //stringin uzunluğu i'den küçükse hata verme, devam et
+            {
+                continue;
+            }
+            heightText.text = yukseklikStr.Substring(0, i) + " M"; //substring ile i kadar basamağı göster
+        }
     }
 
     void panelHareket()
