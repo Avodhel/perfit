@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 291010800b9f7c347876df40b22919b8
+guid: 56a820c81fc4236469e3c839a5e152b8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Vitreous
+  fontName: FT Blockbusta
   fontNames:
-  - Vitreous
+  - FT Blockbusta
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PanelKontrol : MonoBehaviour {
 
-    float speed = 40;
+    [Range(1f, 250f)]
+    public float panelHareketHizi;
     public Text heightText;
 
     Vector3 panelBoyut;
@@ -23,7 +24,7 @@ public class PanelKontrol : MonoBehaviour {
         panelBoyut = transform.localScale;
         yukseklik = panelBoyut.y;
         yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i <= 5; i++)
         {
             if (yukseklikStr.Length < i) //stringin uzunluğu i'den küçükse hata verme, devam et
             {
@@ -35,7 +36,7 @@ public class PanelKontrol : MonoBehaviour {
 
     void panelHareket()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0); //sağa veya sola döndür
+        transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür
     }
 
     void OnCollisionEnter(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama

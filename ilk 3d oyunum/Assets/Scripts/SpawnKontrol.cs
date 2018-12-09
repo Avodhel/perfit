@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnKontrol : MonoBehaviour {
 
     public GameObject sekil;
+    [Range(1, 50)]
+    public int spawnSuresi;
 
 	void Start ()
     {        
@@ -17,7 +19,7 @@ public class SpawnKontrol : MonoBehaviour {
         {
             Instantiate(sekil, transform.position, Quaternion.identity);
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(spawnSuresi);
         }
     }
 }

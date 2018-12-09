@@ -568,12 +568,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 52787e2c7f2295e4687d6ab0dbedcf6e, type: 3}
-    m_FontSize: 127
+    m_Font: {fileID: 12800000, guid: d38ea5eff06a50848840298f93458567, type: 3}
+    m_FontSize: 170
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 134
+    m_MaxSize: 226
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
+  spawnSuresi: 10
 --- !u!1 &1885607237
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,12 +780,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 52787e2c7f2295e4687d6ab0dbedcf6e, type: 3}
-    m_FontSize: 137
+    m_Font: {fileID: 12800000, guid: d38ea5eff06a50848840298f93458567, type: 3}
+    m_FontSize: 170
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 159
+    m_MinSize: 1
+    m_MaxSize: 177
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -930,18 +931,6 @@ Prefab:
       propertyPath: heightText
       value: 
       objectReference: {fileID: 1251051841}
-    - target: {fileID: 4185253887054432, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185253887054432, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185253887054432, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
   m_IsPrefabAsset: 0

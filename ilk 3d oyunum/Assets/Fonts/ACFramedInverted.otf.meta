@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48bb143b6db8d394d90f3875ede63d61
+guid: d38ea5eff06a50848840298f93458567
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,11 +8,11 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Vitreous
+  fontName: AC Framed
   fontNames:
-  - Vitreous
+  - AC Framed
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 291010800b9f7c347876df40b22919b8, type: 3}
+  - {fileID: 12800000, guid: 5688e61c37b7e984781694fc31dd2269, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

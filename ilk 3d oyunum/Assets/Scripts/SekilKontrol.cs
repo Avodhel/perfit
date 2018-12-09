@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SekilKontrol : MonoBehaviour {
 
-    float donmeHizi = 0.1f;
-    float donmeYonu = 1f;
+    [Range(0f, 1f)]
+    public float donmeHizi;
+    float donmeYonu;
     GameObject Panel;
     bool sekliPaneleSabitleKontrol = false;
     GameObject cutPoint;
@@ -63,7 +64,7 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "cutPointTag")
         {
