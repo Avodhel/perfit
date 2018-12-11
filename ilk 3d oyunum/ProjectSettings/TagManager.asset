@@ -13,6 +13,7 @@ TagManager:
   - lightTag
   - spawnPointTag
   - arkaplanTag
+  - oyunKontrolTag
   layers:
   - Default
   - TransparentFX

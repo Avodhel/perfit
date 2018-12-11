@@ -14,32 +14,38 @@ public class SekilKontrol : MonoBehaviour {
 
     void Start()
     {
-        Panel = GameObject.FindGameObjectWithTag("panelTag");
-        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
-        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+        objeBul();
         sekilDonmeYonu();
     }
 
     void Update ()
     {
-        sekilDondur();
+        //sekilDondur();
         paneleSabitle();
 	}
 
+    private void objeBul()
+    {
+        Panel = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+    }
+
     void sekilDonmeYonu()
     {
-        //Debug.Log(Random.value);
-        if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
-            donmeYonu = 1; //sola donmesi icin
-        else
-            donmeYonu = -1; // saga donmesi icin
+        donmeYonu = Random.value <= 0.5f ? 1 : -1;
+
+        //if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
+        //    donmeYonu = 1; //sola donmesi icin
+        //else
+        //    donmeYonu = -1; // saga donmesi icin
     }
 
     void sekilDondur()
     {
         if (!sekliPaneleSabitleKontrol)
         {
-            transform.Rotate(new Vector3(0, Random.Range(0, 360f), 0) * ((Time.deltaTime * donmeYonu) * donmeHizi));
+            transform.Rotate(new Vector3(Random.Range(0, 360f), 0, 0) * ((Time.deltaTime * donmeYonu) * donmeHizi));
         }
     }
 
@@ -47,7 +53,7 @@ public class SekilKontrol : MonoBehaviour {
     {
         if (sekliPaneleSabitleKontrol)
         {
-            transform.localRotation = Panel.transform.localRotation; //şeklin panele sabitlenmesi
+            transform.localRotation = Quaternion.Euler(Panel.transform.rotation.x, Panel.transform.rotation.y, 90); //şeklin panele sabitlenmesi
         }
 
         cutPoint.transform.localRotation = Panel.transform.localRotation; //cutpointin panele sabitlenmesi
