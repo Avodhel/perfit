@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
-    public GameObject sekil, glass;
+    public GameObject sekil;
     [Range(1, 50)]
     public int spawnSuresi;
 
@@ -17,7 +17,7 @@ public class SpawnKontrol : MonoBehaviour {
     {
         while (true)
         {
-            Instantiate(glass, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f));
+            Instantiate(sekil, transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(spawnSuresi);
         }

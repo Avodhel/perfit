@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PanelKontrol : MonoBehaviour {
 
-    [Tooltip("1 ile 250 arası degistirilebilir")]
     [Range(1f, 250f)]
     public float panelHareketHizi;
     public Text heightText;
@@ -13,8 +12,6 @@ public class PanelKontrol : MonoBehaviour {
     Vector3 panelBoyut;
     float yukseklik;
     string yukseklikStr;
-
-    public Transform brokenObject;
 
     void Update ()
     {
@@ -44,11 +41,6 @@ public class PanelKontrol : MonoBehaviour {
 
     void OnCollisionEnter(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
     {
-        paneleCarpmaAcisi(col);
-    }
-
-    void paneleCarpmaAcisi(Collision col)//panele carpan sekillerin hangi acidan carptigini saptama
-    {
         if (col.gameObject.tag.Equals("squareTag"))
         {
             Vector3 hit = col.contacts[0].normal;
@@ -64,7 +56,6 @@ public class PanelKontrol : MonoBehaviour {
             {
                 //Up
                 //Debug.Log("Up");
-                brokeGlass(col);
             }
             if (Mathf.Approximately(angle, 90))
             {
@@ -80,12 +71,5 @@ public class PanelKontrol : MonoBehaviour {
                 }
             }
         }
-    }
-
-    public void brokeGlass(Collision col)
-    {
-        Destroy(col.gameObject);
-        Instantiate(brokenObject, col.transform.position, col.transform.rotation);
-        brokenObject.localScale = col.transform.localScale;
     }
 }
