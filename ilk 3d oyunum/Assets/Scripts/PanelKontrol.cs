@@ -39,36 +39,41 @@ public class PanelKontrol : MonoBehaviour {
         transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür
     }
 
-    void OnCollisionEnter(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
+    void OnCollisionEnter(Collision col) 
     {
         if (col.gameObject.tag.Equals("squareTag"))
         {
-            Vector3 hit = col.contacts[0].normal;
-            //Debug.Log(hit);
-            float angle = Vector3.Angle(hit, Vector3.up);
+            carpmaAcisiSaptama(col);
+        }
+    }
 
-            if (Mathf.Approximately(angle, 0))
-            {
-                //Down
-                //Debug.Log("Down");
+    void carpmaAcisiSaptama(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
+    {
+        Vector3 hit = col.contacts[0].normal;
+        //Debug.Log(hit);
+        float angle = Vector3.Angle(hit, Vector3.up);
+
+        if (Mathf.Approximately(angle, 0))
+        {
+            //Down
+            //Debug.Log("Down");
+        }
+        if (Mathf.Approximately(angle, 180))
+        {
+            //Up
+            Debug.Log("Up");
+        }
+        if (Mathf.Approximately(angle, 90))
+        {
+            // Sides
+            Vector3 cross = Vector3.Cross(Vector3.forward, hit);
+            if (cross.y > 0)
+            { // left side of the player
+              //Debug.Log("Left");
             }
-            if (Mathf.Approximately(angle, 180))
-            {
-                //Up
-                //Debug.Log("Up");
-            }
-            if (Mathf.Approximately(angle, 90))
-            {
-                // Sides
-                Vector3 cross = Vector3.Cross(Vector3.forward, hit);
-                if (cross.y > 0)
-                { // left side of the player
-                    //Debug.Log("Left");
-                }
-                else
-                { // right side of the player
-                    //Debug.Log("Right");
-                }
+            else
+            { // right side of the player
+              //Debug.Log("Right");
             }
         }
     }

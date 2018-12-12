@@ -14,6 +14,11 @@ public class OyunKontrol : MonoBehaviour {
 	
 	void Update ()
     {
+        oyunHiziAyarla();
+    }
+
+    private void oyunHiziAyarla()
+    {
         Time.timeScale = oyunHizi;
-	}
+    }
 }

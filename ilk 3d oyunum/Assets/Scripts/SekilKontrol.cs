@@ -6,33 +6,41 @@ public class SekilKontrol : MonoBehaviour {
 
     [Range(0f, 1f)]
     public float donmeHizi;
+
     float donmeYonu;
-    GameObject Panel;
     bool sekliPaneleSabitleKontrol = false;
+
+    GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
 
     void Start()
     {
-        Panel = GameObject.FindGameObjectWithTag("panelTag");
-        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
-        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+        objeBul();
         sekilDonmeYonu();
     }
 
-    void Update ()
+    void Update()
     {
         sekilDondur();
         paneleSabitle();
-	}
+    }
+
+    private void objeBul()
+    {
+        Panel = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+    }
 
     void sekilDonmeYonu()
     {
-        //Debug.Log(Random.value);
-        if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
-            donmeYonu = 1; //sola donmesi icin
-        else
-            donmeYonu = -1; // saga donmesi icin
+        donmeYonu = Random.value <= 0.5f ? 1 : -1;
+
+        //if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
+        //    donmeYonu = 1; //sola donmesi icin
+        //else
+        //    donmeYonu = -1; // saga donmesi icin
     }
 
     void sekilDondur()
