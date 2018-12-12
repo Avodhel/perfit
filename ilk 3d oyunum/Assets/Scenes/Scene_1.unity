@@ -932,6 +932,11 @@ Prefab:
       propertyPath: heightText
       value: 
       objectReference: {fileID: 1251051841}
+    - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
+        type: 2}
+      propertyPath: brokenObject
+      value: 
+      objectReference: {fileID: 400058, guid: da5cffd52919cd3409ca8a813278cba1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
   m_IsPrefabAsset: 0
