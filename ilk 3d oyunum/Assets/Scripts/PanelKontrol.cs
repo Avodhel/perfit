@@ -13,6 +13,13 @@ public class PanelKontrol : MonoBehaviour {
     float yukseklik;
     string yukseklikStr;
 
+    OyunKontrol oyunKontrol;
+
+    void Start()
+    {
+        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+    }
+
     void Update ()
     {
         yukseklikGoster();
@@ -62,6 +69,7 @@ public class PanelKontrol : MonoBehaviour {
         {
             //Up
             Debug.Log("Up");
+            oyunKontrol.oyunBitti(true);
         }
         if (Mathf.Approximately(angle, 90))
         {
