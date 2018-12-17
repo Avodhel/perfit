@@ -157,7 +157,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 6752591a1d1da244a9d3ad8abec55296, type: 2}
+  - {fileID: 2100000, guid: 771447f771b94c54caaf03fa244be05d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,7 +192,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 771447f771b94c54caaf03fa244be05d, type: 2}
+  - {fileID: 2100000, guid: 6752591a1d1da244a9d3ad8abec55296, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -288,3 +288,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelHareketHizi: 50
   heightText: {fileID: 0}
+  bestHeightText: {fileID: 0}

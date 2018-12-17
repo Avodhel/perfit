@@ -15,9 +15,13 @@ public class PanelKontrol : MonoBehaviour {
 
     OyunKontrol oyunKontrol;
 
+    public Text bestHeightText;
+
     void Start()
     {
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        bestHeightText.text = "Best " + PlayerPrefs.GetFloat("BestHeight", 0f).ToString() + " M";
+        //PlayerPrefs.DeleteAll();
     }
 
     void Update ()
@@ -38,6 +42,17 @@ public class PanelKontrol : MonoBehaviour {
                 continue;
             }
             heightText.text = yukseklikStr.Substring(0, i) + " M"; //substring ile i kadar basamağı göster
+        }
+
+        eniyiyukseklikGoster();
+    }
+
+    void eniyiyukseklikGoster()
+    {
+        if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0f))
+        {
+            PlayerPrefs.SetFloat("BestHeight", yukseklik);
+            bestHeightText.text = "Best " + yukseklik.ToString() + " M"; //en iyi yükseklik
         }
     }
 

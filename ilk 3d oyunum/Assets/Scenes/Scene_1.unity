@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91679e932be947449aadf2d77080bbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oyunHizi: 2
+  oyunHizi: 1.65
   oyunBittiPanel: {fileID: 384606776}
 --- !u!4 &222546668
 Transform:
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 2ce8fc3e7fa4701468e0df98c0118436, type: 2}
   m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -553,7 +553,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Best 23.5 m
+  m_Text: 
 --- !u!222 &1207843543
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -727,7 +727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 13.4 M
+  m_Text: 
 --- !u!222 &1251051842
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 2ce8fc3e7fa4701468e0df98c0118436, type: 2}
   m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1078,16 +1078,11 @@ Prefab:
       propertyPath: heightText
       value: 
       objectReference: {fileID: 1251051841}
-    - target: {fileID: 23215254262592404, guid: 118b1ab6a469cc04f930829ba476294f,
+    - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: bestHeightText
       value: 
-      objectReference: {fileID: 2100000, guid: 771447f771b94c54caaf03fa244be05d, type: 2}
-    - target: {fileID: 23876125947098698, guid: 118b1ab6a469cc04f930829ba476294f,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6752591a1d1da244a9d3ad8abec55296, type: 2}
+      objectReference: {fileID: 1207843542}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
   m_IsPrefabAsset: 0

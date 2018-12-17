@@ -17,7 +17,9 @@ public class SpawnKontrol : MonoBehaviour {
     {
         while (true)
         {
-            Instantiate(sekil, transform.position, Quaternion.identity);
+            Instantiate(sekil, 
+                        transform.position, 
+                        Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
 
             yield return new WaitForSeconds(spawnSuresi);
         }
