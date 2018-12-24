@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PanelKontrol : MonoBehaviour {
 
     [Range(1f, 250f)]
     public float panelHareketHizi;
-    public Text heightText;
+    //public Text heightText;
+    public TMP_Text heightText;
 
     Vector3 panelBoyut;
     float yukseklik;
@@ -15,7 +17,8 @@ public class PanelKontrol : MonoBehaviour {
 
     OyunKontrol oyunKontrol;
 
-    public Text bestHeightText;
+    //public Text bestHeightText;
+    public TMP_Text bestHeightText;
 
     void Start()
     {
