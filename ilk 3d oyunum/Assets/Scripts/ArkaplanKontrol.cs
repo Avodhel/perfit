@@ -9,8 +9,11 @@ public class ArkaplanKontrol : MonoBehaviour {
     float renkSinirG;
     float renkSinirB;
 
+    PanelKontrol panelKontrol;
+
     private void Start()
     {
+        panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
         renkSinirBelirle();
     }
 
@@ -34,5 +37,7 @@ public class ArkaplanKontrol : MonoBehaviour {
              renkSinirG,     // set to a pleasing value. 0f to 1f
              renkSinirB      // set to a pleasing value. 0f to 1f
             );
+
+        panelKontrol.panelRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile birlikte panelin de rengini degistir
     }
 }

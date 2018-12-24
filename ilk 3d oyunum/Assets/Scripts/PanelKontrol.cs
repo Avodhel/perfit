@@ -10,6 +10,8 @@ public class PanelKontrol : MonoBehaviour {
     public float panelHareketHizi;
     //public Text heightText;
     public TMP_Text heightText;
+    //public Text bestHeightText;
+    public TMP_Text bestHeightText;
 
     Vector3 panelBoyut;
     float yukseklik;
@@ -17,8 +19,7 @@ public class PanelKontrol : MonoBehaviour {
 
     OyunKontrol oyunKontrol;
 
-    //public Text bestHeightText;
-    public TMP_Text bestHeightText;
+    private float cycleSeconds = 500f;
 
     void Start()
     {
@@ -62,6 +63,16 @@ public class PanelKontrol : MonoBehaviour {
     void panelHareket()
     {
         transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür
+    }
+
+    public void panelRenkDegistir(float renkSinirR, float renkSinirG, float renkSinirB)
+    {
+        GetComponent<Renderer>().material.color = Color.HSVToRGB
+                (
+                Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
+                renkSinirG,     // set to a pleasing value. 0f to 1f
+                renkSinirB      // set to a pleasing value. 0f to 1f
+                );
     }
 
     void OnCollisionEnter(Collision col) 

@@ -43,7 +43,6 @@ public class OyunKontrol : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.R) && restartKontrol)
         {
-            Debug.Log("sahne yüklendi");
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;
         }
