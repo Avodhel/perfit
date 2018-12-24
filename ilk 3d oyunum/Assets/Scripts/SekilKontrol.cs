@@ -28,7 +28,7 @@ public class SekilKontrol : MonoBehaviour {
 
     private void objeBul()
     {
-        Panel = GameObject.FindGameObjectWithTag("panelTag");
+        Panel    = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
     }

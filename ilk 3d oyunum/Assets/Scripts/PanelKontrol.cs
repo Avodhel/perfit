@@ -19,11 +19,13 @@ public class PanelKontrol : MonoBehaviour {
 
     OyunKontrol oyunKontrol;
 
+    Material bottomPointMat;
+
     private float cycleSeconds = 500f;
 
     void Start()
     {
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        objeBul();
         bestHeightText.text = "Best " + PlayerPrefs.GetFloat("BestHeight", 0f).ToString() + " M";
         //PlayerPrefs.DeleteAll();
     }
@@ -32,6 +34,12 @@ public class PanelKontrol : MonoBehaviour {
     {
         yukseklikGoster();
         panelHareket();
+    }
+
+    void objeBul()
+    {
+        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
     }
 
     void yukseklikGoster()
@@ -68,6 +76,13 @@ public class PanelKontrol : MonoBehaviour {
     public void panelRenkDegistir(float renkSinirR, float renkSinirG, float renkSinirB)
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB
+                (
+                Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
+                renkSinirG,     // set to a pleasing value. 0f to 1f
+                renkSinirB      // set to a pleasing value. 0f to 1f
+                );
+
+        bottomPointMat.color = Color.HSVToRGB
                 (
                 Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
                 renkSinirG,     // set to a pleasing value. 0f to 1f
