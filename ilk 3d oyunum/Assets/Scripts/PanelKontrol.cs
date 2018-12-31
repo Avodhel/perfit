@@ -13,15 +13,14 @@ public class PanelKontrol : MonoBehaviour {
     //public Text bestHeightText;
     public TMP_Text bestHeightText;
 
-    Vector3 panelBoyut;
     float yukseklik;
     string yukseklikStr;
 
-    OyunKontrol oyunKontrol;
-
-    Material bottomPointMat;
-
     private float cycleSeconds = 500f;
+
+    Vector3 panelBoyut;
+    OyunKontrol oyunKontrol;
+    Material bottomPointMat;
 
     void Start()
     {
