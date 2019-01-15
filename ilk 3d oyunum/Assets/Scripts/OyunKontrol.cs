@@ -9,10 +9,11 @@ public class OyunKontrol : MonoBehaviour {
     [Range(1f, 10f)]
     public float oyunHizi = 1f;
     public GameObject oyunBittiPanel;
+    public Button playRestartButton;
 
     bool restartKontrol = false;
 
-	void Start ()
+    void Start ()
     {
         Time.timeScale = 1f;
 	}
@@ -20,7 +21,6 @@ public class OyunKontrol : MonoBehaviour {
 	void Update ()
     {
         oyunHiziAyarla();
-        yenidenBaslat();
     }
 
     private void oyunHiziAyarla()
@@ -33,15 +33,16 @@ public class OyunKontrol : MonoBehaviour {
         if (oyunBittiKontrol)
         {
             oyunBittiPanel.SetActive(true);
+            playRestartButton.gameObject.SetActive(true); 
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;
         }
     }
 
-    void yenidenBaslat()
+    public void yenidenBaslat()
     {
-        if (Input.GetKeyDown(KeyCode.R) && restartKontrol)
+        if (restartKontrol)
         {
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;
