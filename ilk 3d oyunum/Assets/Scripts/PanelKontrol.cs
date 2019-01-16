@@ -15,6 +15,7 @@ public class PanelKontrol : MonoBehaviour {
 
     float yukseklik;
     string yukseklikStr;
+    float rotSpeed = 5f;
 
     private float cycleSeconds = 500f;
 
@@ -69,7 +70,13 @@ public class PanelKontrol : MonoBehaviour {
 
     void panelHareket()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür
+        //transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde panel hareketi
+        {
+            Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+        }
     }
 
     public void panelRenkDegistir(float renkSinirR, float renkSinirG, float renkSinirB)
@@ -111,7 +118,7 @@ public class PanelKontrol : MonoBehaviour {
         if (Mathf.Approximately(angle, 180))
         {
             //Up
-            Debug.Log("Up");
+            //Debug.Log("Up");
             oyunKontrol.oyunBitti(true);
         }
         if (Mathf.Approximately(angle, 90))
