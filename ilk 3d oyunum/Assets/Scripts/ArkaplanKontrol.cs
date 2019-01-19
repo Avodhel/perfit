@@ -10,10 +10,12 @@ public class ArkaplanKontrol : MonoBehaviour {
     float renkSinirB;
 
     PanelKontrol panelKontrol;
+    SpawnKontrol spawnKontrol;
 
     private void Start()
     {
         panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
+        spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
         renkSinirBelirle();
     }
 
@@ -39,5 +41,6 @@ public class ArkaplanKontrol : MonoBehaviour {
             );
 
         panelKontrol.panelRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile birlikte panelin de rengini degistir
+        spawnKontrol.sekilRenkDegistir(renkSinirR, renkSinirG, renkSinirB);
     }
 }

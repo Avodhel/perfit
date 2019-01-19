@@ -6,6 +6,7 @@ using TMPro;
 
 public class PanelKontrol : MonoBehaviour {
 
+    public bool mobilKontrol;
     [Range(1f, 250f)]
     public float panelHareketHizi;
     //public Text heightText;
@@ -13,11 +14,11 @@ public class PanelKontrol : MonoBehaviour {
     //public Text bestHeightText;
     public TMP_Text bestHeightText;
 
+    private float cycleSeconds = 500f;
+
     float yukseklik;
     string yukseklikStr;
     float rotSpeed = 5f;
-
-    private float cycleSeconds = 500f;
 
     Vector3 panelBoyut;
     OyunKontrol oyunKontrol;
@@ -70,12 +71,17 @@ public class PanelKontrol : MonoBehaviour {
 
     void panelHareket()
     {
-        //transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
-
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde panel hareketi
+        if (mobilKontrol)
         {
-            Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
+            {
+                Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+            }
+        }
+        else
+        {
+            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
         }
     }
 
@@ -119,7 +125,7 @@ public class PanelKontrol : MonoBehaviour {
         {
             //Up
             //Debug.Log("Up");
-            oyunKontrol.oyunBitti(true);
+            //oyunKontrol.oyunBitti(true);
         }
         if (Mathf.Approximately(angle, 90))
         {
