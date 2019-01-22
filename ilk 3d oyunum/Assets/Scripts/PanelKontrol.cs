@@ -23,6 +23,7 @@ public class PanelKontrol : MonoBehaviour {
     Vector3 panelBoyut;
     OyunKontrol oyunKontrol;
     Material bottomPointMat;
+    Material cutPointMat;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class PanelKontrol : MonoBehaviour {
     {
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
+        cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
     }
 
     void yukseklikGoster()
@@ -95,6 +97,13 @@ public class PanelKontrol : MonoBehaviour {
                 );
 
         bottomPointMat.color = Color.HSVToRGB
+                (
+                Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
+                renkSinirG,     // set to a pleasing value. 0f to 1f
+                renkSinirB      // set to a pleasing value. 0f to 1f
+                );
+
+        cutPointMat.color = Color.HSVToRGB
                 (
                 Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
                 renkSinirG,     // set to a pleasing value. 0f to 1f
