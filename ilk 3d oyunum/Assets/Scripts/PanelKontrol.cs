@@ -21,7 +21,7 @@ public class PanelKontrol : MonoBehaviour {
     float rotSpeed = 5f;
 
     Vector3 panelBoyut;
-    OyunKontrol oyunKontrol;
+    //OyunKontrol oyunKontrol;
     Material bottomPointMat;
     Material cutPointMat;
 
@@ -40,7 +40,7 @@ public class PanelKontrol : MonoBehaviour {
 
     void objeBul()
     {
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        //oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
         cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
     }
