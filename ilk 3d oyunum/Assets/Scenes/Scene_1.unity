@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91679e932be947449aadf2d77080bbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oyunHizi: 1.65
+  oyunHizi: 1.75
   oyunBittiPanel: {fileID: 384606776}
   playRestartButton: {fileID: 1074996293}
 --- !u!4 &222546668
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
-  spawnSuresi: 10
+  spawnSuresi: 7
 --- !u!1 &1471903821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1274,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6563388a5c196f49a3910c9859347c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sesler: []
+  sesler:
+  - sesAdi: FitSound
+    clip: {fileID: 8300000, guid: 046766ecc28131f4c824da3cc4e2ce50, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - sesAdi: HitSound
+    clip: {fileID: 8300000, guid: e5e4c5a6261faa746a3483062ecd0fea, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1893975608
 Transform:
   m_ObjectHideFlags: 0
