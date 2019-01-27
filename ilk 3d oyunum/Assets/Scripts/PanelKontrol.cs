@@ -14,6 +14,8 @@ public class PanelKontrol : MonoBehaviour {
     //public Text bestHeightText;
     public TMP_Text bestHeightText;
 
+    public ParticleSystem panelParticle;
+
     private float cycleSeconds = 500f;
 
     float yukseklik;
@@ -109,6 +111,14 @@ public class PanelKontrol : MonoBehaviour {
                 renkSinirG,     // set to a pleasing value. 0f to 1f
                 renkSinirB      // set to a pleasing value. 0f to 1f
                 );
+    }
+
+    public void panelParticleOynat(bool particleKontrol)
+    {
+        if (particleKontrol)
+        {
+            panelParticle.Play();
+        }
     }
 
     void OnCollisionEnter(Collision col) 

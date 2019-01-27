@@ -66,6 +66,7 @@ public class SekilKontrol : MonoBehaviour {
     {
         if (other.name == "FitPoint")
         {
+            Panel.GetComponent<PanelKontrol>().panelParticleOynat(true);
             FindObjectOfType<SesKontrol>().sesOynat("FitSound");
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
