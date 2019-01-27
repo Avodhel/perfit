@@ -14,6 +14,7 @@ TagManager:
   - spawnPointTag
   - arkaplanTag
   - oyunKontrolTag
+  - particleSystemTag
   layers:
   - Default
   - TransparentFX
