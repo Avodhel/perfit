@@ -19,7 +19,7 @@ public class MesafeKontrol : MonoBehaviour {
     Vector3 kameraVeTopAradakiMesafe;
     Vector3 lightVeTopAradakiMesafe;
     Vector3 arkaplanVeTopAradakiMesafe;
-    Vector3 particleSystemVeTopAradakiMesafe;
+    Vector3 panelParticleVeTopAradakiMesafe;
 
     void Start ()
     {
@@ -41,7 +41,7 @@ public class MesafeKontrol : MonoBehaviour {
         kamera         = GameObject.FindGameObjectWithTag("MainCamera");
         dLight         = GameObject.FindGameObjectWithTag("lightTag");
         arkaplan       = GameObject.FindGameObjectWithTag("arkaplanTag");
-        panelParticle = GameObject.FindGameObjectWithTag("particleSystemTag");
+        panelParticle  = GameObject.FindGameObjectWithTag("particleSystemTag");
     }
 
     void mesafeHesapla()
@@ -52,7 +52,7 @@ public class MesafeKontrol : MonoBehaviour {
         kameraVeTopAradakiMesafe         = kamera.transform.position     - topPoint.transform.position;
         lightVeTopAradakiMesafe          = dLight.transform.position     - topPoint.transform.position;
         arkaplanVeTopAradakiMesafe       = arkaplan.transform.position   - topPoint.transform.position;
-        particleSystemVeTopAradakiMesafe = panelParticle.transform.position - topPoint.transform.position;
+        panelParticleVeTopAradakiMesafe  = panelParticle.transform.position - topPoint.transform.position;
     }
 
     void mesafeUygula()
@@ -63,6 +63,6 @@ public class MesafeKontrol : MonoBehaviour {
         kamera.transform.position         = topPoint.transform.position + kameraVeTopAradakiMesafe;
         dLight.transform.position         = topPoint.transform.position + lightVeTopAradakiMesafe;
         arkaplan.transform.position       = topPoint.transform.position + arkaplanVeTopAradakiMesafe;
-        panelParticle.transform.position = topPoint.transform.position + particleSystemVeTopAradakiMesafe;
+        panelParticle.transform.position  = topPoint.transform.position + panelParticleVeTopAradakiMesafe;
     }
 }
