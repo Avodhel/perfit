@@ -20,7 +20,7 @@ public class PanelKontrol : MonoBehaviour {
 
     float yukseklik;
     string yukseklikStr;
-    float rotSpeed = 5f;
+    float rotSpeed = 12f;
 
     Vector3 panelBoyut;
     OyunKontrol oyunKontrol;
