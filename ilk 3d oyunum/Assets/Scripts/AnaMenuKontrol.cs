@@ -15,7 +15,6 @@ public class AnaMenuKontrol : MonoBehaviour {
 
     void Start()
     {
-        FindObjectOfType<SesKontrol>().sesOynat("MainMenuSound");
         renkSinirBelirle();
     }
 
