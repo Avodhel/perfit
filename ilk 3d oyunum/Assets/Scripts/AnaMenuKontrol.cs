@@ -43,8 +43,8 @@ public class AnaMenuKontrol : MonoBehaviour {
         }
     }
 
-    public void oyunuBaslat()
-    {
-        SceneManager.LoadScene("Scene_1");
-    }
+    //public void oyunuBaslat()
+    //{
+    //    SceneManager.LoadScene("Scene_1");
+    //}
 }
