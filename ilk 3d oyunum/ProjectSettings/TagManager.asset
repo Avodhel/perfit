@@ -15,6 +15,7 @@ TagManager:
   - arkaplanTag
   - oyunKontrolTag
   - particleSystemTag
+  - panelParticleTag
   layers:
   - Default
   - TransparentFX
