@@ -41,6 +41,6 @@ public class ArkaplanKontrol : MonoBehaviour {
             );
 
         panelKontrol.panelRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile birlikte panelin de rengini degistir
-        spawnKontrol.sekilRenkDegistir(renkSinirR, renkSinirG, renkSinirB);
+        spawnKontrol.sekilRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile square'in de rengini degistir
     }
 }
