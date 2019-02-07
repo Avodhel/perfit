@@ -13,7 +13,6 @@ public class PanelKontrol : MonoBehaviour {
     public TMP_Text heightText;
     //public Text bestHeightText;
     public TMP_Text bestHeightText;
-
     public ParticleSystem panelParticle;
 
     private float cycleSeconds = 500f;

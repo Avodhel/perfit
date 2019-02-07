@@ -6266,7 +6266,7 @@ Prefab:
     - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
         type: 2}
       propertyPath: mobilKontrol
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}

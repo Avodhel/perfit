@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArkaplanKontrol : MonoBehaviour {
 
     private float cycleSeconds = 500f; // set to say 0.5f to test
+
     float renkSinirR;
     float renkSinirG;
     float renkSinirB;

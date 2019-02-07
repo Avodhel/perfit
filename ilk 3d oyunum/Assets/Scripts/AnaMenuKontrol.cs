@@ -9,6 +9,7 @@ public class AnaMenuKontrol : MonoBehaviour {
     public Button playButton;
 
     private float cycleSeconds = 500f; // set to say 0.5f to test
+
     float renkSinirR;
     float renkSinirG;
     float renkSinirB;
