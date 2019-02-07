@@ -154,7 +154,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.NordicebearGames.PerFit
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -240,10 +240,10 @@ PlayerSettings:
   clonedFromGUID: 56e7a2d3a00f33d44bdd161b773c35b5
   templatePackageId: com.unity.template.3d@1.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 5
+  AndroidTargetArchitectures: 4
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: "C:/Users/XqW/Desktop/Unity Oyunlar/ilk 3D oyunum (android)/yay\u0131nlama
+  AndroidKeystoreName: "C:/Users/XqW/Desktop/Unity Oyunlar/PerFit (android)/yay\u0131nlama
     versiyonlar\u0131/user.keystore"
   AndroidKeyaliasName: perfiticinkey
   AndroidBuildApkPerCpuArchitecture: 0
