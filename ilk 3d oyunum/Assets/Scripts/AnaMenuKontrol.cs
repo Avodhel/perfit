@@ -18,7 +18,7 @@ public class AnaMenuKontrol : MonoBehaviour {
     void Start()
     {
         renkSinirBelirle();
-        versionCode.text = "v" + Application.version;
+        //versionCode.text = "v" + Application.version.ToString(); //hata verdi!!!
     }
 
     void Update()
