@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class AnaMenuKontrol : MonoBehaviour {
 
     public Button playButton;
+    public Text versionCode;
 
     private float cycleSeconds = 500f; // set to say 0.5f to test
 
@@ -17,6 +18,7 @@ public class AnaMenuKontrol : MonoBehaviour {
     void Start()
     {
         renkSinirBelirle();
+        versionCode.text = "v" + Application.version;
     }
 
     void Update()
