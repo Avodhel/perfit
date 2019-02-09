@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
-    public GameObject sekil;
+    public GameObject[] sekiller;
+    GameObject sekil;
     
     [Range(1, 50)]
     public int spawnSuresi;
@@ -26,6 +27,7 @@ public class SpawnKontrol : MonoBehaviour {
     {
         while (true)
         {
+            sekil = sekiller[Random.Range(0, sekiller.Length)];
             Instantiate(sekil,
                         transform.position,
                         Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));

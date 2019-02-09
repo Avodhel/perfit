@@ -212,7 +212,7 @@ MonoBehaviour:
   oyunBittiPanel: {fileID: 384606776}
   playRestartButton: {fileID: 1074996293}
   pressRtoRestartText: {fileID: 420333986}
-  mobilKontrol: 1
+  mobilKontrol: 0
 --- !u!4 &222546668
 Transform:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4bffae9c4627a47bacaec82734e9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
+  sekiller:
+  - {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
+  - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
+  - {fileID: 1739709742197360, guid: a16f9d861c7c3e048b6152d9b29e22ff, type: 2}
+  - {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871, type: 2}
   spawnSuresi: 7
 --- !u!1 &1471903821
 GameObject:

@@ -16,6 +16,8 @@ TagManager:
   - oyunKontrolTag
   - particleSystemTag
   - panelParticleTag
+  - specialSquareTag
+  - featureTag
   layers:
   - Default
   - TransparentFX
