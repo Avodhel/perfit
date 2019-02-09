@@ -6,7 +6,9 @@ using TMPro;
 
 public class PanelKontrol : MonoBehaviour {
 
+    [HideInInspector]
     public bool mobilKontrol;
+
     [Range(1f, 250f)]
     public float panelHareketHizi;
     //public Text heightText;

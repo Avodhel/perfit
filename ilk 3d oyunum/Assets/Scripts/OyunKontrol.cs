@@ -10,8 +10,18 @@ public class OyunKontrol : MonoBehaviour {
     public float oyunHizi = 1f;
     public GameObject oyunBittiPanel;
     public Button playRestartButton;
+    public Text pressRtoRestartText;
+    public bool mobilKontrol;
+
+    GameObject panel;
 
     bool restartKontrol = false;
+
+    void Awake()
+    {
+        panel = GameObject.FindGameObjectWithTag("panelTag");
+        panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
+    }
 
     void Start ()
     {
@@ -21,6 +31,7 @@ public class OyunKontrol : MonoBehaviour {
 	void Update ()
     {
         oyunHiziAyarla();
+        yenidenBaslatPc();
     }
 
     private void oyunHiziAyarla()
@@ -33,7 +44,15 @@ public class OyunKontrol : MonoBehaviour {
         if (oyunBittiKontrol)
         {
             oyunBittiPanel.SetActive(true);
-            playRestartButton.gameObject.SetActive(true); 
+            if (mobilKontrol)
+            {
+                playRestartButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                pressRtoRestartText.gameObject.SetActive(true);
+            }
+            
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;
@@ -42,7 +61,16 @@ public class OyunKontrol : MonoBehaviour {
 
     public void yenidenBaslat()
     {
-        if (restartKontrol)
+        if (restartKontrol & mobilKontrol)
+        {
+            SceneManager.LoadScene("Scene_1");
+            restartKontrol = false;
+        }
+    }
+
+    void yenidenBaslatPc()
+    {
+        if (restartKontrol & !mobilKontrol & Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;
