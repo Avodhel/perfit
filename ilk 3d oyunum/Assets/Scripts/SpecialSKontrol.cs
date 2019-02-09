@@ -73,6 +73,14 @@ public class SpecialSKontrol : MonoBehaviour {
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
             sekliPaneleSabitleKontrol = true;
+            //Time.timeScale = 5f;
+            //if (transform.gameObject.name == "fastSquare" || 
+            //    transform.gameObject.name == "reverseSquare" || 
+            //    transform.gameObject.name == "slowSquare")
+            //{
+            //    Time.timeScale = 5f;
+            //    Debug.Log("hiz 5 katina cikti");
+            //}
         }
     }
 
