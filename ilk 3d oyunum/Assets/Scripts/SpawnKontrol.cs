@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
-    public GameObject[] sekiller;
-    GameObject sekil;
-    
+    public GameObject sekil;
+
+    public GameObject[] ozelSekiller;
+    GameObject ozelSekil;
+
     [Range(1, 50)]
     public int spawnSuresi;
+
+    [Range(1, 20)]
+    public int kacSekildeBirOzelSekil;
 
     private float cycleSeconds = 500f;
 
@@ -17,6 +22,8 @@ public class SpawnKontrol : MonoBehaviour {
 
     bool squareOlustuKontrol = false;
     bool renkDegistiKontrol = false;
+
+    int sekilCount = 0;
 
     void Start ()
     {        
@@ -27,10 +34,23 @@ public class SpawnKontrol : MonoBehaviour {
     {
         while (true)
         {
-            sekil = sekiller[Random.Range(0, sekiller.Length)];
-            Instantiate(sekil,
-                        transform.position,
-                        Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+            sekilCount += 1;
+
+            if (sekilCount == kacSekildeBirOzelSekil)
+            {
+                ozelSekil = ozelSekiller[Random.Range(0, ozelSekiller.Length)];
+                Instantiate(ozelSekil,
+                            transform.position,
+                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+
+                sekilCount = 0;
+            }
+            else if(sekilCount < kacSekildeBirOzelSekil)
+            {
+                Instantiate(sekil,
+                            transform.position,
+                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+            }
 
             squares = GameObject.FindGameObjectsWithTag("squareTag");
 
@@ -41,6 +61,7 @@ public class SpawnKontrol : MonoBehaviour {
 
         }
     }
+
 
     public void sekilRenkDegistir(float renkSinirR, float renkSinirG, float renkSinirB)
     {
