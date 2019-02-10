@@ -1227,7 +1227,7 @@ MonoBehaviour:
   - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
   - {fileID: 1012338444592888, guid: dae7555848a8eea4ca85255895dc329c, type: 2}
   spawnSuresi: 7
-  kacSekildeBirOzelSekil: 5
+  kacSekildeBirOzelSekil: 4
 --- !u!1 &1471903821
 GameObject:
   m_ObjectHideFlags: 0

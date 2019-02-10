@@ -13,7 +13,8 @@ public class SpecialSKontrol : MonoBehaviour {
     GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
-    //Sprite feature;
+
+    OyunKontrol oyunKontrol;
 
     void Start()
     {
@@ -32,7 +33,8 @@ public class SpecialSKontrol : MonoBehaviour {
         Panel = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
-        //feature = gameObject.GetComponentInChildren<Sprite>();
+
+        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
     }
 
     void sekilDonmeYonu()
@@ -73,14 +75,32 @@ public class SpecialSKontrol : MonoBehaviour {
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
             sekliPaneleSabitleKontrol = true;
-            //Time.timeScale = 5f;
-            //if (transform.gameObject.name == "fastSquare" || 
-            //    transform.gameObject.name == "reverseSquare" || 
-            //    transform.gameObject.name == "slowSquare")
-            //{
-            //    Time.timeScale = 5f;
-            //    Debug.Log("hiz 5 katina cikti");
-            //}
+
+            StartCoroutine(specialSquareEffects(gameObject.name));
+        }
+    }
+
+    IEnumerator specialSquareEffects(string whichEffect)
+    {
+        if (whichEffect == "fastSquare(Clone)")
+        {
+            oyunKontrol.oyunHizi = 3f;
+            yield return new WaitForSeconds(20f);
+            oyunKontrol.oyunHizi = 1.85f;
+        }
+        else if (whichEffect == "slowSquare(Clone)")
+        {
+            oyunKontrol.oyunHizi = 1f;
+            yield return new WaitForSeconds(5f);
+            oyunKontrol.oyunHizi = 1.75f;
+        }
+        else if (whichEffect == "reverseSquare(Clone)")
+        {
+            Debug.Log("reverse effect happened");
+        }
+        else if (whichEffect == "questionSquare(Clone)")
+        {
+            Debug.Log("question effect happened");
         }
     }
 
@@ -88,7 +108,13 @@ public class SpecialSKontrol : MonoBehaviour {
     {
         if (other.transform.tag == "cutPointTag")
         {
-            Destroy(gameObject);
+            StartCoroutine(destroySpecialSquare());
         }
+    }
+
+    IEnumerator destroySpecialSquare()
+    {
+        yield return new WaitForSeconds(50f);
+        Destroy(gameObject);
     }
 }
