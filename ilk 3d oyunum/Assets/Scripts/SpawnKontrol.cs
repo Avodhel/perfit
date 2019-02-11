@@ -40,12 +40,8 @@ public class SpawnKontrol : MonoBehaviour {
 
     void Awake()
     {
-        //kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
-        kacSekildeBirOzelSekil = 3;
-        Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
-        //kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
-        kacSekildeBirLottery = 3;
-        Debug.Log("lottery " + kacSekildeBirLottery);
+        kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+        kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
     }
 
     void Start ()
@@ -68,13 +64,11 @@ public class SpawnKontrol : MonoBehaviour {
 
                 countForLottery = 0;
                 kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
-                Debug.Log("lottery " + kacSekildeBirLottery);
 
                 while (sekilCount == kacSekildeBirOzelSekil) //eger lottery, ozel sekille cakisirsa
                 {
                     sekilCount = 0;
                     kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
-                    Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
                 }
             }
             else if (sekilCount == kacSekildeBirOzelSekil)
@@ -86,7 +80,6 @@ public class SpawnKontrol : MonoBehaviour {
 
                 sekilCount = 0;
                 kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
-                Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
             }
             else if(sekilCount < kacSekildeBirOzelSekil & countForLottery < kacSekildeBirLottery)
             {
