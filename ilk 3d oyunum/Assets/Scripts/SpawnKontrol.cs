@@ -9,29 +9,43 @@ public class SpawnKontrol : MonoBehaviour {
     public GameObject[] ozelSekiller;
     GameObject ozelSekil;
 
+    GameObject square;
+    GameObject[] squares;
+
+    public GameObject lottery;
+
     [Range(1, 50)]
     public int spawnSuresi;
 
-    [Range(1, 20)]
+    [Range(1, 10)]
     public int minSekildeBirOzelSekil;
-    [Range(1, 20)]
+    [Range(1, 10)]
     public int maxSekildeBirOzelSekil;
 
+    [Range(1, 20)]
+    public int minSekildeBirLottery;
+    [Range(1, 20)]
+    public int maxSekildeBirLottery;
+
     int kacSekildeBirOzelSekil;
+    int kacSekildeBirLottery;
 
     private float cycleSeconds = 500f;
-
-    GameObject square;
-    GameObject[] squares;
 
     bool squareOlustuKontrol = false;
     bool renkDegistiKontrol = false;
 
     int sekilCount = 0;
+    int countForLottery = 0;
 
     void Awake()
     {
-        kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+        //kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+        kacSekildeBirOzelSekil = 3;
+        Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
+        //kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
+        kacSekildeBirLottery = 3;
+        Debug.Log("lottery " + kacSekildeBirLottery);
     }
 
     void Start ()
@@ -44,8 +58,26 @@ public class SpawnKontrol : MonoBehaviour {
         while (true)
         {
             sekilCount += 1;
+            countForLottery += 1;
 
-            if (sekilCount == kacSekildeBirOzelSekil)
+            if (countForLottery == kacSekildeBirLottery)
+            {
+                Instantiate(lottery,
+                            transform.position,
+                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+
+                countForLottery = 0;
+                kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
+                Debug.Log("lottery " + kacSekildeBirLottery);
+
+                while (sekilCount == kacSekildeBirOzelSekil) //eger lottery, ozel sekille cakisirsa
+                {
+                    sekilCount = 0;
+                    kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+                    Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
+                }
+            }
+            else if (sekilCount == kacSekildeBirOzelSekil)
             {
                 ozelSekil = ozelSekiller[Random.Range(0, ozelSekiller.Length)];
                 Instantiate(ozelSekil,
@@ -54,8 +86,9 @@ public class SpawnKontrol : MonoBehaviour {
 
                 sekilCount = 0;
                 kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+                Debug.Log("ozel sekil " + kacSekildeBirOzelSekil);
             }
-            else if(sekilCount < kacSekildeBirOzelSekil)
+            else if(sekilCount < kacSekildeBirOzelSekil & countForLottery < kacSekildeBirLottery)
             {
                 Instantiate(sekil,
                             transform.position,

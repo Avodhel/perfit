@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114385492148633902}
   - component: {fileID: 222455938578717564}
   m_Layer: 0
-  m_Name: questionSquare
+  m_Name: lotterySquare
   m_TagString: squareTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,7 +17,7 @@ public class SpecialSKontrol : MonoBehaviour {
     OyunKontrol oyunKontrol;
 
     Image effectAlert;
-    Sprite fast, slow, reverse, question;
+    Sprite fast, slow, reverse, lottery;
     Sprite[] sprites;
 
     void Start()
@@ -60,9 +60,9 @@ public class SpecialSKontrol : MonoBehaviour {
             {
                 reverse = sprites[i];
             }
-            else if (sprites[i].name == "question")
+            else if (sprites[i].name == "lottery")
             {
-                question = sprites[i];
+                lottery = sprites[i];
             }
         }
     }
@@ -139,10 +139,10 @@ public class SpecialSKontrol : MonoBehaviour {
             Panel.GetComponent<PanelKontrol>().reverseActive = false;
             effectAlert.enabled = false;
         }
-        else if (whichEffect == "questionSquare(Clone)")
+        else if (whichEffect == "lotterySquare(Clone)")
         {
             effectAlert.enabled = true;
-            effectAlert.overrideSprite = question;
+            effectAlert.overrideSprite = lottery;
             yield return new WaitForSeconds(5f);
             //Debug.Log("question effect happened");
             effectAlert.enabled = false;
