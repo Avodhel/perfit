@@ -8,6 +8,7 @@ public class PanelKontrol : MonoBehaviour {
 
     [HideInInspector]
     public bool mobilKontrol;
+    public bool reverseActive = false;
 
     [Range(1f, 250f)]
     public float panelHareketHizi;
@@ -76,17 +77,35 @@ public class PanelKontrol : MonoBehaviour {
 
     void panelHareket()
     {
-        if (mobilKontrol)
+        if (!reverseActive)
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
+            if (mobilKontrol)
             {
-                Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
+                {
+                    Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                    transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+                }
+            }
+            else
+            {
+                transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * -1, 0); //sağa veya sola döndür(mobilde çalışmıyor)
             }
         }
         else
         {
-            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * -1, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+            if (mobilKontrol)
+            {
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
+                {
+                    Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                    transform.Rotate(0, (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+                }
+            }
+            else
+            {
+                transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+            }
         }
     }
 

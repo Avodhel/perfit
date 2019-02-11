@@ -15,6 +15,7 @@ public class SpecialSKontrol : MonoBehaviour {
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
+    PanelKontrol panelKontrol;
 
     Image effectAlert;
     Sprite fast, slow, reverse, question;
@@ -40,6 +41,7 @@ public class SpecialSKontrol : MonoBehaviour {
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         effectAlert = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
+        panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
     }
 
     void findSprites()
@@ -134,8 +136,9 @@ public class SpecialSKontrol : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = reverse;
-            yield return new WaitForSeconds(5f);
-            //Debug.Log("reverse effect happened");
+            panelKontrol.reverseActive = true;
+            yield return new WaitForSeconds(10f);
+            panelKontrol.reverseActive = false;
             effectAlert.enabled = false;
         }
         else if (whichEffect == "questionSquare(Clone)")
