@@ -18,6 +18,7 @@ TagManager:
   - panelParticleTag
   - specialSquareTag
   - featureTag
+  - effectAlertTag
   layers:
   - Default
   - TransparentFX

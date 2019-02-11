@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpecialSKontrol : MonoBehaviour {
 
@@ -13,13 +14,16 @@ public class SpecialSKontrol : MonoBehaviour {
     GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
-
     OyunKontrol oyunKontrol;
+
+    Image effectAlert;
+    Sprite fast, slow, reverse, question;
 
     void Start()
     {
         objeBul();
         sekilDonmeYonu();
+        findSprite();
     }
 
     void Update()
@@ -33,8 +37,17 @@ public class SpecialSKontrol : MonoBehaviour {
         Panel = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
-
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        effectAlert = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
+    }
+
+    void findSprite()
+    {
+        fast = Resources.Load<Sprite>("Textures/fast");
+        Debug.Log(fast);
+        slow = Resources.Load<Sprite>("Textures/slow");
+        reverse = Resources.Load<Sprite>("reverse");
+        question = Resources.Load<Sprite>("question");
     }
 
     void sekilDonmeYonu()
@@ -84,15 +97,21 @@ public class SpecialSKontrol : MonoBehaviour {
     {
         if (whichEffect == "fastSquare(Clone)")
         {
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = fast;
             oyunKontrol.oyunHizi = 3f;
             yield return new WaitForSeconds(20f);
             oyunKontrol.oyunHizi = 1.85f;
+            effectAlert.enabled = false;
         }
         else if (whichEffect == "slowSquare(Clone)")
         {
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = slow;
             oyunKontrol.oyunHizi = 1f;
             yield return new WaitForSeconds(5f);
             oyunKontrol.oyunHizi = 1.75f;
+            effectAlert.enabled = false;
         }
         else if (whichEffect == "reverseSquare(Clone)")
         {
