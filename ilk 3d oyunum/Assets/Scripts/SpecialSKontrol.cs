@@ -19,11 +19,13 @@ public class SpecialSKontrol : MonoBehaviour {
     Image effectAlert;
     Sprite fast, slow, reverse, question;
 
+    Sprite[] sprites;
+
     void Start()
     {
         objeBul();
         sekilDonmeYonu();
-        findSprite();
+        findSprites();
     }
 
     void Update()
@@ -41,13 +43,29 @@ public class SpecialSKontrol : MonoBehaviour {
         effectAlert = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
     }
 
-    void findSprite()
+    void findSprites()
     {
-        fast = Resources.Load<Sprite>("Textures/fast");
-        Debug.Log(fast);
-        slow = Resources.Load<Sprite>("Textures/slow");
-        reverse = Resources.Load<Sprite>("reverse");
-        question = Resources.Load<Sprite>("question");
+        sprites = Resources.LoadAll<Sprite>("Textures"); //textures içindeki bütün spriteları bul
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].name == "fast")
+            {
+                fast = sprites[i];
+            }
+            else if (sprites[i].name == "slow")
+            {
+                slow = sprites[i];
+            }
+            else if (sprites[i].name == "reverse")
+            {
+                reverse = sprites[i];
+            }
+            else if (sprites[i].name == "question")
+            {
+                question = sprites[i];
+            }
+        }
     }
 
     void sekilDonmeYonu()
@@ -100,7 +118,7 @@ public class SpecialSKontrol : MonoBehaviour {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = fast;
             oyunKontrol.oyunHizi = 3f;
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(15f);
             oyunKontrol.oyunHizi = 1.85f;
             effectAlert.enabled = false;
         }
@@ -115,11 +133,19 @@ public class SpecialSKontrol : MonoBehaviour {
         }
         else if (whichEffect == "reverseSquare(Clone)")
         {
-            Debug.Log("reverse effect happened");
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = reverse;
+            yield return new WaitForSeconds(5f);
+            //Debug.Log("reverse effect happened");
+            effectAlert.enabled = false;
         }
         else if (whichEffect == "questionSquare(Clone)")
         {
-            Debug.Log("question effect happened");
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = question;
+            yield return new WaitForSeconds(5f);
+            //Debug.Log("question effect happened");
+            effectAlert.enabled = false;
         }
     }
 
