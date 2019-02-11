@@ -86,7 +86,7 @@ public class PanelKontrol : MonoBehaviour {
         }
         else
         {
-            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * -1, 0); //sağa veya sola döndür(mobilde çalışmıyor)
         }
     }
 

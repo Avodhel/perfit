@@ -18,7 +18,6 @@ public class SpecialSKontrol : MonoBehaviour {
 
     Image effectAlert;
     Sprite fast, slow, reverse, question;
-
     Sprite[] sprites;
 
     void Start()
@@ -124,12 +123,12 @@ public class SpecialSKontrol : MonoBehaviour {
         }
         else if (whichEffect == "slowSquare(Clone)")
         {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = slow;
+            effectAlert.enabled = true; //effect alert image ac
+            effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
             oyunKontrol.oyunHizi = 1f;
             yield return new WaitForSeconds(5f);
             oyunKontrol.oyunHizi = 1.75f;
-            effectAlert.enabled = false;
+            effectAlert.enabled = false; //effect alert image kapat
         }
         else if (whichEffect == "reverseSquare(Clone)")
         {
