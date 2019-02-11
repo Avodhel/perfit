@@ -1227,7 +1227,8 @@ MonoBehaviour:
   - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
   - {fileID: 1012338444592888, guid: dae7555848a8eea4ca85255895dc329c, type: 2}
   spawnSuresi: 7
-  kacSekildeBirOzelSekil: 3
+  minSekildeBirOzelSekil: 3
+  maxSekildeBirOzelSekil: 8
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0
@@ -6479,7 +6480,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 4.6 M
+  m_text: 4.6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 582a5e36bcaba8b4d8ff9d60146ab5bc, type: 2}
   m_sharedMaterial: {fileID: 21072361777238014, guid: 582a5e36bcaba8b4d8ff9d60146ab5bc,
@@ -6549,10 +6550,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 5
+    characterCount: 3
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 3
+    spaceCount: 0
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

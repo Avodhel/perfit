@@ -15,7 +15,6 @@ public class SpecialSKontrol : MonoBehaviour {
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
-    PanelKontrol panelKontrol;
 
     Image effectAlert;
     Sprite fast, slow, reverse, question;
@@ -36,12 +35,11 @@ public class SpecialSKontrol : MonoBehaviour {
 
     private void objeBul()
     {
-        Panel = GameObject.FindGameObjectWithTag("panelTag");
-        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
-        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
-        effectAlert = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
-        panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
+        Panel        = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint     = GameObject.FindGameObjectWithTag("fitPointTag");
+        oyunKontrol  = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        effectAlert  = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
     }
 
     void findSprites()
@@ -128,7 +126,7 @@ public class SpecialSKontrol : MonoBehaviour {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
             oyunKontrol.oyunHizi = 1f;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(10f);
             oyunKontrol.oyunHizi = 1.75f;
             effectAlert.enabled = false; //effect alert image kapat
         }
@@ -136,9 +134,9 @@ public class SpecialSKontrol : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = reverse;
-            panelKontrol.reverseActive = true;
+            Panel.GetComponent<PanelKontrol>().reverseActive = true;
             yield return new WaitForSeconds(10f);
-            panelKontrol.reverseActive = false;
+            Panel.GetComponent<PanelKontrol>().reverseActive = false;
             effectAlert.enabled = false;
         }
         else if (whichEffect == "questionSquare(Clone)")

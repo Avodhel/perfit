@@ -13,7 +13,11 @@ public class SpawnKontrol : MonoBehaviour {
     public int spawnSuresi;
 
     [Range(1, 20)]
-    public int kacSekildeBirOzelSekil;
+    public int minSekildeBirOzelSekil;
+    [Range(1, 20)]
+    public int maxSekildeBirOzelSekil;
+
+    int kacSekildeBirOzelSekil;
 
     private float cycleSeconds = 500f;
 
@@ -25,9 +29,14 @@ public class SpawnKontrol : MonoBehaviour {
 
     int sekilCount = 0;
 
+    void Awake()
+    {
+        kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+    }
+
     void Start ()
     {        
-        StartCoroutine(sekilOlustur());
+        StartCoroutine(sekilOlustur());  
     }
 
     IEnumerator sekilOlustur()
@@ -44,6 +53,7 @@ public class SpawnKontrol : MonoBehaviour {
                             Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
 
                 sekilCount = 0;
+                kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
             }
             else if(sekilCount < kacSekildeBirOzelSekil)
             {
