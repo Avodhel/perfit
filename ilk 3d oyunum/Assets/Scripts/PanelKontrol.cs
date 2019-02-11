@@ -32,7 +32,7 @@ public class PanelKontrol : MonoBehaviour {
     void Start()
     {
         objeBul();
-        bestHeightText.text = "Best Height " + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
+        bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
         //PlayerPrefs.DeleteAll();
     }
 
@@ -71,7 +71,7 @@ public class PanelKontrol : MonoBehaviour {
         if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0f))
         {
             PlayerPrefs.SetFloat("BestHeight", yukseklik);
-            bestHeightText.text = "Best Height " + yukseklik.ToString(); //en iyi yükseklik
+            bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
         }
     }
 

@@ -34,7 +34,7 @@ public class OyunKontrol : MonoBehaviour {
     {
         Time.timeScale = 1f;
         scoreText.text = "" + score;
-        bestScoreText.text = "Best Score " + PlayerPrefs.GetFloat("BestScore", 0f);
+        bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
     }
 	
 	void Update ()
@@ -56,7 +56,7 @@ public class OyunKontrol : MonoBehaviour {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
             PlayerPrefs.SetFloat("BestScore", score);
-            bestScoreText.text = "Best Score " + score; //en iyi skor
+            bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
         }
     }
 
