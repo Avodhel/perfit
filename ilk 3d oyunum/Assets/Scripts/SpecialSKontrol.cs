@@ -104,6 +104,7 @@ public class SpecialSKontrol : MonoBehaviour {
             FindObjectOfType<SesKontrol>().sesOynat("FitSound");
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
+            oyunKontrol.score += 1.25f;
             sekliPaneleSabitleKontrol = true;
 
             StartCoroutine(specialSquareEffects(gameObject.name));

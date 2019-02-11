@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class OyunKontrol : MonoBehaviour {
 
@@ -13,9 +14,15 @@ public class OyunKontrol : MonoBehaviour {
     public Text pressRtoRestartText;
     public bool mobilKontrol;
 
+    public TMP_Text scoreText;
+    public TMP_Text bestScoreText;
+
     GameObject panel;
 
     bool restartKontrol = false;
+
+    [HideInInspector]
+    public float score =  0f;
 
     void Awake()
     {
@@ -26,12 +33,31 @@ public class OyunKontrol : MonoBehaviour {
     void Start ()
     {
         Time.timeScale = 1f;
-	}
+        scoreText.text = "" + score;
+        bestScoreText.text = "Best Score " + PlayerPrefs.GetFloat("BestScore", 0f);
+    }
 	
 	void Update ()
     {
         oyunHiziAyarla();
         yenidenBaslatPc();
+        scoreGoster();
+    }
+
+    void scoreGoster()
+    {
+        scoreText.text = "" + score;
+
+        eniyiscoregoster();
+    }
+
+    void eniyiscoregoster()
+    {
+        if (score > PlayerPrefs.GetFloat("BestScore", 0f))
+        {
+            PlayerPrefs.SetFloat("BestScore", score);
+            bestScoreText.text = "Best Score " + score; //en iyi skor
+        }
     }
 
     private void oyunHiziAyarla()

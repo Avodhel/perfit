@@ -13,6 +13,7 @@ public class SekilKontrol : MonoBehaviour {
     GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
+    OyunKontrol oyunKontrol;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class SekilKontrol : MonoBehaviour {
         Panel    = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
     }
 
     void sekilDonmeYonu()
@@ -70,6 +72,7 @@ public class SekilKontrol : MonoBehaviour {
             FindObjectOfType<SesKontrol>().sesOynat("FitSound");
             donmeHizi = 0f;
             Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
+            oyunKontrol.score += 1;
             sekliPaneleSabitleKontrol = true;
         }
     }
