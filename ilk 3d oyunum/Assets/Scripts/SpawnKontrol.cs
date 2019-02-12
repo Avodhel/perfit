@@ -106,6 +106,10 @@ public class SpawnKontrol : MonoBehaviour {
         {
             for (int i = 0; i < squares.Length; i++)
             {
+                if (squares[i] == null) //missing object hatası için yazıldı ancak test edilmedi
+                {
+                    continue;
+                }
                 squares[i].GetComponent<Renderer>().material.color = Color.HSVToRGB
                         (
                         Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),

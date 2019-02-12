@@ -213,6 +213,7 @@ MonoBehaviour:
   playRestartButton: {fileID: 1074996293}
   pressRtoRestartText: {fileID: 420333986}
   mobilKontrol: 0
+  resetScores: 0
   scoreText: {fileID: 967643976}
   bestScoreText: {fileID: 1937111829}
   score: 0
@@ -1540,8 +1541,8 @@ MonoBehaviour:
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 8
-  minSekildeBirLottery: 3
-  maxSekildeBirLottery: 8
+  minSekildeBirLottery: 6
+  maxSekildeBirLottery: 15
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0

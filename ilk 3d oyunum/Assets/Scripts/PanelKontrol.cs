@@ -33,7 +33,6 @@ public class PanelKontrol : MonoBehaviour {
     {
         objeBul();
         bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
-        //PlayerPrefs.DeleteAll();
     }
 
     void Update ()
@@ -165,7 +164,7 @@ public class PanelKontrol : MonoBehaviour {
             //Up
             //Debug.Log("Up");
             FindObjectOfType<SesKontrol>().sesOynat("HitSound");
-            //oyunKontrol.oyunBitti(true);
+            oyunKontrol.oyunBitti(true);
         }
         if (Mathf.Approximately(angle, 90))
         {

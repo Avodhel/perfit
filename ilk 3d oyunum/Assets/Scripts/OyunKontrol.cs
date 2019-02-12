@@ -13,6 +13,7 @@ public class OyunKontrol : MonoBehaviour {
     public Button playRestartButton;
     public Text pressRtoRestartText;
     public bool mobilKontrol;
+    public bool resetScores;
 
     public TMP_Text scoreText;
     public TMP_Text bestScoreText;
@@ -35,6 +36,11 @@ public class OyunKontrol : MonoBehaviour {
         Time.timeScale = 1f;
         scoreText.text = "" + score;
         bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
+
+        if (resetScores)
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 	
 	void Update ()
