@@ -81,8 +81,14 @@ public class SekilKontrol : MonoBehaviour {
     {
         if (other.transform.tag == "cutPointTag")
         {
-            Destroy(gameObject);
+            StartCoroutine(destroySquare());
         }
+    }
+
+    IEnumerator destroySquare()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 
 }

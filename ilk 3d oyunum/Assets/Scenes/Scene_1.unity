@@ -252,11 +252,11 @@ GameObject:
   - component: {fileID: 273898636}
   m_Layer: 0
   m_Name: IncraseScoreText
-  m_TagString: Untagged
+  m_TagString: increaseScoreTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &273898635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273898634}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -466,11 +466,11 @@ GameObject:
   - component: {fileID: 377524450}
   m_Layer: 0
   m_Name: ReduceScoreText
-  m_TagString: Untagged
+  m_TagString: reduceScoreTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &377524449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377524448}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1540,8 +1540,8 @@ MonoBehaviour:
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 8
-  minSekildeBirLottery: 10
-  maxSekildeBirLottery: 18
+  minSekildeBirLottery: 3
+  maxSekildeBirLottery: 8
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0

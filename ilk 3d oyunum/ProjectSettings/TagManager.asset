@@ -19,6 +19,8 @@ TagManager:
   - specialSquareTag
   - featureTag
   - effectAlertTag
+  - increaseScoreTag
+  - reduceScoreTag
   layers:
   - Default
   - TransparentFX
