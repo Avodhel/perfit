@@ -30,11 +30,13 @@ public class ChanceKontrol : MonoBehaviour {
     {
         if (incOrRed == "inc") //increase
         {
-            chanceCounter -= 1;
+            chanceCounter += 1;
+            brokenChanceText.color = Color.green;
         }
         else if (incOrRed == "red") // reduce
         {
             chanceCounter -= 1;
+            brokenChanceText.color = Color.red;
         }
     }
 

@@ -23,7 +23,9 @@ public class SpecialSKontrol : MonoBehaviour {
     Text increaseScoreText;
     Text reduceScoreText;
 
-    int increase1OrReduce2;
+    int increase1OrReduce2OrChance3;
+
+    ChanceKontrol chanceKontrol;
 
     void Start()
     {
@@ -48,6 +50,8 @@ public class SpecialSKontrol : MonoBehaviour {
 
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
+
+        chanceKontrol = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
     }
 
     void findSprites()
@@ -159,14 +163,26 @@ public class SpecialSKontrol : MonoBehaviour {
 
     IEnumerator lotteryStart()
     {
-        increase1OrReduce2 = Random.value <= 0.5f ? 1 : 2;
+        //increase1OrReduce2OrChance3 = Random.value <= 0.5f ? 1 : 2;
+        if (Random.value >= 0 & Random.value <= 0.01f)
+        {
+            increase1OrReduce2OrChance3 = 1;
+        }
+        else if (Random.value > 0.01f & Random.value <= 0.02f)
+        {
+            increase1OrReduce2OrChance3 = 2;
+        }
+        else if (Random.value > 0.02f & Random.value <= 1f)
+        {
+            increase1OrReduce2OrChance3 = 3;
+        }
         //Debug.Log("<color=blue>inc or red</color> " + increase1OrReduce2);
         float randomIncOrReduceScore = Random.Range(0.1f, 5f);
         float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
         //Debug.Log("inc or reduce score: " + incOrReduceScore);
         float scoreAfterLottery = oyunKontrol.score;
 
-        if (increase1OrReduce2 == 1) //increase
+        if (increase1OrReduce2OrChance3 == 1) //increase
         {
             increaseScoreText.text = incOrReduceScore.ToString();
             increaseScoreText.enabled = true;
@@ -175,7 +191,7 @@ public class SpecialSKontrol : MonoBehaviour {
             oyunKontrol.score = fixScoreFunc(scoreAfterLottery);
             //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
-        else if (increase1OrReduce2 == 2) //reduce
+        else if (increase1OrReduce2OrChance3 == 2) //reduce
         {
             reduceScoreText.text = incOrReduceScore.ToString();
             reduceScoreText.enabled = true;
@@ -184,9 +200,15 @@ public class SpecialSKontrol : MonoBehaviour {
             oyunKontrol.score =  fixScoreFunc(scoreAfterLottery);
             //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
+        else if (increase1OrReduce2OrChance3 == 3) //chance
+        {
+            oyunKontrol.oyunHizi = 0.5f;
+            chanceKontrol.chanceIncOrRed("inc");
+            chanceKontrol.brokenChance(true);
+        }
 
-        yield return new WaitForSeconds(6f);
-        lotteryFinish(increase1OrReduce2);
+        yield return new WaitForSeconds(4f);
+        lotteryFinish(increase1OrReduce2OrChance3);
     }
 
     float fixScoreFunc(float scoreForFix)
@@ -194,15 +216,20 @@ public class SpecialSKontrol : MonoBehaviour {
         return (Mathf.Round(scoreForFix * 100f) / 100f);
     }
 
-    void lotteryFinish(int incOrReduce)
+    void lotteryFinish(int incOrReduceOrChance)
     {
-        if (incOrReduce == 1) //increase
+        if (incOrReduceOrChance == 1) //increase
         {
             increaseScoreText.enabled = false;
         }
-        else if (incOrReduce == 2) // reduce
+        else if (incOrReduceOrChance == 2) // reduce
         {
             reduceScoreText.enabled = false;
+        }
+        else if (incOrReduceOrChance == 3)
+        {
+            chanceKontrol.brokenChance(false);
+            oyunKontrol.oyunHizi = 1.75f;
         }
     }
 

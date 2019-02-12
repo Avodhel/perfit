@@ -196,7 +196,7 @@ public class PanelKontrol : MonoBehaviour {
             oyunKontrol.oyunHizi = 0.5f;
             chanceKontrol.chanceIncOrRed("red");
             chanceKontrol.brokenChance(true);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(4f);
             chanceKontrol.brokenChance(false);
             oyunKontrol.oyunHizi = 1.75f;
         }

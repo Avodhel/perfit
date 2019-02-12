@@ -1663,8 +1663,8 @@ MonoBehaviour:
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 8
-  minSekildeBirLottery: 5
-  maxSekildeBirLottery: 15
+  minSekildeBirLottery: 3
+  maxSekildeBirLottery: 8
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0
