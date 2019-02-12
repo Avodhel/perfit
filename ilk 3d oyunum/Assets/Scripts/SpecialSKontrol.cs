@@ -127,7 +127,7 @@ public class SpecialSKontrol : MonoBehaviour {
             effectAlert.overrideSprite = fast;
             oyunKontrol.oyunHizi = 3f;
             yield return new WaitForSeconds(15f);
-            oyunKontrol.oyunHizi = 1.85f;
+            oyunKontrol.oyunHizi = 1.75f;
             effectAlert.enabled = false;
         }
         else if (whichEffect == "slowSquare(Clone)")

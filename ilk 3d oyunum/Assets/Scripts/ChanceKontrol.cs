@@ -7,15 +7,17 @@ public class ChanceKontrol : MonoBehaviour {
 
     [Range(0, 10)]
     public int startChance;
+    public Text chanceText;
+    public GameObject brokenChancePanel;
+    public Text brokenChanceText;
 
     [HideInInspector]
     public int chanceCounter;
-    Text chanceText;
 
 	void Start ()
     {
         chanceCounter = startChance;
-        chanceText = gameObject.GetComponent<Text>();
+        //chanceText = gameObject.GetComponent<Text>();
         chanceText.text = "x " + startChance;
 	}
 	
@@ -33,6 +35,19 @@ public class ChanceKontrol : MonoBehaviour {
         else if (incOrRed == "red") // reduce
         {
             chanceCounter -= 1;
+        }
+    }
+
+    public void brokenChance(bool brokenChanceActive)
+    {
+        if (brokenChanceActive)
+        {
+            brokenChancePanel.SetActive(true);
+            brokenChanceText.text = "x " + chanceCounter;
+        }
+        else
+        {
+            brokenChancePanel.SetActive(false);
         }
     }
 }
