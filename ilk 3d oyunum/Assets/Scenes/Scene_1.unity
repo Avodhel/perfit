@@ -176,8 +176,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 305034789}
   - {fileID: 1496142999}
+  - {fileID: 305034789}
   m_Father: {fileID: 1885607240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -537,9 +537,10 @@ GameObject:
   - component: {fileID: 305034789}
   - component: {fileID: 305034791}
   - component: {fileID: 305034790}
+  - component: {fileID: 305034792}
   m_Layer: 0
   m_Name: ChanceText
-  m_TagString: Untagged
+  m_TagString: chanceTextTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +556,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 46671554}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -602,6 +603,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 305034788}
   m_CullTransparentMesh: 0
+--- !u!114 &305034792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 305034788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9213d05a60324458036dadfbac2843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startChance: 2
+  chanceCounter: 0
 --- !u!1 &377524448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1807,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 46671554}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6642,12 +6656,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    priority: 256
   - sesAdi: HitSound
     clip: {fileID: 8300000, guid: e5e4c5a6261faa746a3483062ecd0fea, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    priority: 0
 --- !u!4 &1893975608
 Transform:
   m_ObjectHideFlags: 0

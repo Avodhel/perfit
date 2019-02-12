@@ -21,6 +21,7 @@ TagManager:
   - effectAlertTag
   - increaseScoreTag
   - reduceScoreTag
+  - chanceTextTag
   layers:
   - Default
   - TransparentFX

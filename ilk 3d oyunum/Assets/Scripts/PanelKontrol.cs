@@ -29,6 +29,8 @@ public class PanelKontrol : MonoBehaviour {
     Material bottomPointMat;
     Material cutPointMat;
 
+    ChanceKontrol chanceKontrol;
+
     void Start()
     {
         objeBul();
@@ -46,6 +48,8 @@ public class PanelKontrol : MonoBehaviour {
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
         cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
+
+        chanceKontrol = GameObject.FindGameObjectWithTag("chanceTextTag").GetComponent<ChanceKontrol>();
     }
 
     void yukseklikGoster()
@@ -164,7 +168,7 @@ public class PanelKontrol : MonoBehaviour {
             //Up
             //Debug.Log("Up");
             FindObjectOfType<SesKontrol>().sesOynat("HitSound");
-            oyunKontrol.oyunBitti(true);
+            chanceControlFunc(chanceKontrol.chanceCounter);
         }
         if (Mathf.Approximately(angle, 90))
         {
@@ -178,6 +182,18 @@ public class PanelKontrol : MonoBehaviour {
             { // right side of the player
               //Debug.Log("Right");
             }
+        }
+    }
+
+    void chanceControlFunc(int chanceCounter)
+    {
+        if (chanceCounter == 0)
+        {
+            oyunKontrol.oyunBitti(true);
+        }
+        else
+        {
+            chanceKontrol.chanceIncOrRed("red");
         }
     }
 }
