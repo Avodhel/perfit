@@ -633,6 +633,7 @@ MonoBehaviour:
   chanceText: {fileID: 305034790}
   brokenChancePanel: {fileID: 2031650325}
   brokenChanceText: {fileID: 1127711401}
+  brokenChanceImage: {fileID: 1817146873}
   chanceCounter: 0
 --- !u!224 &315111924
 RectTransform:
@@ -1663,8 +1664,8 @@ MonoBehaviour:
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 8
-  minSekildeBirLottery: 3
-  maxSekildeBirLottery: 8
+  minSekildeBirLottery: 6
+  maxSekildeBirLottery: 15
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2015,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e51c7529a38b93647b6246e3ed8db9e8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

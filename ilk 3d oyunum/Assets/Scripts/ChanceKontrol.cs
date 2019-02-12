@@ -10,6 +10,10 @@ public class ChanceKontrol : MonoBehaviour {
     public Text chanceText;
     public GameObject brokenChancePanel;
     public Text brokenChanceText;
+    public Image brokenChanceImage;
+
+    Sprite chance, brokenChance;
+    Sprite[] sprites;
 
     [HideInInspector]
     public int chanceCounter;
@@ -19,6 +23,7 @@ public class ChanceKontrol : MonoBehaviour {
         chanceCounter = startChance;
         //chanceText = gameObject.GetComponent<Text>();
         chanceText.text = "x " + startChance;
+        findSprites();
 	}
 	
 	void Update ()
@@ -26,21 +31,40 @@ public class ChanceKontrol : MonoBehaviour {
         chanceText.text = "x " + chanceCounter;
 	}
 
+    void findSprites()
+    {
+        sprites = Resources.LoadAll<Sprite>("Textures");
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].name == "chance")
+            {
+                chance = sprites[i];
+            }
+            else if (sprites[i].name == "brokenChance")
+            {
+                brokenChance = sprites[i];
+            }
+        }
+    }
+
     public void chanceIncOrRed(string incOrRed)
     {
         if (incOrRed == "inc") //increase
         {
             chanceCounter += 1;
             brokenChanceText.color = Color.green;
+            brokenChanceImage.overrideSprite = chance;
         }
         else if (incOrRed == "red") // reduce
         {
             chanceCounter -= 1;
             brokenChanceText.color = Color.red;
+            brokenChanceImage.overrideSprite = brokenChance;
         }
     }
 
-    public void brokenChance(bool brokenChanceActive)
+    public void brokenChanceFunc(bool brokenChanceActive)
     {
         if (brokenChanceActive)
         {

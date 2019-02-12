@@ -164,15 +164,15 @@ public class SpecialSKontrol : MonoBehaviour {
     IEnumerator lotteryStart()
     {
         //increase1OrReduce2OrChance3 = Random.value <= 0.5f ? 1 : 2;
-        if (Random.value >= 0 & Random.value <= 0.01f)
+        if (Random.value >= 0 & Random.value <= 0.45f)
         {
             increase1OrReduce2OrChance3 = 1;
         }
-        else if (Random.value > 0.01f & Random.value <= 0.02f)
+        else if (Random.value > 0.45f & Random.value <= 0.9f)
         {
             increase1OrReduce2OrChance3 = 2;
         }
-        else if (Random.value > 0.02f & Random.value <= 1f)
+        else if (Random.value > 0.9f & Random.value <= 1f)
         {
             increase1OrReduce2OrChance3 = 3;
         }
@@ -204,7 +204,7 @@ public class SpecialSKontrol : MonoBehaviour {
         {
             oyunKontrol.oyunHizi = 0.5f;
             chanceKontrol.chanceIncOrRed("inc");
-            chanceKontrol.brokenChance(true);
+            chanceKontrol.brokenChanceFunc(true);
         }
 
         yield return new WaitForSeconds(4f);
@@ -228,7 +228,7 @@ public class SpecialSKontrol : MonoBehaviour {
         }
         else if (incOrReduceOrChance == 3)
         {
-            chanceKontrol.brokenChance(false);
+            chanceKontrol.brokenChanceFunc(false);
             oyunKontrol.oyunHizi = 1.75f;
         }
     }
