@@ -160,36 +160,38 @@ public class SpecialSKontrol : MonoBehaviour {
     IEnumerator lotteryStart()
     {
         increase1OrReduce2 = Random.value <= 0.5f ? 1 : 2;
-        Debug.Log("<color=blue>inc or red</color> " + increase1OrReduce2);
+        //Debug.Log("<color=blue>inc or red</color> " + increase1OrReduce2);
         float randomIncOrReduceScore = Random.Range(0.1f, 5f);
         float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
-        Debug.Log("inc or reduce score: " + incOrReduceScore);
+        //Debug.Log("inc or reduce score: " + incOrReduceScore);
         float scoreAfterLottery = oyunKontrol.score;
-        float fixScore;
 
         if (increase1OrReduce2 == 1) //increase
         {
             increaseScoreText.text = incOrReduceScore.ToString();
             increaseScoreText.enabled = true;
-            Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
+            //Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
             scoreAfterLottery += incOrReduceScore;
-            fixScore = Mathf.Round(scoreAfterLottery * 100f) / 100f;
-            oyunKontrol.score = fixScore;
-            Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
+            oyunKontrol.score = fixScoreFunc(scoreAfterLottery);
+            //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
         else if (increase1OrReduce2 == 2) //reduce
         {
             reduceScoreText.text = incOrReduceScore.ToString();
             reduceScoreText.enabled = true;
-            Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
+            //Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
             scoreAfterLottery -= incOrReduceScore;
-            fixScore = Mathf.Round(scoreAfterLottery * 100f) / 100f;
-            oyunKontrol.score = fixScore;
-            Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
+            oyunKontrol.score =  fixScoreFunc(scoreAfterLottery);
+            //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
 
         yield return new WaitForSeconds(6f);
         lotteryFinish(increase1OrReduce2);
+    }
+
+    float fixScoreFunc(float scoreForFix)
+    {
+        return (Mathf.Round(scoreForFix * 100f) / 100f);
     }
 
     void lotteryFinish(int incOrReduce)
