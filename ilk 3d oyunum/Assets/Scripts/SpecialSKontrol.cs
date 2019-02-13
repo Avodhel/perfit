@@ -210,7 +210,7 @@ public class SpecialSKontrol : MonoBehaviour {
             chanceKontrol.brokenChanceFunc(true);
         }
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         lotteryFinish(increase1OrReduce2OrChance3);
     }
 

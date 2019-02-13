@@ -9,37 +9,26 @@ public class PanelKontrol : MonoBehaviour {
     [HideInInspector]
     public bool mobilKontrol;
     public bool reverseActive = false;
-
     [Range(1f, 250f)]
     public float panelHareketHizi;
-    //public Text heightText;
-    public TMP_Text heightText;
-    //public Text bestHeightText;
-    public TMP_Text bestHeightText;
     public ParticleSystem panelParticle;
 
     private float cycleSeconds = 500f;
 
-    float yukseklik;
-    string yukseklikStr;
     float rotSpeed = 12f;
 
-    Vector3 panelBoyut;
     OyunKontrol oyunKontrol;
     Material bottomPointMat;
     Material cutPointMat;
-
     ChanceKontrol chanceKontrol;
 
     void Start()
     {
         objeBul();
-        bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
     }
 
     void Update ()
     {
-        yukseklikGoster();
         panelHareket();
     }
 
@@ -50,32 +39,6 @@ public class PanelKontrol : MonoBehaviour {
         cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
 
         chanceKontrol = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
-    }
-
-    void yukseklikGoster()
-    {
-        panelBoyut = transform.localScale;
-        yukseklik = panelBoyut.y;
-        yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
-        for (int i = 0; i <= 5; i++)
-        {
-            if (yukseklikStr.Length < i) //stringin uzunluğu i'den küçükse hata verme, devam et
-            {
-                continue;
-            }
-            heightText.text = yukseklikStr.Substring(0, i); //substring ile i kadar basamağı göster
-        }
-
-        eniyiyukseklikGoster();
-    }
-
-    void eniyiyukseklikGoster()
-    {
-        if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0f))
-        {
-            PlayerPrefs.SetFloat("BestHeight", yukseklik);
-            bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
-        }
     }
 
     void panelHareket()
@@ -189,14 +152,14 @@ public class PanelKontrol : MonoBehaviour {
     {
         if (chanceCounter == 0)
         {
-            //oyunKontrol.oyunBitti(true);
+            oyunKontrol.oyunBitti(true);
         }
         else
         {
             oyunKontrol.oyunHizi = 0.5f;
             chanceKontrol.chanceIncOrRed("red");
             chanceKontrol.brokenChanceFunc(true);
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(2f);
             chanceKontrol.brokenChanceFunc(false);
             oyunKontrol.oyunHizi = 1.75f;
         }

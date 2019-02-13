@@ -37,9 +37,10 @@ public class SekilKontrol : MonoBehaviour {
 
     void sekilDonmeYonu()
     {
-        donmeYonu = Random.value <= 0.5f ? 1 : -1;
+        float rightOrLeft = Random.value; //random.value 0 ile 1 arasında random deger secer
+        donmeYonu = rightOrLeft <= 0.5f ? 1 : -1;
 
-        //if (Random.value <= 0.5f) //random.value 0 ile 1 arasında random deger secer
+        //if (rightOrLeft <= 0.5f) 
         //    donmeYonu = 1; //sola donmesi icin
         //else
         //    donmeYonu = -1; // saga donmesi icin

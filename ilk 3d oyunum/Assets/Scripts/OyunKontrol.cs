@@ -12,18 +12,21 @@ public class OyunKontrol : MonoBehaviour {
     public GameObject oyunBittiPanel;
     public Button playRestartButton;
     public Text pressRtoRestartText;
-    public bool mobilKontrol;
-    public bool resetScores;
-
     public TMP_Text scoreText;
     public TMP_Text bestScoreText;
+    public TMP_Text heightText;
+    public TMP_Text bestHeightText;
+    public bool mobilKontrol;
+    public bool resetScores;
+    [HideInInspector]
+    public float score = 0f;
 
     GameObject panel;
+    Vector3 panelBoyut;
 
     bool restartKontrol = false;
-
-    [HideInInspector]
-    public float score =  0f;
+    float yukseklik;
+    string yukseklikStr;
 
     void Awake()
     {
@@ -36,6 +39,7 @@ public class OyunKontrol : MonoBehaviour {
         Time.timeScale = 1f;
         scoreText.text = "" + score;
         bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
+        bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
 
         if (resetScores)
         {
@@ -48,6 +52,7 @@ public class OyunKontrol : MonoBehaviour {
         oyunHiziAyarla();
         yenidenBaslatPc();
         scoreGoster();
+        yukseklikGoster();
     }
 
     void scoreGoster()
@@ -63,6 +68,32 @@ public class OyunKontrol : MonoBehaviour {
         {
             PlayerPrefs.SetFloat("BestScore", score);
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
+        }
+    }
+
+    void yukseklikGoster()
+    {
+        panelBoyut = panel.transform.localScale;
+        yukseklik = panelBoyut.y;
+        yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
+        for (int i = 0; i <= 5; i++)
+        {
+            if (yukseklikStr.Length < i) //stringin uzunluğu i'den küçükse hata verme, devam et
+            {
+                continue;
+            }
+            heightText.text = yukseklikStr.Substring(0, i); //substring ile i kadar basamağı göster
+        }
+
+        eniyiyukseklikGoster();
+    }
+
+    void eniyiyukseklikGoster()
+    {
+        if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0f))
+        {
+            PlayerPrefs.SetFloat("BestHeight", yukseklik);
+            bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
         }
     }
 
