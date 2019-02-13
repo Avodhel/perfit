@@ -16,8 +16,10 @@ public class OyunKontrol : MonoBehaviour {
     public TMP_Text bestScoreText;
     public TMP_Text heightText;
     public TMP_Text bestHeightText;
+    public TMP_Text newBestHeight;
+    public TMP_Text newBestScore;
     public bool mobilKontrol;
-    public bool resetScores;
+    public bool resetScoresControl;
     [HideInInspector]
     public float score = 0f;
 
@@ -27,6 +29,8 @@ public class OyunKontrol : MonoBehaviour {
     bool restartKontrol = false;
     float yukseklik;
     string yukseklikStr;
+    int newBestCountForHeight = 0;
+    int newBestCountForScore = 0;
 
     void Awake()
     {
@@ -40,19 +44,29 @@ public class OyunKontrol : MonoBehaviour {
         scoreText.text = "" + score;
         bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
         bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
+        newBestCountForHeight = 0;
+        Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
+        newBestCountForScore = 0;
+        Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForHeight);
 
-        if (resetScores)
-        {
-            PlayerPrefs.DeleteAll();
-        }
+        resetScores();
     }
-	
-	void Update ()
+
+    void Update ()
     {
         oyunHiziAyarla();
         yenidenBaslatPc();
         scoreGoster();
         yukseklikGoster();
+
+    }
+
+    private void resetScores()
+    {
+        if (resetScoresControl)
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
     void scoreGoster()
@@ -66,6 +80,9 @@ public class OyunKontrol : MonoBehaviour {
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
+            newBestCountForScore += 1;
+            Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForScore);
+            StartCoroutine(showNewBest(2));
             PlayerPrefs.SetFloat("BestScore", score);
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
         }
@@ -92,8 +109,27 @@ public class OyunKontrol : MonoBehaviour {
     {
         if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0f))
         {
+            newBestCountForHeight += 1;
+            Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
+            StartCoroutine(showNewBest(1));
             PlayerPrefs.SetFloat("BestHeight", yukseklik);
             bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
+        }
+    }
+
+    IEnumerator showNewBest(int height1Orscore2)
+    {
+        if (height1Orscore2 == 1 & PlayerPrefs.GetFloat("BestHeight", 0f) != 0.2f & newBestCountForHeight == 1)
+        {
+            newBestHeight.enabled = true;
+            yield return new WaitForSeconds(2.5f);
+            newBestHeight.enabled = false;
+        }
+        else if (height1Orscore2 == 2 & PlayerPrefs.GetFloat("BestScore", 0f) != 0f & newBestCountForScore == 1)
+        {
+            newBestScore.enabled = true;
+            yield return new WaitForSeconds(2.5f);
+            newBestScore.enabled = false;
         }
     }
 
@@ -115,7 +151,7 @@ public class OyunKontrol : MonoBehaviour {
             {
                 pressRtoRestartText.gameObject.SetActive(true);
             }
-            
+
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;

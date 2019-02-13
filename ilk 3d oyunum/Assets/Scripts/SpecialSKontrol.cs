@@ -164,7 +164,7 @@ public class SpecialSKontrol : MonoBehaviour {
     IEnumerator lotteryStart()
     {
         float lotteryRandomPoint = Random.value;
-        Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
+        //Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
 
         if (lotteryRandomPoint >= 0 & lotteryRandomPoint <= 0.45f)
         {
@@ -178,7 +178,7 @@ public class SpecialSKontrol : MonoBehaviour {
         {
             increase1OrReduce2OrChance3 = 3;
         }
-        Debug.Log("<color=blue>inc or red or cha</color> " + increase1OrReduce2OrChance3);
+        //Debug.Log("<color=blue>inc or red or cha</color> " + increase1OrReduce2OrChance3);
 
         float randomIncOrReduceScore = Random.Range(0.1f, 5f);
         float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
