@@ -189,14 +189,14 @@ public class PanelKontrol : MonoBehaviour {
     {
         if (chanceCounter == 0)
         {
-            oyunKontrol.oyunBitti(true);
+            //oyunKontrol.oyunBitti(true);
         }
         else
         {
             oyunKontrol.oyunHizi = 0.5f;
             chanceKontrol.chanceIncOrRed("red");
             chanceKontrol.brokenChanceFunc(true);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2.5f);
             chanceKontrol.brokenChanceFunc(false);
             oyunKontrol.oyunHizi = 1.75f;
         }

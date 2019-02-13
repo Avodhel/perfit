@@ -163,20 +163,23 @@ public class SpecialSKontrol : MonoBehaviour {
 
     IEnumerator lotteryStart()
     {
-        //increase1OrReduce2OrChance3 = Random.value <= 0.5f ? 1 : 2;
-        if (Random.value >= 0 & Random.value <= 0.45f)
+        float lotteryRandomPoint = Random.value;
+        Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
+
+        if (lotteryRandomPoint >= 0 & lotteryRandomPoint <= 0.45f)
         {
             increase1OrReduce2OrChance3 = 1;
         }
-        else if (Random.value > 0.45f & Random.value <= 0.9f)
+        else if (lotteryRandomPoint > 0.45f & lotteryRandomPoint <= 0.9f)
         {
             increase1OrReduce2OrChance3 = 2;
         }
-        else if (Random.value > 0.9f & Random.value <= 1f)
+        else if (lotteryRandomPoint > 0.9f & lotteryRandomPoint <= 1f)
         {
             increase1OrReduce2OrChance3 = 3;
         }
-        //Debug.Log("<color=blue>inc or red</color> " + increase1OrReduce2);
+        Debug.Log("<color=blue>inc or red or cha</color> " + increase1OrReduce2OrChance3);
+
         float randomIncOrReduceScore = Random.Range(0.1f, 5f);
         float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
         //Debug.Log("inc or reduce score: " + incOrReduceScore);
@@ -207,7 +210,7 @@ public class SpecialSKontrol : MonoBehaviour {
             chanceKontrol.brokenChanceFunc(true);
         }
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2.5f);
         lotteryFinish(increase1OrReduce2OrChance3);
     }
 
