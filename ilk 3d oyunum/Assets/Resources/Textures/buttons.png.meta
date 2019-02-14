@@ -5,6 +5,13 @@ TextureImporter:
     21300000: buttons_0
     21300002: buttons_1
     21300004: buttons_2
+    21300006: buttons_3
+    21300008: buttons_4
+    21300010: buttons_5
+    21300012: buttons_6
+    21300014: buttons_7
+    21300016: buttons_8
+    21300018: buttons_9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -94,6 +101,17 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -101,18 +119,18 @@ TextureImporter:
       name: buttons_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 430
-        height: 409
+        x: 0
+        y: 505
+        width: 394
+        height: 440
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965bfc28026ba034eb1a6ace5c93d6fe
+      spriteID: e6b1b54efeba6a54faabeb4134863097
       vertices: []
       indices: 
       edges: []
@@ -121,18 +139,18 @@ TextureImporter:
       name: buttons_1
       rect:
         serializedVersion: 2
-        x: 514
-        y: 12
-        width: 292
-        height: 343
+        x: 468
+        y: 525
+        width: 346
+        height: 392
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0901a33d9c66a884c850812ac4ef1a55
+      spriteID: fa44ad6bd97342c4aac22cd9b85fb8c2
       vertices: []
       indices: 
       edges: []
@@ -141,18 +159,158 @@ TextureImporter:
       name: buttons_2
       rect:
         serializedVersion: 2
-        x: 893
-        y: 16
-        width: 310
-        height: 317
+        x: 855
+        y: 530
+        width: 350
+        height: 344
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fced05c105382a4396617c1928dbc7b
+      spriteID: 814f6f0ffa35e8a45b01dc4b0689d51d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_3
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 531
+        width: 353
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eaa05b866823c84892f874d113e9e06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_4
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 540
+        width: 365
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3bcb46a5d1be6c42a7ac57fbd0c47ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_5
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 32
+        width: 389
+        height: 525
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 108, z: 0, w: 82}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac79d5ba7bbbd2940acb47ce3868b63c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 417
+        height: 457
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02c77aa72c89a374e8c506397559e9c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 27
+        width: 392
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d578289fad9a22946b23df63b6bf23ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_8
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 77
+        width: 402
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e1e1020289b2948b8f9a09ebf98002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_9
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 105
+        width: 379
+        height: 303
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7efeac798a587f24887eecd7fb0033c9
       vertices: []
       indices: 
       edges: []
@@ -160,7 +318,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: dab459ecaca05a7438db50472440c7c3
+    spriteID: 17f3058425b3a0749a469570c64147e4
     vertices: []
     indices: 
     edges: []

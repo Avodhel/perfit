@@ -32,6 +32,8 @@ public class OyunKontrol : MonoBehaviour {
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
 
+    //bool assignNewBestScoreControl = false;
+
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
@@ -83,7 +85,12 @@ public class OyunKontrol : MonoBehaviour {
             newBestCountForScore += 1;
             Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForScore);
             StartCoroutine(showNewBest(2));
-            PlayerPrefs.SetFloat("BestScore", score);
+
+            //if (assignNewBestScoreControl)
+            //{
+                PlayerPrefs.SetFloat("BestScore", score);
+            //}
+            
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
         }
     }
@@ -152,6 +159,7 @@ public class OyunKontrol : MonoBehaviour {
                 pressRtoRestartText.gameObject.SetActive(true);
             }
 
+            //assignNewBestScoreControl = true;
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;

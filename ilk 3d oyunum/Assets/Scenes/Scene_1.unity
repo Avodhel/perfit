@@ -288,11 +288,11 @@ MonoBehaviour:
   bestScoreText: {fileID: 1937111829}
   heightText: {fileID: 2112498919}
   bestHeightText: {fileID: 1471903823}
+  newBestHeight: {fileID: 1944127676}
+  newBestScore: {fileID: 620219564}
   mobilKontrol: 0
   resetScoresControl: 0
   score: 0
-  newBestHeight: {fileID: 1944127676}
-  newBestScore: {fileID: 620219564}
 --- !u!4 &222546668
 Transform:
   m_ObjectHideFlags: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 27d70bde8e45d3045bed9c2c8e728081, type: 3}
+  m_Sprite: {fileID: 21300002, guid: c1c81a223f005b94ba5645880bd801c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2063,11 +2063,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7186,11 +7186,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
