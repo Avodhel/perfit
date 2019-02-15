@@ -15,23 +15,12 @@ public class SpecialSKontrol : MonoBehaviour {
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
-
-    Image effectAlert;
-    Sprite fast, slow, reverse, lottery;
-    Sprite[] sprites;
-
-    Text increaseScoreText;
-    Text reduceScoreText;
-
-    int increase1OrReduce2OrChance3;
-
-    ChanceKontrol chanceKontrol;
+    SEffectsKontrol sEffectsKontrol;
 
     void Start()
     {
         objeBul();
         sekilDonmeYonu();
-        findSprites();
     }
 
     void Update()
@@ -46,37 +35,7 @@ public class SpecialSKontrol : MonoBehaviour {
         cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint     = GameObject.FindGameObjectWithTag("fitPointTag");
         oyunKontrol  = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
-        effectAlert  = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
-
-        increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
-        reduceScoreText = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
-
-        chanceKontrol = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
-    }
-
-    void findSprites()
-    {
-        sprites = Resources.LoadAll<Sprite>("Textures"); //textures içindeki bütün spriteları bul
-
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            if (sprites[i].name == "fast")
-            {
-                fast = sprites[i];
-            }
-            else if (sprites[i].name == "slow")
-            {
-                slow = sprites[i];
-            }
-            else if (sprites[i].name == "reverse")
-            {
-                reverse = sprites[i];
-            }
-            else if (sprites[i].name == "lottery")
-            {
-                lottery = sprites[i];
-            }
-        }
+        sEffectsKontrol = GameObject.FindGameObjectWithTag("sEffectsKontrolTag").GetComponent<SEffectsKontrol>();
     }
 
     void sekilDonmeYonu()
@@ -119,120 +78,7 @@ public class SpecialSKontrol : MonoBehaviour {
             oyunKontrol.score += 1.25f;
             sekliPaneleSabitleKontrol = true;
 
-            StartCoroutine(specialSquareEffects(gameObject.name));
-        }
-    }
-
-    IEnumerator specialSquareEffects(string whichEffect)
-    {
-        if (whichEffect == "fastSquare(Clone)")
-        {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = fast;
-            oyunKontrol.oyunHizi = 3f;
-            yield return new WaitForSeconds(15f);
-            oyunKontrol.oyunHizi = 1.75f;
-            effectAlert.enabled = false;
-        }
-        else if (whichEffect == "slowSquare(Clone)")
-        {
-            effectAlert.enabled = true; //effect alert image ac
-            effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
-            oyunKontrol.oyunHizi = 1f;
-            yield return new WaitForSeconds(10f);
-            oyunKontrol.oyunHizi = 1.75f;
-            effectAlert.enabled = false; //effect alert image kapat
-        }
-        else if (whichEffect == "reverseSquare(Clone)")
-        {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = reverse;
-            Panel.GetComponent<PanelKontrol>().reverseActive = true;
-            yield return new WaitForSeconds(10f);
-            Panel.GetComponent<PanelKontrol>().reverseActive = false;
-            effectAlert.enabled = false;
-        }
-        else if (whichEffect == "lotterySquare(Clone)")
-        {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = lottery;
-            StartCoroutine(lotteryStart());
-            effectAlert.enabled = false;
-        }
-    }
-
-    IEnumerator lotteryStart()
-    {
-        float lotteryRandomPoint = Random.value;
-        //Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
-
-        if (lotteryRandomPoint >= 0 & lotteryRandomPoint <= 0.45f)
-        {
-            increase1OrReduce2OrChance3 = 1;
-        }
-        else if (lotteryRandomPoint > 0.45f & lotteryRandomPoint <= 0.9f)
-        {
-            increase1OrReduce2OrChance3 = 2;
-        }
-        else if (lotteryRandomPoint > 0.9f & lotteryRandomPoint <= 1f)
-        {
-            increase1OrReduce2OrChance3 = 3;
-        }
-        //Debug.Log("<color=blue>inc or red or cha</color> " + increase1OrReduce2OrChance3);
-
-        float randomIncOrReduceScore = Random.Range(0.1f, 5f);
-        float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
-        //Debug.Log("inc or reduce score: " + incOrReduceScore);
-        float scoreAfterLottery = oyunKontrol.score;
-
-        if (increase1OrReduce2OrChance3 == 1) //increase
-        {
-            increaseScoreText.text = incOrReduceScore.ToString();
-            increaseScoreText.enabled = true;
-            //Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
-            scoreAfterLottery += incOrReduceScore;
-            oyunKontrol.score = fixScoreFunc(scoreAfterLottery);
-            //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
-        }
-        else if (increase1OrReduce2OrChance3 == 2) //reduce
-        {
-            reduceScoreText.text = incOrReduceScore.ToString();
-            reduceScoreText.enabled = true;
-            //Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
-            scoreAfterLottery -= incOrReduceScore;
-            oyunKontrol.score =  fixScoreFunc(scoreAfterLottery);
-            //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
-        }
-        else if (increase1OrReduce2OrChance3 == 3) //chance
-        {
-            oyunKontrol.oyunHizi = 0.5f;
-            chanceKontrol.chanceIncOrRed("inc");
-            chanceKontrol.brokenChanceFunc(true);
-        }
-
-        yield return new WaitForSeconds(2f);
-        lotteryFinish(increase1OrReduce2OrChance3);
-    }
-
-    float fixScoreFunc(float scoreForFix)
-    {
-        return (Mathf.Round(scoreForFix * 100f) / 100f);
-    }
-
-    void lotteryFinish(int incOrReduceOrChance)
-    {
-        if (incOrReduceOrChance == 1) //increase
-        {
-            increaseScoreText.enabled = false;
-        }
-        else if (incOrReduceOrChance == 2) // reduce
-        {
-            reduceScoreText.enabled = false;
-        }
-        else if (incOrReduceOrChance == 3)
-        {
-            chanceKontrol.brokenChanceFunc(false);
-            oyunKontrol.oyunHizi = 1.75f;
+            StartCoroutine(sEffectsKontrol.specialSquareEffects(gameObject.name));
         }
     }
 
