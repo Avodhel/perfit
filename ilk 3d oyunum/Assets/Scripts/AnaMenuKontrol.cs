@@ -15,6 +15,9 @@ public class AnaMenuKontrol : MonoBehaviour {
     float renkSinirG;
     float renkSinirB;
 
+    public Canvas anaMenuCanvas;
+    public Canvas tutorialCanvas;
+
     void Start()
     {
         renkSinirBelirle();
@@ -46,8 +49,15 @@ public class AnaMenuKontrol : MonoBehaviour {
         }
     }
 
-    //public void oyunuBaslat()
-    //{
-    //    SceneManager.LoadScene("Scene_1");
-    //}
+    public void openTutorialScreen()
+    {
+        anaMenuCanvas.enabled = false;
+        tutorialCanvas.enabled = true;
+    }
+
+    public void backToMainMenu()
+    {
+        anaMenuCanvas.enabled = true;
+        tutorialCanvas.enabled = false;
+    }
 }
