@@ -8,7 +8,7 @@ using TMPro;
 public class OyunKontrol : MonoBehaviour {
 
     [Range(1f, 10f)]
-    public float oyunHizi = 1f;
+    public float oyunHizi;
     public GameObject oyunBittiPanel;
     public Button playRestartButton;
     public Text pressRtoRestartText;
@@ -39,6 +39,7 @@ public class OyunKontrol : MonoBehaviour {
         panel = GameObject.FindGameObjectWithTag("panelTag");
         panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
+        PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
     }
 
     void Start ()

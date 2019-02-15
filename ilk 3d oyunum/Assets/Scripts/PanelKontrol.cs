@@ -159,9 +159,9 @@ public class PanelKontrol : MonoBehaviour {
             oyunKontrol.oyunHizi = 0.5f;
             chanceKontrol.chanceIncOrRed("red");
             chanceKontrol.brokenChanceFunc(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(chanceKontrol.exitTimeForBCPanel);
             chanceKontrol.brokenChanceFunc(false);
-            oyunKontrol.oyunHizi = 1.75f;
+            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
         }
     }
 }

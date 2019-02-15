@@ -16,6 +16,18 @@ public class SEffectsKontrol : MonoBehaviour {
 
     int increase1OrReduce2OrChance3;
 
+    [Range(0f, 30f)]
+    public float fastEffectTime;
+    [Range(0f, 30f)]
+    public float slowEffectTime;
+    [Range(0f, 30f)]
+    public float reverseEffectTime;
+
+    [Range(0f, 5f)]
+    public float speedAfterFast;
+    [Range(0f, 5f)]
+    public float speedAfterSlow;
+
     void Start()
     {
         findObjects();
@@ -63,18 +75,18 @@ public class SEffectsKontrol : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = fast;
-            oyunKontrol.oyunHizi = 3f;
-            yield return new WaitForSeconds(15f);
-            oyunKontrol.oyunHizi = 1.75f;
+            oyunKontrol.oyunHizi = speedAfterFast;
+            yield return new WaitForSeconds(fastEffectTime);
+            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
             effectAlert.enabled = false;
         }
         else if (whichEffect == "slowSquare(Clone)")
         {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
-            oyunKontrol.oyunHizi = 1f;
-            yield return new WaitForSeconds(10f);
-            oyunKontrol.oyunHizi = 1.75f;
+            oyunKontrol.oyunHizi = speedAfterSlow;
+            yield return new WaitForSeconds(slowEffectTime);
+            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
             effectAlert.enabled = false; //effect alert image kapat
         }
         else if (whichEffect == "reverseSquare(Clone)")
@@ -82,7 +94,7 @@ public class SEffectsKontrol : MonoBehaviour {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = reverse;
             Panel.GetComponent<PanelKontrol>().reverseActive = true;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(reverseEffectTime);
             Panel.GetComponent<PanelKontrol>().reverseActive = false;
             effectAlert.enabled = false;
         }

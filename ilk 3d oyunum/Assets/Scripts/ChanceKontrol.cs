@@ -8,9 +8,9 @@ public class ChanceKontrol : MonoBehaviour {
     [Range(0, 10)]
     public int startChance;
     public Text chanceText;
-    public GameObject brokenChancePanel;
-    public Text brokenChanceText;
-    public Image brokenChanceImage;
+    public GameObject brokenAndChancePanel;
+    public Text brokenAndChanceText;
+    public Image brokenAndChanceImage;
 
     Sprite chance, brokenChance;
     Sprite[] sprites;
@@ -18,18 +18,28 @@ public class ChanceKontrol : MonoBehaviour {
     [HideInInspector]
     public int chanceCounter;
 
-	void Start ()
+    public Slider exitBCPanelSlider;
+
+    [Range(0, 10)]
+    public float exitTimeForBCPanel;
+
+    bool bcPanelisActive = false;
+
+    void Start ()
     {
         chanceCounter = startChance;
         //chanceText = gameObject.GetComponent<Text>();
         chanceText.text = "x " + startChance;
         findSprites();
+        exitBCPanelSlider.minValue = 0f;
+        exitBCPanelSlider.maxValue = exitTimeForBCPanel;
 	}
 	
 	void Update ()
     {
         chanceText.text = "x " + chanceCounter;
-	}
+        countDownTimer();
+    }
 
     void findSprites()
     {
@@ -53,14 +63,16 @@ public class ChanceKontrol : MonoBehaviour {
         if (incOrRed == "inc") //increase
         {
             chanceCounter += 1;
-            brokenChanceText.color = Color.green;
-            brokenChanceImage.overrideSprite = chance;
+            brokenAndChanceText.color = Color.green;
+            brokenAndChanceImage.overrideSprite = chance;
+            exitBCPanelSlider.GetComponentInChildren<Image>().color = Color.green; //sliderdaki renk
         }
         else if (incOrRed == "red") // reduce
         {
             chanceCounter -= 1;
-            brokenChanceText.color = Color.red;
-            brokenChanceImage.overrideSprite = brokenChance;
+            brokenAndChanceText.color = Color.red;
+            brokenAndChanceImage.overrideSprite = brokenChance;
+            exitBCPanelSlider.GetComponentInChildren<Image>().color = Color.red; //sliderdaki renk
         }
     }
 
@@ -68,12 +80,30 @@ public class ChanceKontrol : MonoBehaviour {
     {
         if (brokenChanceActive)
         {
-            brokenChancePanel.SetActive(true);
-            brokenChanceText.text = "x " + chanceCounter;
+            brokenAndChancePanel.SetActive(true);
+            brokenAndChanceText.text = "x " + chanceCounter;
+            bcPanelisActive = true;
         }
         else
         {
-            brokenChancePanel.SetActive(false);
+            brokenAndChancePanel.SetActive(false);
+            bcPanelisActive = false;
+        }
+    }
+
+    public void countDownTimer()
+    {
+
+        if (bcPanelisActive)
+        {
+            exitTimeForBCPanel -= Time.deltaTime;
+            exitBCPanelSlider.value = exitTimeForBCPanel;
+            Debug.Log("<color=gray>exit time for bc panel:</color>" + exitTimeForBCPanel);
+        }
+        else
+        {
+            exitTimeForBCPanel = exitBCPanelSlider.maxValue;
+            exitBCPanelSlider.value = exitBCPanelSlider.maxValue;
         }
     }
 }
