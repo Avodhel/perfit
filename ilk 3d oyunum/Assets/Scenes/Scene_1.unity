@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59779fedccc8624794c09447db16d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastEffectTime: 15
+  fastEffectTime: 10
   slowEffectTime: 10
   reverseEffectTime: 10
   speedAfterFast: 2.5

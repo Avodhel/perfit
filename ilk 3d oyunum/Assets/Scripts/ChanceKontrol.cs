@@ -17,13 +17,13 @@ public class ChanceKontrol : MonoBehaviour {
 
     [HideInInspector]
     public int chanceCounter;
-
     public Slider exitBCPanelSlider;
-
     [Range(0, 10)]
     public float exitTimeForBCPanel;
 
     bool bcPanelisActive = false;
+
+    OyunKontrol oyunKontrol;
 
     void Start ()
     {
@@ -33,7 +33,9 @@ public class ChanceKontrol : MonoBehaviour {
         findSprites();
         exitBCPanelSlider.minValue = 0f;
         exitBCPanelSlider.maxValue = exitTimeForBCPanel;
-	}
+
+        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+    }
 	
 	void Update ()
     {
@@ -104,6 +106,23 @@ public class ChanceKontrol : MonoBehaviour {
         {
             exitTimeForBCPanel = exitBCPanelSlider.maxValue;
             exitBCPanelSlider.value = exitBCPanelSlider.maxValue;
+        }
+    }
+
+    public IEnumerator chanceControlFunc()
+    {
+        if (chanceCounter == 0) // hiç chance kalmadıysa
+        {
+            oyunKontrol.oyunBitti(true);
+        }
+        else
+        {
+            oyunKontrol.oyunHizi = 0.5f;
+            chanceIncOrRed("red");
+            brokenChanceFunc(true);
+            yield return new WaitForSeconds(exitTimeForBCPanel);
+            brokenChanceFunc(false);
+            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
         }
     }
 }
