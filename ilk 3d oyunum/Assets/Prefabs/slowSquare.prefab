@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   donmeHizi: 0.15
+  destroyingTimeForObject: 50
 --- !u!212 &212300376188455118
 SpriteRenderer:
   m_ObjectHideFlags: 1

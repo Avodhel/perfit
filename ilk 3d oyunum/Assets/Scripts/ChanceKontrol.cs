@@ -28,7 +28,6 @@ public class ChanceKontrol : MonoBehaviour {
     void Start ()
     {
         chanceCounter = startChance;
-        //chanceText = gameObject.GetComponent<Text>();
         chanceText.text = "x " + startChance;
         findSprites();
         exitBCPanelSlider.minValue = 0f;
@@ -100,7 +99,7 @@ public class ChanceKontrol : MonoBehaviour {
         {
             exitTimeForBCPanel -= Time.deltaTime;
             exitBCPanelSlider.value = exitTimeForBCPanel;
-            Debug.Log("<color=gray>exit time for bc panel:</color>" + exitTimeForBCPanel);
+            //Debug.Log("<color=gray>exit time for bc panel:</color>" + exitTimeForBCPanel);
         }
         else
         {

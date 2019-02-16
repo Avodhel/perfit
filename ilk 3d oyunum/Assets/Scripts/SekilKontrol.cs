@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SekilKontrol : MonoBehaviour {
 
     [Range(0f, 1f)]
@@ -9,25 +10,29 @@ public class SekilKontrol : MonoBehaviour {
 
     float donmeYonu;
     bool sekliPaneleSabitleKontrol = false;
+    float rightOrLeft;
 
     GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
 
-    void Start()
+    //[HideInInspector]
+    public float destroyingTimeForObject;
+
+    public void Start()
     {
         objeBul();
         sekilDonmeYonu();
     }
 
-    void Update()
+    public void Update()
     {
         sekilDondur();
         paneleSabitle();
     }
 
-    private void objeBul()
+    public virtual void objeBul() //specialSkontrol'da override yapabilmemiz icin "virtual" 
     {
         Panel    = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
@@ -35,9 +40,9 @@ public class SekilKontrol : MonoBehaviour {
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
     }
 
-    void sekilDonmeYonu()
+    public void sekilDonmeYonu()
     {
-        float rightOrLeft = Random.value; //random.value 0 ile 1 arasında random deger secer
+        rightOrLeft = Random.value; //random.value 0 ile 1 arasında random deger secer
         donmeYonu = rightOrLeft <= 0.5f ? 1 : -1;
 
         //if (rightOrLeft <= 0.5f) 
@@ -46,7 +51,7 @@ public class SekilKontrol : MonoBehaviour {
         //    donmeYonu = -1; // saga donmesi icin
     }
 
-    void sekilDondur()
+    public void sekilDondur()
     {
         if (!sekliPaneleSabitleKontrol)
         {
@@ -54,7 +59,7 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
-    void paneleSabitle() //objeleri panele sabitleyerek onunla birlikte hereket etmesini sağlayan fonksiyon
+    public void paneleSabitle() //objeleri panele sabitleyerek onunla birlikte hereket etmesini sağlayan fonksiyon
     {
         if (sekliPaneleSabitleKontrol)
         {
@@ -65,7 +70,7 @@ public class SekilKontrol : MonoBehaviour {
         fitPoint.transform.localRotation = Panel.transform.localRotation; //fitpointin panele sabitlenmesi
     }
 
-    void OnTriggerEnter(Collider other) //gecirgen yuzeye temas ettiginde
+    protected virtual void OnTriggerEnter(Collider other) //gecirgen yuzeye temas ettiginde
     {
         if (other.name == "FitPoint")
         {
@@ -78,7 +83,7 @@ public class SekilKontrol : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "cutPointTag")
         {
@@ -88,7 +93,8 @@ public class SekilKontrol : MonoBehaviour {
 
     IEnumerator destroySquare()
     {
-        yield return new WaitForSeconds(3f);
+        //Debug.Log(destroyingTimeForObject);
+        yield return new WaitForSeconds(destroyingTimeForObject);
         Destroy(gameObject);
     }
 
