@@ -32,7 +32,7 @@ public class OyunKontrol : MonoBehaviour {
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
 
-    //bool assignNewBestScoreControl = false;
+    bool assignNewBestScoreControl = false;
 
     void Awake()
     {
@@ -115,10 +115,16 @@ public class OyunKontrol : MonoBehaviour {
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
-            newBestCountForScore += 1;
-            //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForScore);
-            StartCoroutine(showNewBest(2));
+            while (newBestCountForScore <= 3)
+            {
+                newBestCountForScore += 1;
+                //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForScore);
+                StartCoroutine(showNewBest(2));
+            }
+        }
 
+        if (score > PlayerPrefs.GetFloat("BestScore", 0f) & assignNewBestScoreControl)
+        {
             //if (assignNewBestScoreControl)
             //{
             PlayerPrefs.SetFloat("BestScore", score);
@@ -136,7 +142,7 @@ public class OyunKontrol : MonoBehaviour {
             newBestCountForHeight == 1)
         {
             newBestHeight.enabled = true;
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(5f);
             newBestHeight.enabled = false;
         }
         else if (height1Orscore2 == 2 & 
@@ -144,7 +150,7 @@ public class OyunKontrol : MonoBehaviour {
             newBestCountForScore == 1)
         {
             newBestScore.enabled = true;
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(5f);
             newBestScore.enabled = false;
         }
     }
@@ -168,7 +174,7 @@ public class OyunKontrol : MonoBehaviour {
                 pressRtoRestartText.gameObject.SetActive(true);
             }
 
-            //assignNewBestScoreControl = true;
+            assignNewBestScoreControl = true;
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;
