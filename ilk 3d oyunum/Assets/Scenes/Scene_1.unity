@@ -1145,9 +1145,32 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+        type: 2}
+      propertyPath: sesiAcSprite
+      value: 
+      objectReference: {fileID: 21300006, guid: c1c81a223f005b94ba5645880bd801c9,
+        type: 3}
+    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+        type: 2}
+      propertyPath: sesiKapaSprite
+      value: 
+      objectReference: {fileID: 21300008, guid: c1c81a223f005b94ba5645880bd801c9,
+        type: 3}
+    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+        type: 2}
+      propertyPath: sesiKapaAcButonu
+      value: 
+      objectReference: {fileID: 1916601664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e52c7542ba976f4baeca381153aa421, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &712131202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+    type: 2}
+  m_PrefabInternal: {fileID: 712131201}
+  m_Script: {fileID: 11500000, guid: d6563388a5c196f49a3910c9859347c9, type: 3}
 --- !u!1 &744515005
 GameObject:
   m_ObjectHideFlags: 0
@@ -7419,7 +7442,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1916601668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 712131202}
+        m_MethodName: sesleriKapatveAc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1916601668

@@ -98,12 +98,12 @@ public class SekilKontrol : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void OnCollisionEnter(Collision col)
-    {
-        if (col.transform.tag == "squareTag") // iki sekil birbiri ile çarpışırsa
-        {
-            oyunKontrol.oyunBitti(true);
-        }
-    }
+    //public void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.transform.tag == "squareTag") // iki sekil birbiri ile çarpışırsa
+    //    {
+    //        oyunKontrol.oyunBitti(true);
+    //    }
+    //}
 
 }
