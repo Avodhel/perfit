@@ -13,7 +13,7 @@ public class ArkaplanKontrol : MonoBehaviour {
     PanelKontrol panelKontrol;
     SpawnKontrol spawnKontrol;
 
-    private void Start()
+    void Start()
     {
         panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
         spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
@@ -32,7 +32,7 @@ public class ArkaplanKontrol : MonoBehaviour {
         renkSinirB = Random.Range(0.3f, 0.8f);
     }
 
-    void arkaplanRenkDegistir()
+    public void arkaplanRenkDegistir()
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB
             (

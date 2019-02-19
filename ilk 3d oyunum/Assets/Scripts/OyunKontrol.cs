@@ -31,7 +31,6 @@ public class OyunKontrol : MonoBehaviour {
     string yukseklikStr;
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
-
     bool assignNewBestScoreControl = false;
 
     void Awake()
