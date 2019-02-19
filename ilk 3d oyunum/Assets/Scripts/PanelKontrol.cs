@@ -65,7 +65,7 @@ public class PanelKontrol : MonoBehaviour {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
         {
             Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Rotate(0, donusYonuAta * (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, -(donusYonuAta * (touchDeltaPosition.x) * rotSpeed * Time.deltaTime), 0);
         }
 #else
         Debug.Log("platform bulunamadı");

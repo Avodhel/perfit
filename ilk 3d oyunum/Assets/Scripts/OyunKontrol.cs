@@ -10,8 +10,10 @@ public class OyunKontrol : MonoBehaviour {
     [Range(1f, 10f)]
     public float oyunHizi;
     public GameObject oyunBittiPanel;
-    public Button playRestartButton;
-    public Text pressRtoRestartText;
+    //public Button playRestartButton;
+    //public Text pressRtoRestartText;
+    public GameObject buttonsForMobile;
+    public GameObject buttonsForPc;
     public TMP_Text scoreText;
     public TMP_Text bestScoreText;
     public TMP_Text heightText;
@@ -166,9 +168,13 @@ public class OyunKontrol : MonoBehaviour {
             oyunBittiPanel.SetActive(true);
 
 #if UNITY_WEBGL
-            pressRtoRestartText.gameObject.SetActive(true);
+            //pressRtoRestartText.gameObject.SetActive(true);
+            buttonsForPc.SetActive(true);
+            buttonsForMobile.SetActive(false);
 #elif UNITY_ANDROID
-            playRestartButton.gameObject.SetActive(true);
+            //playRestartButton.gameObject.SetActive(true);
+            buttonsForMobile.SetActive(true);
+            buttonsForPc.SetActive(false);
 #else
         Debug.Log("platform bulunamadı");
 #endif

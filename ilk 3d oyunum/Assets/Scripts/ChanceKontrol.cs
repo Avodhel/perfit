@@ -112,7 +112,7 @@ public class ChanceKontrol : MonoBehaviour {
     {
         if (chanceCounter == 0) // hiç chance kalmadıysa
         {
-            oyunKontrol.oyunBitti(true);
+            //oyunKontrol.oyunBitti(true);
         }
         else
         {
