@@ -35,9 +35,14 @@ public class OyunKontrol : MonoBehaviour {
     int newBestCountForScore = 0;
     bool assignNewBestScoreControl = false;
 
+    int oyunBittiSayac;
+
+    ReklamKontrol reklamKontrol;
+
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
+        reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
         //panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
         PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
@@ -183,6 +188,8 @@ public class OyunKontrol : MonoBehaviour {
             oyunHizi = 0f;
             oyunBittiKontrol = false;
             restartKontrol = true;
+
+            reklamGoster();
         }
     }
 
@@ -201,6 +208,20 @@ public class OyunKontrol : MonoBehaviour {
         {
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;
+        }
+    }
+
+    void reklamGoster()
+    {
+        oyunBittiSayac = PlayerPrefs.GetInt("oyunBittiSayac");
+        oyunBittiSayac++;
+        PlayerPrefs.SetInt("oyunBittiSayac", oyunBittiSayac);
+        Debug.Log(oyunBittiSayac);
+
+        if (oyunBittiSayac == 5)
+        {
+            reklamKontrol.reklamiGoster();
+            PlayerPrefs.SetInt("oyunBittiSayac", 0);
         }
     }
 }

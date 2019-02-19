@@ -24,6 +24,7 @@ TagManager:
   - chanceTextTag
   - chanceKontrolTag
   - sEffectsKontrolTag
+  - reklamKontrolTag
   layers:
   - Default
   - TransparentFX
