@@ -25,4 +25,9 @@ class SquareKontrol : SekilKontrol {
     {
         base.OnTriggerExit(other);
     }
+
+    private new void OnCollisionEnter(Collision col)
+    {
+        base.OnCollisionEnter(col);
+    }
 }

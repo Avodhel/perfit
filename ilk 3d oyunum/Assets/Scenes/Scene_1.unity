@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9213d05a60324458036dadfbac2843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startChance: 0
+  startChance: 1
   chanceText: {fileID: 305034790}
   brokenAndChancePanel: {fileID: 2031650325}
   brokenAndChanceText: {fileID: 1127711401}
