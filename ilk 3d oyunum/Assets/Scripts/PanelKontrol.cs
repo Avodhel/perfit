@@ -41,35 +41,27 @@ public class PanelKontrol : MonoBehaviour {
 
     void panelHareket()
     {
+        int donusYonuAta;
         if (!reverseActive)
         {
-            if (mobilKontrol)
+            donusYonuAta = 1; //normal
+        }
+        else
+        {
+            donusYonuAta = -1; //ters
+        }
+
+        if (mobilKontrol)
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
             {
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
-                {
-                    Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                    transform.Rotate(0, -(touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
-                }
-            }
-            else
-            {
-                transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * -1, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+                Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                transform.Rotate(0, donusYonuAta * (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
             }
         }
         else
         {
-            if (mobilKontrol)
-            {
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
-                {
-                    Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                    transform.Rotate(0, (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
-                }
-            }
-            else
-            {
-                transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime, 0); //sağa veya sola döndür(mobilde çalışmıyor)
-            }
+            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * donusYonuAta, 0); //sağa veya sola döndür(mobilde çalışmıyor)
         }
     }
 

@@ -36,11 +36,16 @@ public class ArkaplanKontrol : MonoBehaviour {
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB
             (
-             Mathf.Repeat((Time.time + renkSinirR ) / cycleSeconds, 1f),  
+             Mathf.Repeat((Time.time + renkSinirR) / cycleSeconds, 1f),
              renkSinirG,     // set to a pleasing value. 0f to 1f
              renkSinirB      // set to a pleasing value. 0f to 1f
             );
 
+        objelerRenkDegistir();
+    }
+
+    private void objelerRenkDegistir()
+    {
         panelKontrol.panelRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile birlikte panelin de rengini degistir
         spawnKontrol.sekilRenkDegistir(renkSinirR, renkSinirG, renkSinirB); //arkaplan ile square'in de rengini degistir
     }
