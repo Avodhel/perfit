@@ -290,7 +290,6 @@ MonoBehaviour:
   bestHeightText: {fileID: 1471903823}
   newBestHeight: {fileID: 1944127676}
   newBestScore: {fileID: 620219564}
-  mobilKontrol: 0
   resetScoresControl: 0
   score: 0
 --- !u!4 &222546668
@@ -633,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9213d05a60324458036dadfbac2843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startChance: 2
+  startChance: 0
   chanceText: {fileID: 305034790}
   brokenAndChancePanel: {fileID: 2031650325}
   brokenAndChanceText: {fileID: 1127711401}
@@ -1587,7 +1586,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222546667}
-        m_MethodName: yenidenBaslat
+        m_MethodName: yenidenBaslatMobile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

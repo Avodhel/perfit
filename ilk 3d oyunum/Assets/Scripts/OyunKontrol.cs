@@ -18,7 +18,7 @@ public class OyunKontrol : MonoBehaviour {
     public TMP_Text bestHeightText;
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
-    public bool mobilKontrol;
+    //public bool mobilKontrol;
     public bool resetScoresControl;
     [HideInInspector]
     public float score = 0f;
@@ -36,7 +36,7 @@ public class OyunKontrol : MonoBehaviour {
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
-        panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
+        //panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
         PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
     }
@@ -164,14 +164,14 @@ public class OyunKontrol : MonoBehaviour {
         if (oyunBittiKontrol)
         {
             oyunBittiPanel.SetActive(true);
-            if (mobilKontrol)
-            {
-                playRestartButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                pressRtoRestartText.gameObject.SetActive(true);
-            }
+
+#if UNITY_WEBGL
+            pressRtoRestartText.gameObject.SetActive(true);
+#elif UNITY_ANDROID
+            playRestartButton.gameObject.SetActive(true);
+#else
+        Debug.Log("platform bulunamadı");
+#endif
 
             assignNewBestScoreControl = true;
             oyunHizi = 0f;
@@ -180,9 +180,9 @@ public class OyunKontrol : MonoBehaviour {
         }
     }
 
-    public void yenidenBaslat()
+    public void yenidenBaslatMobile()
     {
-        if (restartKontrol & mobilKontrol)
+        if (restartKontrol)
         {
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;
@@ -191,7 +191,7 @@ public class OyunKontrol : MonoBehaviour {
 
     void yenidenBaslatPc()
     {
-        if (restartKontrol & !mobilKontrol & Input.GetKeyDown(KeyCode.R))
+        if (restartKontrol & Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Scene_1");
             restartKontrol = false;

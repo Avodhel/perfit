@@ -6,20 +6,27 @@ using TMPro;
 
 public class PanelKontrol : MonoBehaviour {
 
+    //[HideInInspector]
+    //public bool mobilKontrol;
     [HideInInspector]
-    public bool mobilKontrol;
     public bool reverseActive = false;
     [Range(1f, 250f)]
-    public float panelHareketHizi;
+
     public ParticleSystem panelParticle;
 
     private float cycleSeconds = 500f;
 
-    float rotSpeed = 12f;
-
     Material bottomPointMat;
     Material cutPointMat;
     ChanceKontrol chanceKontrol;
+
+#if UNITY_WEBGL
+    public float panelHareketHizi;
+#elif UNITY_ANDROID
+        float rotSpeed = 12f;
+#else
+        Debug.Log("platform bulunamadı");
+#endif
 
     void Start()
     {
@@ -51,18 +58,19 @@ public class PanelKontrol : MonoBehaviour {
             donusYonuAta = -1; //ters
         }
 
-        if (mobilKontrol)
+#if UNITY_WEBGL
+        transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * donusYonuAta, 0); //sağa veya sola döndür(mobilde çalışmıyor)
+#elif UNITY_ANDROID
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) //mobilde sağa ve sola döndür
-            {
-                Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                transform.Rotate(0, donusYonuAta * (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
-            }
+            Vector3 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            transform.Rotate(0, donusYonuAta * (touchDeltaPosition.x) * rotSpeed * Time.deltaTime, 0);
         }
-        else
-        {
-            transform.Rotate(0, Input.GetAxis("Horizontal") * panelHareketHizi * Time.deltaTime * donusYonuAta, 0); //sağa veya sola döndür(mobilde çalışmıyor)
-        }
+#else
+        Debug.Log("platform bulunamadı");
+#endif
+
     }
 
     public void panelRenkDegistir(float renkSinirR, float renkSinirG, float renkSinirB)
