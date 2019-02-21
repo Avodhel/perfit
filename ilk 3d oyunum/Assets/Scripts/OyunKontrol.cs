@@ -107,6 +107,9 @@ public class OyunKontrol : MonoBehaviour {
             StartCoroutine(showNewBest(1));
             PlayerPrefs.SetFloat("BestHeight", yukseklik);
             bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
+
+            long longHeight = (long)yukseklik;
+            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_heighttest, longHeight);
         }
     }
 
@@ -137,6 +140,9 @@ public class OyunKontrol : MonoBehaviour {
             //}
 
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
+
+            long longScore = (long)score;
+            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_scoretest, longScore);
         }
     }
 
@@ -224,4 +230,9 @@ public class OyunKontrol : MonoBehaviour {
     //        PlayerPrefs.SetInt("oyunBittiSayac", 0);
     //    }
     //}
+
+    public void ShowLeaderboards()
+    {
+        GooglePlayKontrol.ShowLeaderboardsUI();
+    }
 }
