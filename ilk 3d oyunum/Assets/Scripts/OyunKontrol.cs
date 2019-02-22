@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class OyunKontrol : MonoBehaviour {
 
@@ -77,7 +78,8 @@ public class OyunKontrol : MonoBehaviour {
     {
         if (resetScoresControl)
         {
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("BestScore");
+            PlayerPrefs.DeleteKey("BestHeight");
         }
     }
 
@@ -108,7 +110,9 @@ public class OyunKontrol : MonoBehaviour {
             PlayerPrefs.SetFloat("BestHeight", yukseklik);
             bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
 
-            long longHeight = (long)yukseklik;
+            //long longHeight = Convert.ToInt64(yukseklik);
+            string yukseklikString = string.Format("{0:0.0000}", yukseklik);
+            long longHeight = long.Parse(yukseklikString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_heighttest, longHeight);
         }
     }
@@ -134,14 +138,12 @@ public class OyunKontrol : MonoBehaviour {
 
         if (score > PlayerPrefs.GetFloat("BestScore", 0f) & assignNewBestScoreControl)
         {
-            //if (assignNewBestScoreControl)
-            //{
             PlayerPrefs.SetFloat("BestScore", score);
-            //}
-
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
 
-            long longScore = (long)score;
+            //long longScore = Convert.ToInt64(score);
+            string scoreString = string.Format("{0:0.0000}", score);
+            long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_scoretest, longScore);
         }
     }
