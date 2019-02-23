@@ -161,7 +161,14 @@ public class SEffectsKontrol : MonoBehaviour {
 
     float fixScoreFunc(float scoreForFix)
     {
-        return (Mathf.Round(scoreForFix * 100f) / 100f);
+        if (scoreForFix < 0) //eğer reduce sonrası skor 0'ın altına düşerse skor olarak 0 gönder.
+        {
+            return 0;
+        }
+        else
+        {
+            return (Mathf.Round(scoreForFix * 100f) / 100f);
+        }
     }
 
     void lotteryFinish(int incOrReduceOrChance)

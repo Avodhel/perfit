@@ -5,6 +5,7 @@ using UnityEngine.SocialPlatforms;
 
 public class GooglePlayKontrol : MonoBehaviour
 {
+
     // Use this for initialization
     void Start()
     {
@@ -30,27 +31,44 @@ public class GooglePlayKontrol : MonoBehaviour
         });
     }
 
-    #region Achievements
-    public static void UnlockAchievement(string id)
-    {
-        Social.ReportProgress(id, 100, success => { });
-    }
+    //#region Achievements
+    //public static void UnlockAchievement(string id)
+    //{
+    //    Social.ReportProgress(id, 100, success => { });
+    //}
 
-    public static void IncrementAchievement(string id, int stepsToIncrement)
-    {
-        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
-    }
+    //public static void IncrementAchievement(string id, int stepsToIncrement)
+    //{
+    //    PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    //}
 
-    public static void ShowAchievementsUI()
-    {
-        Social.ShowAchievementsUI();
-    }
-    #endregion /Achievements
+    //public static void ShowAchievementsUI()
+    //{
+    //    Social.ShowAchievementsUI();
+    //}
+    //#endregion /Achievements
 
     #region Leaderboards
     public static void AddScoreToLeaderboard(string leaderboardId, long score)
     {
-        Social.ReportScore(score, leaderboardId, success => { });
+        if (Social.localUser.authenticated) //google service'e giriş yapıldıysa
+        {
+            Social.ReportScore(score, leaderboardId, success =>
+            {
+            if (success)
+            {
+                Debug.Log("score eklendi");
+            }
+            else
+            {
+                Debug.Log("score eklenmedi");
+            }
+            });
+        }
+        else
+        {
+            Debug.Log("for this option you should sign in google play service");
+        }
     }
 
     public static void ShowLeaderboardsUI()
