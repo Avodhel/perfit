@@ -38,12 +38,12 @@ public class OyunKontrol : MonoBehaviour {
 
     int oyunBittiSayac;
 
-    //ReklamKontrol reklamKontrol;
+    ReklamKontrol reklamKontrol;
 
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
-        //reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
+        reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
         //panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
         PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
@@ -110,10 +110,12 @@ public class OyunKontrol : MonoBehaviour {
             PlayerPrefs.SetFloat("BestHeight", yukseklik);
             bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
 
+#if UNITY_ANDROID
             //long longHeight = Convert.ToInt64(yukseklik);
             string yukseklikString = string.Format("{0:0.0000}", yukseklik);
             long longHeight = long.Parse(yukseklikString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_heighttest, longHeight);
+#endif
         }
     }
 
@@ -141,10 +143,12 @@ public class OyunKontrol : MonoBehaviour {
             PlayerPrefs.SetFloat("BestScore", score);
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
 
+#if UNITY_ANDROID
             //long longScore = Convert.ToInt64(score);
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_scoretest, longScore);
+#endif
         }
     }
 
@@ -197,7 +201,7 @@ public class OyunKontrol : MonoBehaviour {
             oyunBittiKontrol = false;
             restartKontrol = true;
 
-            //reklamGoster();
+            reklamGoster();
         }
     }
 
@@ -219,22 +223,24 @@ public class OyunKontrol : MonoBehaviour {
         }
     }
 
-    //void reklamGoster()
-    //{
-    //    oyunBittiSayac = PlayerPrefs.GetInt("oyunBittiSayac");
-    //    oyunBittiSayac++;
-    //    PlayerPrefs.SetInt("oyunBittiSayac", oyunBittiSayac);
-    //    Debug.Log(oyunBittiSayac);
+    void reklamGoster()
+    {
+        oyunBittiSayac = PlayerPrefs.GetInt("oyunBittiSayac");
+        oyunBittiSayac++;
+        PlayerPrefs.SetInt("oyunBittiSayac", oyunBittiSayac);
+        Debug.Log(oyunBittiSayac);
 
-    //    if (oyunBittiSayac == 5)
-    //    {
-    //        reklamKontrol.reklamiGoster();
-    //        PlayerPrefs.SetInt("oyunBittiSayac", 0);
-    //    }
-    //}
+        if (oyunBittiSayac == 2)
+        {
+            reklamKontrol.reklamiGoster();
+            PlayerPrefs.SetInt("oyunBittiSayac", 0);
+        }
+    }
 
+#if UNITY_ANDROID
     public void ShowLeaderboards()
     {
         GooglePlayKontrol.ShowLeaderboardsUI();
     }
+#endif
 }

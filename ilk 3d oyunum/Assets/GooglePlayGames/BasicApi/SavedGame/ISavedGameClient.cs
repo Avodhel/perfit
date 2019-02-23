@@ -18,6 +18,9 @@ namespace GooglePlayGames.BasicApi.SavedGame
 {
     using System;
     using System.Collections.Generic;
+#if UNITY_ANDROID
+    using GooglePlayGames.Native;
+#endif
 
     /// <summary>
     /// An enum for the different strategies that can be used to resolve saved game conflicts (i.e.

@@ -42,8 +42,10 @@ public class AnaMenuKontrol : MonoBehaviour {
         tutorialCanvas.enabled = false;
     }
 
+#if UNITY_ANDROID
     public void ShowLeaderboards()
     {
         GooglePlayKontrol.ShowLeaderboardsUI();
     }
+#endif
 }

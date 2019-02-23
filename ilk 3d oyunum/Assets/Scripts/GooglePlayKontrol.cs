@@ -1,4 +1,6 @@
-﻿using GooglePlayGames;
+﻿#if UNITY_ANDROID
+
+using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -87,3 +89,5 @@ public class GooglePlayKontrol : MonoBehaviour
     #endregion /Leaderboards
 
 }
+
+#endif

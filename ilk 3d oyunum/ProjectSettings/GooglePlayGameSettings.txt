@@ -1,5 +1,5 @@
-lastUpgrade=00961
-proj.pluginVersion=0.9.61
+lastUpgrade=00953
+proj.pluginVersion=0.9.53
 proj.AppId=962124662535
 and.BundleId=com.NordicebearGames.perfitTest
 proj.classDir=Assets
