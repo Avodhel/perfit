@@ -24,8 +24,8 @@ public class ReklamKontrol : MonoBehaviour
 
         /*2.asama (geçiş reklamı kodunun eklenmesi)*/
 #if UNITY_ANDROID
-        //string adUnitId = "ca-app-pub-6129193859685798/6973139057"; // reklam kimliği
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712"; //test reklam kimliği
+        string adUnitId = "ca-app-pub-6129193859685798/6973139057"; // reklam kimliği
+        //string adUnitId = "ca-app-pub-3940256099942544/1033173712"; //test reklam kimliği
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -37,14 +37,14 @@ public class ReklamKontrol : MonoBehaviour
 
         /*3.asama(test reklamlarının yüklenmesi)*/
         //*3.1 Test Reklamı için
-        AdRequest request = new AdRequest.Builder()
-        .AddTestDevice("2077ef9a63d2b398840261c8221a0c9b")
-        .Build();
-        interstitial.LoadAd(request);
-        //*3.2 normal reklamlar için
         //AdRequest request = new AdRequest.Builder()
+        //.AddTestDevice("2077ef9a63d2b398840261c8221a0c9b")
         //.Build();
         //interstitial.LoadAd(request);
+        //*3.2 normal reklamlar için
+        AdRequest request = new AdRequest.Builder()
+        .Build();
+        interstitial.LoadAd(request);
     }
 
     public void reklamiGoster()

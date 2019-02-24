@@ -114,7 +114,7 @@ public class OyunKontrol : MonoBehaviour {
             //long longHeight = Convert.ToInt64(yukseklik);
             string yukseklikString = string.Format("{0:0.0000}", yukseklik);
             long longHeight = long.Parse(yukseklikString.Replace(".", ""));
-            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_heighttest, longHeight);
+            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_heights, longHeight);
 #endif
         }
     }
@@ -147,7 +147,7 @@ public class OyunKontrol : MonoBehaviour {
             //long longScore = Convert.ToInt64(score);
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
-            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_scoretest, longScore);
+            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
 #endif
         }
     }
@@ -230,7 +230,7 @@ public class OyunKontrol : MonoBehaviour {
         PlayerPrefs.SetInt("oyunBittiSayac", oyunBittiSayac);
         Debug.Log(oyunBittiSayac);
 
-        if (oyunBittiSayac == 2)
+        if (oyunBittiSayac == 5)
         {
             reklamKontrol.reklamiGoster();
             PlayerPrefs.SetInt("oyunBittiSayac", 0);

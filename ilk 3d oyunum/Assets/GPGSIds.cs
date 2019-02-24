@@ -24,8 +24,8 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_heighttest = "CgkIh47lmIAcEAIQAg"; // <GPGSID>
-        public const string leaderboard_scoretest = "CgkIh47lmIAcEAIQAA"; // <GPGSID>
+        public const string leaderboard_best_heights = "CgkIzJq5grgfEAIQAg"; // <GPGSID>
+        public const string leaderboard_best_scores = "CgkIzJq5grgfEAIQAQ"; // <GPGSID>
 
 }
 
