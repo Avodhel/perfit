@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 class SquareKontrol : SekilKontrol {
 
@@ -26,8 +24,4 @@ class SquareKontrol : SekilKontrol {
         base.OnTriggerExit(other);
     }
 
-    //private new void OnCollisionEnter(Collision col)
-    //{
-    //    base.OnCollisionEnter(col);
-    //}
 }

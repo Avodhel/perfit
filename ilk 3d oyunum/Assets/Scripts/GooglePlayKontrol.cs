@@ -3,7 +3,7 @@
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+//using UnityEngine.SocialPlatforms;
 
 public class GooglePlayKontrol : MonoBehaviour
 {
@@ -78,7 +78,6 @@ public class GooglePlayKontrol : MonoBehaviour
         if (Social.Active.localUser.authenticated)
         {
             Social.ShowLeaderboardUI();
-            //PlayGamesPlatform.Instance.ShowLeaderboardUI("CgkIh47lmIAcEAIQAA");
             Debug.Log("leaderboard gösterildi");
         }
         else

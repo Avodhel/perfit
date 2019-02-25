@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,6 +6,7 @@ public class SekilKontrol : MonoBehaviour {
 
     [Range(0f, 1f)]
     public float donmeHizi;
+    public float destroyingTimeForObject;
 
     float donmeYonu;
     bool sekliPaneleSabitleKontrol = false;
@@ -16,9 +16,6 @@ public class SekilKontrol : MonoBehaviour {
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
-
-    //[HideInInspector]
-    public float destroyingTimeForObject;
 
     public void Start()
     {
@@ -97,13 +94,5 @@ public class SekilKontrol : MonoBehaviour {
         yield return new WaitForSeconds(destroyingTimeForObject);
         Destroy(gameObject);
     }
-
-    //public void OnCollisionEnter(Collision col)
-    //{
-    //    if (col.transform.tag == "squareTag") // iki sekil birbiri ile çarpışırsa
-    //    {
-    //        oyunKontrol.oyunBitti(true);
-    //    }
-    //}
 
 }

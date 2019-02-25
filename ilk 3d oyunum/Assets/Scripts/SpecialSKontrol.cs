@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 class SpecialSKontrol : SekilKontrol
 {
@@ -40,10 +37,5 @@ class SpecialSKontrol : SekilKontrol
     {
         base.OnTriggerExit(other);
     }
-
-    //private new void OnCollisionEnter(Collision col)
-    //{
-    //    base.OnCollisionEnter(col);
-    //}
 
 }

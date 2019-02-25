@@ -1,17 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+﻿using UnityEngine;
 
 public class PanelKontrol : MonoBehaviour {
 
-    //[HideInInspector]
-    //public bool mobilKontrol;
     [HideInInspector]
     public bool reverseActive = false;
     [Range(1f, 250f)]
-
     public ParticleSystem panelParticle;
 
     private float cycleSeconds = 500f;
@@ -42,7 +35,6 @@ public class PanelKontrol : MonoBehaviour {
     {
         bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
         cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
-
         chanceKontrol = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
     }
 

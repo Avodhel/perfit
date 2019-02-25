@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,23 +6,22 @@ public class ChanceKontrol : MonoBehaviour {
 
     [Range(0, 10)]
     public int startChance;
+    [Range(0, 10)]
+    public float exitTimeForBCPanel;
     public Text chanceText;
     public GameObject brokenAndChancePanel;
     public Text brokenAndChanceText;
     public Image brokenAndChanceImage;
-
-    Sprite chance, brokenChance;
-    Sprite[] sprites;
+    public Slider exitBCPanelSlider;
 
     [HideInInspector]
     public int chanceCounter;
-    public Slider exitBCPanelSlider;
-    [Range(0, 10)]
-    public float exitTimeForBCPanel;
+
+    Sprite chance, brokenChance;
+    Sprite[] sprites;
+    OyunKontrol oyunKontrol;
 
     bool bcPanelisActive = false;
-
-    OyunKontrol oyunKontrol;
 
     void Start ()
     {

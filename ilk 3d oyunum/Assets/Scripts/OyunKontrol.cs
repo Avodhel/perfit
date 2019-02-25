@@ -1,18 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System;
 
 public class OyunKontrol : MonoBehaviour {
 
     [Range(1f, 10f)]
     public float oyunHizi;
     public GameObject oyunBittiPanel;
-    //public Button playRestartButton;
-    //public Text pressRtoRestartText;
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
     public TMP_Text scoreText;
@@ -21,13 +16,13 @@ public class OyunKontrol : MonoBehaviour {
     public TMP_Text bestHeightText;
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
-    //public bool mobilKontrol;
     public bool resetScoresControl;
     [HideInInspector]
     public float score = 0f;
 
     GameObject panel;
     Vector3 panelBoyut;
+    ReklamKontrol reklamKontrol;
 
     bool restartKontrol = false;
     float yukseklik;
@@ -35,16 +30,12 @@ public class OyunKontrol : MonoBehaviour {
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
     bool assignNewBestScoreControl = false;
-
     int oyunBittiSayac;
-
-    ReklamKontrol reklamKontrol;
 
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
         reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
-        //panel.GetComponent<PanelKontrol>().mobilKontrol = mobilKontrol;
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
         PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
     }
@@ -59,9 +50,7 @@ public class OyunKontrol : MonoBehaviour {
         //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
         newBestCountForScore = 0;
         //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForHeight);
-
         resetScores();
-
         //Debug.Log("<color=yellow>best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
 
@@ -71,7 +60,6 @@ public class OyunKontrol : MonoBehaviour {
         yenidenBaslatPc();
         scoreGoster();
         yukseklikGoster();
-
     }
 
     private void resetScores()
@@ -111,7 +99,6 @@ public class OyunKontrol : MonoBehaviour {
             bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
-            //long longHeight = Convert.ToInt64(yukseklik);
             string yukseklikString = string.Format("{0:0.0000}", yukseklik);
             long longHeight = long.Parse(yukseklikString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_heights, longHeight);
@@ -144,7 +131,6 @@ public class OyunKontrol : MonoBehaviour {
             bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
 
 #if UNITY_ANDROID
-            //long longScore = Convert.ToInt64(score);
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
@@ -185,11 +171,9 @@ public class OyunKontrol : MonoBehaviour {
             oyunBittiPanel.SetActive(true);
 
 #if UNITY_WEBGL
-            //pressRtoRestartText.gameObject.SetActive(true);
             buttonsForPc.SetActive(true);
             buttonsForMobile.SetActive(false);
 #elif UNITY_ANDROID
-            //playRestartButton.gameObject.SetActive(true);
             buttonsForMobile.SetActive(true);
             buttonsForPc.SetActive(false);
 #else

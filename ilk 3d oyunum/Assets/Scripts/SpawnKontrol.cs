@@ -1,27 +1,22 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
     public GameObject sekil;
-
     public GameObject[] ozelSekiller;
-    GameObject ozelSekil;
+    public GameObject lottery;
 
+    GameObject ozelSekil;
     GameObject square;
     GameObject[] squares;
 
-    public GameObject lottery;
-
     [Range(1, 50)]
     public int spawnSuresi;
-
     [Range(1, 10)]
     public int minSekildeBirOzelSekil;
     [Range(1, 10)]
     public int maxSekildeBirOzelSekil;
-
     [Range(1, 20)]
     public int minSekildeBirLottery;
     [Range(1, 20)]
@@ -29,14 +24,12 @@ public class SpawnKontrol : MonoBehaviour {
 
     int kacSekildeBirOzelSekil;
     int kacSekildeBirLottery;
-
-    private float cycleSeconds = 500f;
-
+    int sekilCount = 0;
+    int countForLottery = 0;
     bool squareOlustuKontrol = false;
     bool renkDegistiKontrol = false;
 
-    int sekilCount = 0;
-    int countForLottery = 0;
+    private float cycleSeconds = 500f;
 
     void Awake()
     {
