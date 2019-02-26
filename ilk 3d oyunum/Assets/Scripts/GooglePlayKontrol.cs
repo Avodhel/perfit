@@ -1,5 +1,4 @@
-﻿#if UNITY_ANDROID
-
+﻿
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 public class GooglePlayKontrol : MonoBehaviour
 {
-
+#if UNITY_ANDROID
     // Use this for initialization
     void Start()
     {
@@ -87,6 +86,7 @@ public class GooglePlayKontrol : MonoBehaviour
     }
     #endregion /Leaderboards
 
+#endif
 }
 
-#endif
+

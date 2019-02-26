@@ -27,9 +27,10 @@ public class ReklamKontrol : MonoBehaviour
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
-        string adUnitId = "unexpected_platform";
+        //string adUnitId = "unexpected_platform";
 #endif
 
+#if UNITY_ANDROID
         // Initialize an InterstitialAd.
         interstitial = new InterstitialAd(adUnitId);
 
@@ -43,8 +44,10 @@ public class ReklamKontrol : MonoBehaviour
         AdRequest request = new AdRequest.Builder()
         .Build();
         interstitial.LoadAd(request);
+#endif
     }
 
+#if UNITY_ANDROID
     public void reklamiGoster()
     {
         /*4.asama (test reklamlarının gösterilmesi)*/
@@ -53,4 +56,5 @@ public class ReklamKontrol : MonoBehaviour
             interstitial.Show();
         }
     }
+#endif
 }

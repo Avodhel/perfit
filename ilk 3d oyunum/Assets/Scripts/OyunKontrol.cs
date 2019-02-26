@@ -22,8 +22,9 @@ public class OyunKontrol : MonoBehaviour {
 
     GameObject panel;
     Vector3 panelBoyut;
+#if UNITY_ANDROID
     ReklamKontrol reklamKontrol;
-
+#endif
     bool restartKontrol = false;
     float yukseklik;
     string yukseklikStr;
@@ -35,7 +36,9 @@ public class OyunKontrol : MonoBehaviour {
     void Awake()
     {
         panel = GameObject.FindGameObjectWithTag("panelTag");
+#if UNITY_ANDROID
         reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
+#endif
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
         PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
     }
@@ -218,7 +221,9 @@ public class OyunKontrol : MonoBehaviour {
 
         if (oyunBittiSayac == 5)
         {
+#if UNITY_ANDROID
             reklamKontrol.reklamiGoster();
+#endif
             PlayerPrefs.SetInt("oyunBittiSayac", 0);
         }
     }
