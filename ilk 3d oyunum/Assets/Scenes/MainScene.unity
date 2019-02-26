@@ -6893,6 +6893,28 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114346427961699524, guid: b2c67b2f26795c242b9110fe397f754a,
+        type: 2}
+      propertyPath: m_Text
+      value: But this turtle friend will reduce game speed, so you can take a deep  breath.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832639130532904, guid: b2c67b2f26795c242b9110fe397f754a,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Simple. Left is right, right is left now. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114006866833325452, guid: b2c67b2f26795c242b9110fe397f754a,
+        type: 2}
+      propertyPath: m_Text
+      value: This is lottery. After lottery, your score may increase or reduce or
+        who knows maybe give you an extra chance.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623733251881278, guid: b2c67b2f26795c242b9110fe397f754a,
+        type: 2}
+      propertyPath: m_Text
+      value: At the beginning you have 2 chance. If this is 0, game is over. I know
+        it's not very original.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c67b2f26795c242b9110fe397f754a, type: 2}
   m_IsPrefabAsset: 0

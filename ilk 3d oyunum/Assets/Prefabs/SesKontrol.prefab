@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6563388a5c196f49a3910c9859347c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sesiKapaAcButonu: {fileID: 0}
+  sesiAcSprite: {fileID: 21300006, guid: c1c81a223f005b94ba5645880bd801c9, type: 3}
+  sesiKapaSprite: {fileID: 21300008, guid: c1c81a223f005b94ba5645880bd801c9, type: 3}
   sesler:
   - sesAdi: FitSound
     clip: {fileID: 8300000, guid: 046766ecc28131f4c824da3cc4e2ce50, type: 3}
@@ -60,6 +63,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - sesAdi: HitSound
     clip: {fileID: 8300000, guid: e5e4c5a6261faa746a3483062ecd0fea, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - sesAdi: NewBestSound
+    clip: {fileID: 8300000, guid: dc62ce0965ce5f84abcced819260db8f, type: 3}
     volume: 1
     pitch: 1
     loop: 0

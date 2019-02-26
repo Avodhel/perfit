@@ -146,6 +146,7 @@ public class OyunKontrol : MonoBehaviour {
             newBestCountForHeight == 1)
         {
             newBestHeight.enabled = true;
+            FindObjectOfType<SesKontrol>().sesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestHeight.enabled = false;
         }
@@ -154,6 +155,7 @@ public class OyunKontrol : MonoBehaviour {
             newBestCountForScore == 1)
         {
             newBestScore.enabled = true;
+            FindObjectOfType<SesKontrol>().sesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestScore.enabled = false;
         }

@@ -675,13 +675,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startChance: 2
+  exitTimeForBCPanel: 1.5
   chanceText: {fileID: 305034790}
   brokenAndChancePanel: {fileID: 2031650325}
   brokenAndChanceText: {fileID: 1127711401}
   brokenAndChanceImage: {fileID: 1817146873}
-  chanceCounter: 0
   exitBCPanelSlider: {fileID: 1004931163}
-  exitTimeForBCPanel: 1.5
+  chanceCounter: 0
 --- !u!224 &315111924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1312,21 +1312,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
         type: 2}
-      propertyPath: sesiAcSprite
-      value: 
-      objectReference: {fileID: 21300006, guid: c1c81a223f005b94ba5645880bd801c9,
-        type: 3}
-    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
-        type: 2}
-      propertyPath: sesiKapaSprite
-      value: 
-      objectReference: {fileID: 21300008, guid: c1c81a223f005b94ba5645880bd801c9,
-        type: 3}
-    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
-        type: 2}
       propertyPath: sesiKapaAcButonu
       value: 
       objectReference: {fileID: 1916601664}
+    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+        type: 2}
+      propertyPath: sesler.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2708ad9d1aa96384da5b476d17c4e159, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e52c7542ba976f4baeca381153aa421, type: 2}
   m_IsPrefabAsset: 0
