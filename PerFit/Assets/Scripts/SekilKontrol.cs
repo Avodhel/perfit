@@ -99,6 +99,9 @@ public class SekilKontrol : MonoBehaviour {
     {
         if (other.transform.tag == "cutPointTag")
         {
+            other.transform.localScale = new Vector3(gameObject.transform.localScale.x/5,
+                                                     other.transform.localScale.y,
+                                                     gameObject.transform.localScale.z/5);
             StartCoroutine(destroySquare());
         }
     }

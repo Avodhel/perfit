@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   donmeHizi: 0.15
+  minPanelScale: 0.94
+  maxPanelScale: 1
   destroyingTimeForObject: 50
 --- !u!212 &212487298144696378
 SpriteRenderer:
