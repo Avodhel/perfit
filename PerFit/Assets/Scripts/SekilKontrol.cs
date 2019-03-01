@@ -4,8 +4,15 @@ using UnityEngine;
 [System.Serializable]
 public class SekilKontrol : MonoBehaviour {
 
+    [Header("Speed")]
     [Range(0f, 1f)]
     public float donmeHizi;
+    [Header("Panel Scale")]
+    [Range(0f, 1f)]
+    public float minPanelScale;
+    [Range(0f, 1f)]
+    public float maxPanelScale;
+    [Header("Destroying Time")]
     public float destroyingTimeForObject;
 
     float donmeYonu;
@@ -21,6 +28,7 @@ public class SekilKontrol : MonoBehaviour {
     {
         objeBul();
         sekilDonmeYonu();
+        sekilBoyutAyarla();
     }
 
     public void Update()
@@ -31,9 +39,9 @@ public class SekilKontrol : MonoBehaviour {
 
     public virtual void objeBul() //specialSkontrol'da override yapabilmemiz icin "virtual" 
     {
-        Panel    = GameObject.FindGameObjectWithTag("panelTag");
-        cutPoint = GameObject.FindGameObjectWithTag("cutPointTag");
-        fitPoint = GameObject.FindGameObjectWithTag("fitPointTag");
+        Panel       = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint    = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint    = GameObject.FindGameObjectWithTag("fitPointTag");
         oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
     }
 
@@ -46,6 +54,13 @@ public class SekilKontrol : MonoBehaviour {
         //    donmeYonu = 1; //sola donmesi icin
         //else
         //    donmeYonu = -1; // saga donmesi icin
+    }
+
+    public void sekilBoyutAyarla()
+    {
+        float sekilBoyut = Random.Range(minPanelScale, maxPanelScale);
+        Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
+        gameObject.transform.localScale = new Vector3(sekilBoyut, gameObject.transform.localScale.y, sekilBoyut); 
     }
 
     public void sekilDondur()

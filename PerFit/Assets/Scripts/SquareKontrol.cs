@@ -6,6 +6,7 @@ class SquareKontrol : SekilKontrol {
     {
         objeBul();
         sekilDonmeYonu();
+        sekilBoyutAyarla();
     }
 
     private new void Update()

@@ -9,6 +9,7 @@ class SpecialSKontrol : SekilKontrol
     {
         objeBul();
         sekilDonmeYonu();
+        sekilBoyutAyarla();
     }
 
     private new void Update()
