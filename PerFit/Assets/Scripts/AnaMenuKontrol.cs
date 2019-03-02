@@ -8,6 +8,7 @@ public class AnaMenuKontrol : MonoBehaviour {
 
     public Canvas anaMenuCanvas;
     public Canvas tutorialCanvas;
+    public Canvas leaderboardCanvas;
 
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
@@ -27,16 +28,38 @@ public class AnaMenuKontrol : MonoBehaviour {
 #endif
     }
 
-    public void openTutorialScreen()
+    public void openCanvas(string whichCanvas)
     {
-        anaMenuCanvas.enabled = false;
-        tutorialCanvas.enabled = true;
+        if (whichCanvas == "tutorial")
+        {
+            anaMenuCanvas.enabled = false;
+            tutorialCanvas.enabled = true;
+        }
+        else if (whichCanvas == "leaderboard")
+        {
+            anaMenuCanvas.enabled = false;
+            leaderboardCanvas.enabled = true;
+        }
     }
+
+
+    //public void openTutorialScreen()
+    //{
+    //    anaMenuCanvas.enabled = false;
+    //    tutorialCanvas.enabled = true;
+    //}
+
+    //public void openLeaderBoard()
+    //{
+    //    anaMenuCanvas.enabled = false;
+    //    leaderboardCanvas.enabled = true;
+    //}
 
     public void backToMainMenu()
     {
         anaMenuCanvas.enabled = true;
         tutorialCanvas.enabled = false;
+        leaderboardCanvas.enabled = false;
     }
 
 #if UNITY_ANDROID
