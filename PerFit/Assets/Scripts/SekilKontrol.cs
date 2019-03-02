@@ -59,7 +59,7 @@ public class SekilKontrol : MonoBehaviour {
     public void sekilBoyutAyarla()
     {
         float sekilBoyut = Random.Range(minPanelScale, maxPanelScale);
-        Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
+        //Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
         gameObject.transform.localScale = new Vector3(sekilBoyut, gameObject.transform.localScale.y, sekilBoyut); 
     }
 
