@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_WEBGL
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,3 +41,4 @@ public class DisplayLeaderBoard : MonoBehaviour {
         }
     }
 }
+#endif

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_WEBGL
+using System.Collections;
 using UnityEngine;
 
 public class LeaderBoard : MonoBehaviour {
@@ -47,7 +48,7 @@ public class LeaderBoard : MonoBehaviour {
 
     IEnumerator DownloadHighscoresFromDatabase()
     {
-        WWW www = new WWW(webURL + publicCode + "/pipe/");
+        WWW www = new WWW(webURL + publicCode + "/pipe/0/10"); // sadece ilk 10 scoru yükle
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
@@ -72,7 +73,7 @@ public class LeaderBoard : MonoBehaviour {
             string username = entryInfo[0];
             int score = int.Parse(entryInfo[1]);
             highscoresList[i] = new Highscore(username, score);
-            print(highscoresList[i].username + ": " + highscoresList[i].score);
+            //print(highscoresList[i].username + ": " + highscoresList[i].score);
         }
     }
 
@@ -90,3 +91,4 @@ public struct Highscore
     }
 
 }
+#endif

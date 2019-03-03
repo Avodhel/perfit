@@ -42,19 +42,6 @@ public class AnaMenuKontrol : MonoBehaviour {
         }
     }
 
-
-    //public void openTutorialScreen()
-    //{
-    //    anaMenuCanvas.enabled = false;
-    //    tutorialCanvas.enabled = true;
-    //}
-
-    //public void openLeaderBoard()
-    //{
-    //    anaMenuCanvas.enabled = false;
-    //    leaderboardCanvas.enabled = true;
-    //}
-
     public void backToMainMenu()
     {
         anaMenuCanvas.enabled = true;

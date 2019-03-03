@@ -2,12 +2,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class OyunKontrol : MonoBehaviour {
 
     [Range(1f, 10f)]
     public float oyunHizi;
     public GameObject oyunBittiPanel;
+    public GameObject usernameInputPanel;
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
     public TMP_Text scoreText;
@@ -32,6 +34,11 @@ public class OyunKontrol : MonoBehaviour {
     int newBestCountForScore = 0;
     bool assignNewBestScoreControl = false;
     int oyunBittiSayac;
+
+    public InputField usernameInput;
+
+    string _username;
+    int _bestScore;
 
     void Awake()
     {
@@ -137,8 +144,33 @@ public class OyunKontrol : MonoBehaviour {
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
+#elif UNITY_WEBGL
+            usernameInputPanel.SetActive(true);
+            //usernameInput.onEndEdit.AddListener(setUsername);
+            _bestScore = Random.Range(0, 100);
+            //if (username != "")
+            //{
+            //addBestScoreToLeaderboard(username, Random.Range(0, 100));
+            //}
+            //else
+            //{
+            //    Debug.Log("<color=red>please enter a username</color>");
+            //}
 #endif
         }
+    }
+
+    //void setUsername(string _username)
+    //{
+    //    string username = _username;
+    //    Debug.Log(username);
+    //}
+
+    public void addBestScoreToLeaderboard()
+    {
+        _username = usernameInput.text;
+        LeaderBoard.AddNewHighscore(_username, _bestScore);
+        usernameInputPanel.SetActive(false);
     }
 
     IEnumerator showNewBest(int height1Orscore2)
