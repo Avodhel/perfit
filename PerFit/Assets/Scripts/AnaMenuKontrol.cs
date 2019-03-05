@@ -13,7 +13,6 @@ public class AnaMenuKontrol : MonoBehaviour {
     [Header("Canvas")]
     public Canvas anaMenuCanvas;
     public Canvas tutorialCanvas;
-    public Canvas leaderboardCanvas;
 
     [Header("Gameobjects")]
     public GameObject buttonsForMobile;
@@ -46,7 +45,6 @@ public class AnaMenuKontrol : MonoBehaviour {
         else if (whichCanvas == "leaderboard")
         {
             anaMenuCanvas.enabled = false;
-            leaderboardCanvas.enabled = true;
         }
     }
 
@@ -63,7 +61,6 @@ public class AnaMenuKontrol : MonoBehaviour {
         {
             anaMenuCanvas.enabled = true;
             tutorialCanvas.enabled = false;
-            leaderboardCanvas.enabled = false;
         }
         else if (whichButton == "next")
         {

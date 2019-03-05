@@ -15,7 +15,6 @@ public class OyunKontrol : MonoBehaviour {
 
     [Header("Panels")]
     public GameObject oyunBittiPanel;
-    public GameObject usernameInputPanel;
 
     [Header("Buttons")]
     public GameObject buttonsForMobile;
@@ -28,9 +27,6 @@ public class OyunKontrol : MonoBehaviour {
     public TMP_Text bestHeightText;
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
-
-    [Header("Input Fields")]
-    public InputField usernameInput;
 
     [HideInInspector]
     public float score = 0f;
@@ -46,11 +42,9 @@ public class OyunKontrol : MonoBehaviour {
     bool assignNewBestScoreControl = false;
     float yukseklik;
     string yukseklikStr;
-    string _username;
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
     int oyunBittiSayac;
-    int _bestScore;
 
     void Awake()
     {
@@ -156,34 +150,9 @@ public class OyunKontrol : MonoBehaviour {
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
-#elif UNITY_WEBGL
-            //usernameInputPanel.SetActive(true);
-            //usernameInput.onEndEdit.AddListener(setUsername);
-            //_bestScore = Random.Range(0, 100);
-            //if (username != "")
-            //{
-            //addBestScoreToLeaderboard(username, Random.Range(0, 100));
-            //}
-            //else
-            //{
-            //    Debug.Log("<color=red>please enter a username</color>");
-            //}
 #endif
         }
     }
-
-    //void setUsername(string _username)
-    //{
-    //    string username = _username;
-    //    Debug.Log(username);
-    //}
-
-    //public void addBestScoreToLeaderboard()
-    //{
-    //    _username = usernameInput.text;
-    //    LeaderBoard.AddNewHighscore(_username, _bestScore);
-    //    usernameInputPanel.SetActive(false);
-    //}
 
     IEnumerator showNewBest(int height1Orscore2)
     {
