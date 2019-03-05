@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83137256, g: 0.49019608, b: 0.25490198, a: 1}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.9019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215687, g: 0.6862745, b: 0.77254903, a: 1}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.9019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 7
   minSekildeBirLottery: 6
-  maxSekildeBirLottery: 15
+  maxSekildeBirLottery: 18
 --- !u!1 &1399352575
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,10 +3305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59779fedccc8624794c09447db16d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastEffectTime: 10
-  slowEffectTime: 10
-  reverseEffectTime: 10
-  speedAfterFast: 2.5
+  fastEffectTime: 20
+  slowEffectTime: 15
+  reverseEffectTime: 13
+  speedAfterFast: 2.8
   speedAfterSlow: 1
 --- !u!4 &1559437570
 Transform:
@@ -8446,7 +8446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.21176471, b: 0.7294118, a: 1}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.9019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

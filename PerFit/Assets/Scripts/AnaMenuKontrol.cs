@@ -13,6 +13,11 @@ public class AnaMenuKontrol : MonoBehaviour {
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
 
+    public GameObject tutorialPage1;
+    public GameObject tutorialPage2;
+
+    public Button backButton, homeButton, nextButton;
+
     void Awake()
     {
 //#if UNITY_EDITOR
@@ -42,11 +47,28 @@ public class AnaMenuKontrol : MonoBehaviour {
         }
     }
 
-    public void backToMainMenu()
+    public void actionsForButtons(string whichButton)
     {
-        anaMenuCanvas.enabled = true;
-        tutorialCanvas.enabled = false;
-        leaderboardCanvas.enabled = false;
+        if (whichButton == "back")
+        {
+            tutorialPage2.SetActive(false);
+            tutorialPage1.SetActive(true);
+            backButton.gameObject.SetActive(false);
+            nextButton.gameObject.SetActive(true);
+        }
+        else if (whichButton == "home")
+        {
+            anaMenuCanvas.enabled = true;
+            tutorialCanvas.enabled = false;
+            leaderboardCanvas.enabled = false;
+        }
+        else if (whichButton == "next")
+        {
+            tutorialPage1.SetActive(false);
+            tutorialPage2.SetActive(true);
+            backButton.gameObject.SetActive(true);
+            nextButton.gameObject.SetActive(false);
+        }
     }
 
 #if UNITY_ANDROID

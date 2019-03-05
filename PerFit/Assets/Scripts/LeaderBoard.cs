@@ -48,7 +48,7 @@ public class LeaderBoard : MonoBehaviour {
 
     IEnumerator DownloadHighscoresFromDatabase()
     {
-        WWW www = new WWW(webURL + publicCode + "/pipe/0/10"); // sadece ilk 10 scoru yükle
+        WWW www = new WWW(webURL + publicCode + "/pipe/"); 
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
