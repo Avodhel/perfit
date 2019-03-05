@@ -4,15 +4,21 @@ using UnityEngine.UI;
 
 public class ChanceKontrol : MonoBehaviour {
 
+    [Header("Chance for Start")]
     [Range(0, 10)]
     public int startChance;
+
+    [Header("Broken and Chance Panel")]
     [Range(0, 10)]
     public float exitTimeForBCPanel;
-    public Text chanceText;
+
     public GameObject brokenAndChancePanel;
-    public Text brokenAndChanceText;
     public Image brokenAndChanceImage;
     public Slider exitBCPanelSlider;
+
+    [Header("Texts")]
+    public Text chanceText;
+    public Text brokenAndChanceText;
 
     [HideInInspector]
     public int chanceCounter;

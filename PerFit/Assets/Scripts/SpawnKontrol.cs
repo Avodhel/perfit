@@ -11,8 +11,11 @@ public class SpawnKontrol : MonoBehaviour {
     GameObject square;
     GameObject[] squares;
 
+    [Header("Spawn Time")]
     [Range(1, 50)]
     public int spawnSuresi;
+
+    [Header("Frequency for Special Squares")]
     [Range(1, 10)]
     public int minSekildeBirOzelSekil;
     [Range(1, 10)]

@@ -984,8 +984,8 @@ MonoBehaviour:
   startChance: 2
   exitTimeForBCPanel: 1.5
   chanceText: {fileID: 305034790}
-  brokenAndChancePanel: {fileID: 2031650325}
   brokenAndChanceText: {fileID: 1127711401}
+  brokenAndChancePanel: {fileID: 2031650325}
   brokenAndChanceImage: {fileID: 1817146873}
   exitBCPanelSlider: {fileID: 1004931163}
   chanceCounter: 0
@@ -8995,21 +8995,6 @@ Prefab:
     - target: {fileID: 4185253887054432, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
-        type: 2}
-      propertyPath: heightText
-      value: 
-      objectReference: {fileID: 2112498919}
-    - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
-        type: 2}
-      propertyPath: bestHeightText
-      value: 
-      objectReference: {fileID: 1471903823}
-    - target: {fileID: 114568104160415986, guid: 118b1ab6a469cc04f930829ba476294f,
-        type: 2}
-      propertyPath: mobilKontrol
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118b1ab6a469cc04f930829ba476294f, type: 2}

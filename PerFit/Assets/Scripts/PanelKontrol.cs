@@ -14,7 +14,7 @@ public class PanelKontrol : MonoBehaviour {
     ChanceKontrol chanceKontrol;
 
 #if UNITY_WEBGL
-    public float panelHareketHizi;
+    public float panelHareketHizi = 50f;
 #elif UNITY_ANDROID
         float rotSpeed = 12f;
 #else

@@ -3,20 +3,23 @@ using UnityEngine.UI;
 
 public class AnaMenuKontrol : MonoBehaviour {
 
+    [Header("Buttons")]
     public Button playButton;
+    public Button backButton, homeButton, nextButton;
+
+    [Header("Texts")]
     public Text versionCode;
 
+    [Header("Canvas")]
     public Canvas anaMenuCanvas;
     public Canvas tutorialCanvas;
     public Canvas leaderboardCanvas;
 
+    [Header("Gameobjects")]
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
-
     public GameObject tutorialPage1;
     public GameObject tutorialPage2;
-
-    public Button backButton, homeButton, nextButton;
 
     void Awake()
     {

@@ -6,15 +6,16 @@ public class SEffectsKontrol : MonoBehaviour {
 
     Image effectAlert;
     OyunKontrol oyunKontrol;
+    ChanceKontrol chanceKontrol;
     Sprite fast, slow, reverse, lottery;
     Sprite[] sprites;
     GameObject Panel;
     Text increaseScoreText;
     Text reduceScoreText;
-    ChanceKontrol chanceKontrol;
 
     int increase1OrReduce2OrChance3;
 
+    [Header("Effects Time")]
     [Range(0f, 30f)]
     public float fastEffectTime;
     [Range(0f, 30f)]
@@ -22,6 +23,7 @@ public class SEffectsKontrol : MonoBehaviour {
     [Range(0f, 30f)]
     public float reverseEffectTime;
 
+    [Header("Speed after Effects")]
     [Range(0f, 5f)]
     public float speedAfterFast;
     [Range(0f, 5f)]

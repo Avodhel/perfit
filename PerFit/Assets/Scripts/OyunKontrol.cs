@@ -6,38 +6,50 @@ using UnityEngine.UI;
 
 public class OyunKontrol : MonoBehaviour {
 
+    [Header("Game Speed")]
     [Range(1f, 10f)]
     public float oyunHizi;
+
+    [Header("Reset Scores")]
+    public bool resetScoresControl;
+
+    [Header("Panels")]
     public GameObject oyunBittiPanel;
     public GameObject usernameInputPanel;
+
+    [Header("Buttons")]
     public GameObject buttonsForMobile;
     public GameObject buttonsForPc;
+
+    [Header("Texts")]
     public TMP_Text scoreText;
     public TMP_Text bestScoreText;
     public TMP_Text heightText;
     public TMP_Text bestHeightText;
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
-    public bool resetScoresControl;
+
+    [Header("Input Fields")]
+    public InputField usernameInput;
+
     [HideInInspector]
     public float score = 0f;
 
     GameObject panel;
     Vector3 panelBoyut;
+
 #if UNITY_ANDROID
     ReklamKontrol reklamKontrol;
 #endif
+
     bool restartKontrol = false;
+    bool assignNewBestScoreControl = false;
     float yukseklik;
     string yukseklikStr;
+    string _username;
     int newBestCountForHeight = 0;
     int newBestCountForScore = 0;
-    bool assignNewBestScoreControl = false;
     int oyunBittiSayac;
-
-    public InputField usernameInput;
-
-    string _username;
     int _bestScore;
 
     void Awake()
@@ -145,9 +157,9 @@ public class OyunKontrol : MonoBehaviour {
             long longScore = long.Parse(scoreString.Replace(".", ""));
             GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
 #elif UNITY_WEBGL
-            usernameInputPanel.SetActive(true);
+            //usernameInputPanel.SetActive(true);
             //usernameInput.onEndEdit.AddListener(setUsername);
-            _bestScore = Random.Range(0, 100);
+            //_bestScore = Random.Range(0, 100);
             //if (username != "")
             //{
             //addBestScoreToLeaderboard(username, Random.Range(0, 100));
@@ -166,12 +178,12 @@ public class OyunKontrol : MonoBehaviour {
     //    Debug.Log(username);
     //}
 
-    public void addBestScoreToLeaderboard()
-    {
-        _username = usernameInput.text;
-        LeaderBoard.AddNewHighscore(_username, _bestScore);
-        usernameInputPanel.SetActive(false);
-    }
+    //public void addBestScoreToLeaderboard()
+    //{
+    //    _username = usernameInput.text;
+    //    LeaderBoard.AddNewHighscore(_username, _bestScore);
+    //    usernameInputPanel.SetActive(false);
+    //}
 
     IEnumerator showNewBest(int height1Orscore2)
     {
