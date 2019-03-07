@@ -20,6 +20,9 @@ public class ChanceKontrol : MonoBehaviour {
     public Text chanceText;
     public Text brokenAndChanceText;
 
+    [Header("Chance Control On Off Control")]
+    public bool chanceControlOnOffControl = false;
+
     [HideInInspector]
     public int chanceCounter;
 
@@ -114,18 +117,22 @@ public class ChanceKontrol : MonoBehaviour {
 
     public IEnumerator chanceControlFunc()
     {
-        if (chanceCounter == 0) // hiç chance kalmadıysa
+        Debug.Log(chanceControlOnOffControl);
+        if (!chanceControlOnOffControl) // squareRain
         {
-            oyunKontrol.oyunBitti(true);
-        }
-        else
-        {
-            oyunKontrol.oyunHizi = 0.5f;
-            chanceIncOrRed("red");
-            brokenChanceFunc(true);
-            yield return new WaitForSeconds(exitTimeForBCPanel);
-            brokenChanceFunc(false);
-            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
+            if (chanceCounter == 0) // hiç chance kalmadıysa
+            {
+                oyunKontrol.oyunBitti(true);
+            }
+            else
+            {
+                oyunKontrol.oyunHizi = 0.5f;
+                chanceIncOrRed("red");
+                brokenChanceFunc(true);
+                yield return new WaitForSeconds(exitTimeForBCPanel);
+                brokenChanceFunc(false);
+                oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
+            }
         }
     }
 }

@@ -128,5 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   donmeHizi: 0.15
   minPanelScale: 0.87
-  maxPanelScale: 0.97
+  maxPanelScale: 0.95
   destroyingTimeForObject: 3

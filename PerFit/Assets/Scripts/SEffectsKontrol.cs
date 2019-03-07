@@ -7,7 +7,8 @@ public class SEffectsKontrol : MonoBehaviour {
     Image effectAlert;
     OyunKontrol oyunKontrol;
     ChanceKontrol chanceKontrol;
-    Sprite fast, slow, reverse, lottery;
+    SpawnKontrol spawnKontrol;
+    Sprite fast, slow, reverse, lottery, squareRain;
     Sprite[] sprites;
     GameObject Panel;
     Text increaseScoreText;
@@ -22,6 +23,8 @@ public class SEffectsKontrol : MonoBehaviour {
     public float slowEffectTime;
     [Range(0f, 30f)]
     public float reverseEffectTime;
+    [Range(0f, 30f)]
+    public float squareRainEffectTime;
 
     [Header("Speed after Effects")]
     [Range(0f, 5f)]
@@ -37,12 +40,13 @@ public class SEffectsKontrol : MonoBehaviour {
 
     void findObjects()
     {
-        effectAlert = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
-        Panel = GameObject.FindGameObjectWithTag("panelTag");
+        effectAlert       = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
+        oyunKontrol       = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        Panel             = GameObject.FindGameObjectWithTag("panelTag");
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
-        reduceScoreText = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
-        chanceKontrol = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
+        reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
+        chanceKontrol     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
+        spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
     }
 
     void findSprites()
@@ -66,6 +70,10 @@ public class SEffectsKontrol : MonoBehaviour {
             else if (sprites[i].name == "lottery")
             {
                 lottery = sprites[i];
+            }
+            else if (sprites[i].name == "squareRain")
+            {
+                squareRain = sprites[i];
             }
         }
     }
@@ -104,6 +112,26 @@ public class SEffectsKontrol : MonoBehaviour {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = lottery;
             StartCoroutine(lotteryStart());
+            effectAlert.enabled = false;
+        }
+        else if (whichEffect == "squareRain(Clone)")
+        {
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = squareRain;
+
+            spawnKontrol.spawnSuresi = 3;
+            spawnKontrol.minSekildeBirOzelSekil = 0;
+            spawnKontrol.maxSekildeBirOzelSekil = 0;
+            spawnKontrol.minSekildeBirLottery = 0;
+            spawnKontrol.maxSekildeBirLottery = 0;
+            yield return new WaitForSeconds(squareRainEffectTime);
+            spawnKontrol.spawnSuresi = 7;
+            spawnKontrol.minSekildeBirOzelSekil = 3;
+            spawnKontrol.maxSekildeBirOzelSekil = 7;
+            spawnKontrol.minSekildeBirLottery = 6;
+            spawnKontrol.maxSekildeBirLottery = 18;
+            spawnKontrol.squareRainSpawnKontrol = false;
+
             effectAlert.enabled = false;
         }
     }

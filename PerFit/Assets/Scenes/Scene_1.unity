@@ -681,6 +681,7 @@ MonoBehaviour:
   exitBCPanelSlider: {fileID: 1004931163}
   chanceText: {fileID: 305034790}
   brokenAndChanceText: {fileID: 1127711401}
+  chanceControlOnOffControl: 0
   chanceCounter: 0
 --- !u!224 &315111924
 RectTransform:
@@ -2230,15 +2231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
   ozelSekiller:
+  - {fileID: 1889621406255730, guid: c54e98c962290964cabce6c0fd2afce4, type: 2}
   - {fileID: 1739709742197360, guid: a16f9d861c7c3e048b6152d9b29e22ff, type: 2}
-  - {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871, type: 2}
-  - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
   lottery: {fileID: 1012338444592888, guid: dae7555848a8eea4ca85255895dc329c, type: 2}
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 7
   minSekildeBirLottery: 6
   maxSekildeBirLottery: 18
+  squareRainSpawnKontrol: 0
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,8 +2563,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fastEffectTime: 20
-  slowEffectTime: 15
+  slowEffectTime: 14
   reverseEffectTime: 13
+  squareRainEffectTime: 12
   speedAfterFast: 2.8
   speedAfterSlow: 1
 --- !u!4 &1559437570

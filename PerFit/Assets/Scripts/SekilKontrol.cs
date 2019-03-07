@@ -7,11 +7,11 @@ public class SekilKontrol : MonoBehaviour {
     [Header("Speed")]
     [Range(0f, 1f)]
     public float donmeHizi;
-    [Header("Panel Scale")]
+    [Header("Square Scale")]
     [Range(0f, 1f)]
-    public float minPanelScale;
+    public float minSquareScale;
     [Range(0f, 1f)]
-    public float maxPanelScale;
+    public float maxSquareScale;
     [Header("Destroying Time")]
     public float destroyingTimeForObject;
 
@@ -58,7 +58,7 @@ public class SekilKontrol : MonoBehaviour {
 
     public void sekilBoyutAyarla()
     {
-        float sekilBoyut = Random.Range(minPanelScale, maxPanelScale);
+        float sekilBoyut = Random.Range(minSquareScale, maxSquareScale);
         //Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
         gameObject.transform.localScale = new Vector3(sekilBoyut, gameObject.transform.localScale.y, sekilBoyut); 
     }

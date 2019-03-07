@@ -16,13 +16,13 @@ public class SpawnKontrol : MonoBehaviour {
     public int spawnSuresi;
 
     [Header("Frequency for Special Squares")]
-    [Range(1, 10)]
+    [Range(0, 10)]
     public int minSekildeBirOzelSekil;
-    [Range(1, 10)]
+    [Range(0, 10)]
     public int maxSekildeBirOzelSekil;
-    [Range(1, 20)]
+    [Range(0, 20)]
     public int minSekildeBirLottery;
-    [Range(1, 20)]
+    [Range(0, 20)]
     public int maxSekildeBirLottery;
 
     int kacSekildeBirOzelSekil;
@@ -31,6 +31,9 @@ public class SpawnKontrol : MonoBehaviour {
     int countForLottery = 0;
     bool squareOlustuKontrol = false;
     bool renkDegistiKontrol = false;
+
+    [HideInInspector]
+    public bool squareRainSpawnKontrol = false;
 
     private float cycleSeconds = 500f;
 
@@ -49,10 +52,13 @@ public class SpawnKontrol : MonoBehaviour {
     {
         while (true)
         {
-            sekilCount += 1;
-            countForLottery += 1;
+            if (!squareRainSpawnKontrol)
+            {
+                sekilCount += 1;
+                countForLottery += 1;
+            }
 
-            if (countForLottery == kacSekildeBirLottery)
+            if (countForLottery == kacSekildeBirLottery & !squareRainSpawnKontrol)
             {
                 Instantiate(lottery,
                             transform.position,
@@ -67,7 +73,7 @@ public class SpawnKontrol : MonoBehaviour {
                     kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
                 }
             }
-            else if (sekilCount == kacSekildeBirOzelSekil)
+            else if (sekilCount == kacSekildeBirOzelSekil & !squareRainSpawnKontrol)
             {
                 ozelSekil = ozelSekiller[Random.Range(0, ozelSekiller.Length)];
                 Instantiate(ozelSekil,
@@ -76,8 +82,17 @@ public class SpawnKontrol : MonoBehaviour {
 
                 sekilCount = 0;
                 kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
+
+                if (ozelSekil.name == "squareRain")
+                {
+                    //Debug.Log("squareRain spawnlandı");
+                    squareRainSpawnKontrol = true;
+
+                    //countForLottery = 0;
+                }
+
             }
-            else if(sekilCount < kacSekildeBirOzelSekil & countForLottery < kacSekildeBirLottery)
+            else if (sekilCount < kacSekildeBirOzelSekil & countForLottery < kacSekildeBirLottery)
             {
                 Instantiate(sekil,
                             transform.position,
