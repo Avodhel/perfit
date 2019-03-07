@@ -2231,8 +2231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
   ozelSekiller:
-  - {fileID: 1889621406255730, guid: c54e98c962290964cabce6c0fd2afce4, type: 2}
   - {fileID: 1739709742197360, guid: a16f9d861c7c3e048b6152d9b29e22ff, type: 2}
+  - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
+  - {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871, type: 2}
+  - {fileID: 1889621406255730, guid: c54e98c962290964cabce6c0fd2afce4, type: 2}
   lottery: {fileID: 1012338444592888, guid: dae7555848a8eea4ca85255895dc329c, type: 2}
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3

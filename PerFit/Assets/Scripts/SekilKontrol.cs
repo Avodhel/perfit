@@ -23,6 +23,7 @@ public class SekilKontrol : MonoBehaviour {
     GameObject cutPoint;
     GameObject fitPoint;
     OyunKontrol oyunKontrol;
+    SpawnKontrol spawnKontrol;
 
     public void Start()
     {
@@ -39,10 +40,11 @@ public class SekilKontrol : MonoBehaviour {
 
     public virtual void objeBul() //specialSkontrol'da override yapabilmemiz icin "virtual" 
     {
-        Panel       = GameObject.FindGameObjectWithTag("panelTag");
-        cutPoint    = GameObject.FindGameObjectWithTag("cutPointTag");
-        fitPoint    = GameObject.FindGameObjectWithTag("fitPointTag");
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        Panel        = GameObject.FindGameObjectWithTag("panelTag");
+        cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
+        fitPoint     = GameObject.FindGameObjectWithTag("fitPointTag");
+        oyunKontrol  = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
+        spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>(); 
     }
 
     public void sekilDonmeYonu()
@@ -60,7 +62,13 @@ public class SekilKontrol : MonoBehaviour {
     {
         float sekilBoyut = Random.Range(minSquareScale, maxSquareScale);
         //Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
-        gameObject.transform.localScale = new Vector3(sekilBoyut, gameObject.transform.localScale.y, sekilBoyut); 
+        gameObject.transform.localScale = new Vector3(sekilBoyut, gameObject.transform.localScale.y, sekilBoyut);
+
+        if (spawnKontrol.squareRainSpawnKontrol == true & gameObject.name == "square(Clone)")
+        {
+            float shapeScaleAfterSRain = Random.Range(0.8f, 0.85f);
+            gameObject.transform.localScale = new Vector3(shapeScaleAfterSRain, gameObject.transform.localScale.y, shapeScaleAfterSRain);
+        }
     }
 
     public void sekilDondur()

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
+    [Header("Square")]
     public GameObject sekil;
+    [Header("Special Squares")]
     public GameObject[] ozelSekiller;
+    [Header("Lottery Square")]
     public GameObject lottery;
 
     GameObject ozelSekil;
