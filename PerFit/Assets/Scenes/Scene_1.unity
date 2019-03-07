@@ -2231,6 +2231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sekil: {fileID: 1356349892201912, guid: 858139cf72262b24bb8d63059c2f4a91, type: 2}
   ozelSekiller:
+  - {fileID: 1080689466250244, guid: ace6f393740aa024f990c94997c7e869, type: 2}
   - {fileID: 1739709742197360, guid: a16f9d861c7c3e048b6152d9b29e22ff, type: 2}
   - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
   - {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871, type: 2}
@@ -2568,6 +2569,7 @@ MonoBehaviour:
   slowEffectTime: 14
   reverseEffectTime: 13
   squareRainEffectTime: 12
+  expandEffectTime: 15
   speedAfterFast: 2.8
   speedAfterSlow: 1
 --- !u!4 &1559437570

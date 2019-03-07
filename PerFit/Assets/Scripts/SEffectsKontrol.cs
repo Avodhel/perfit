@@ -8,7 +8,7 @@ public class SEffectsKontrol : MonoBehaviour {
     OyunKontrol oyunKontrol;
     ChanceKontrol chanceKontrol;
     SpawnKontrol spawnKontrol;
-    Sprite fast, slow, reverse, lottery, squareRain;
+    Sprite fast, slow, reverse, lottery, squareRain, expand;
     Sprite[] sprites;
     GameObject Panel;
     Text increaseScoreText;
@@ -25,6 +25,8 @@ public class SEffectsKontrol : MonoBehaviour {
     public float reverseEffectTime;
     [Range(0f, 30f)]
     public float squareRainEffectTime;
+    [Range(0f, 30f)]
+    public float expandEffectTime;
 
     [Header("Speed after Effects")]
     [Range(0f, 5f)]
@@ -74,6 +76,10 @@ public class SEffectsKontrol : MonoBehaviour {
             else if (sprites[i].name == "squareRain")
             {
                 squareRain = sprites[i];
+            }
+            else if (sprites[i].name == "expand")
+            {
+                expand = sprites[i];
             }
         }
     }
@@ -131,6 +137,17 @@ public class SEffectsKontrol : MonoBehaviour {
             spawnKontrol.minSekildeBirLottery = 6;
             spawnKontrol.maxSekildeBirLottery = 18;
             spawnKontrol.squareRainSpawnKontrol = false;
+
+            effectAlert.enabled = false;
+        }
+        else if (whichEffect == "expandSquare(Clone)")
+        {
+            effectAlert.enabled = true;
+            effectAlert.overrideSprite = expand;
+
+            Panel.transform.localScale = new Vector3(1.85f, Panel.transform.localScale.y, 1.85f);
+            yield return new WaitForSeconds(expandEffectTime);
+            Panel.transform.localScale = new Vector3(1.7f, Panel.transform.localScale.y, 1.7f);
 
             effectAlert.enabled = false;
         }
