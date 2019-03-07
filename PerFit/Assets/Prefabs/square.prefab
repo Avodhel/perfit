@@ -128,5 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   donmeHizi: 0.15
   minSquareScale: 0.87
-  maxSquareScale: 0.95
+  maxSquareScale: 0.94
   destroyingTimeForObject: 3
