@@ -770,7 +770,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114101411802091884, guid: b2c67b2f26795c242b9110fe397f754a,
+    - target: {fileID: 114296558679850250, guid: b2c67b2f26795c242b9110fe397f754a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -780,7 +780,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 832004054}
-    - target: {fileID: 114296558679850250, guid: b2c67b2f26795c242b9110fe397f754a,
+    - target: {fileID: 114101411802091884, guid: b2c67b2f26795c242b9110fe397f754a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -789,16 +789,6 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224760571970305936, guid: b2c67b2f26795c242b9110fe397f754a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 224967319462982180, guid: b2c67b2f26795c242b9110fe397f754a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c67b2f26795c242b9110fe397f754a, type: 2}
