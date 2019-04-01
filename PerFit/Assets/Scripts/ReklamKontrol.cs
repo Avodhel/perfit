@@ -10,7 +10,7 @@ public class ReklamKontrol : MonoBehaviour
     {
         /*1.asama (platform kodunun eklenmesi)*/
 #if UNITY_ANDROID
-        string appId = "ca-app-pub-6129193859685798~2682540255";
+        string appId = "";
 #elif UNITY_IPHONE
             string appId = "ca-app-pub-3940256099942544~1458002511";
 #else
@@ -22,7 +22,7 @@ public class ReklamKontrol : MonoBehaviour
 
         /*2.asama (geçiş reklamı kodunun eklenmesi)*/
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-6129193859685798/6973139057"; // reklam kimliği
+        string adUnitId = ""; // reklam kimliği
         //string adUnitId = "ca-app-pub-3940256099942544/1033173712"; //test reklam kimliği
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
