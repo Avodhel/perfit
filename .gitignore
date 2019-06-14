@@ -35,3 +35,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Some specific Files
+Assets/Scripts/ReklamKontrol.cs
+Assets/Scripts/GooglePlayKontrol.cs
