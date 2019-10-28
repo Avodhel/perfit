@@ -15,12 +15,12 @@ PerFit is a simple 3D game. There are squares and a panel, for the *Perfect Fit*
 
 - lottery square: after fit that, there are 3 different options. Your score may increase, reduce or game may give you an extra chance.
 
-# LINKS
+## LINKS
 
-[> Google Play link](https://play.google.com/store/apps/details?id=com.NordicebearGames.PerFit)
-[> Itch.io link](https://nordicebear.itch.io/perfit)
+- [> Google Play](https://play.google.com/store/apps/details?id=com.NordicebearGames.PerFit)
+- [> Itch.io](https://nordicebear.itch.io/perfit)
 
-# CREDITS
+## CREDITS
 
 - All of 3D objects created with Blender.
 - All of sounds created by differents artists from [FreeSound](https://freesound.org).
