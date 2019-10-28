@@ -90,7 +90,7 @@ public class OyunKontrol : MonoBehaviour {
     void yukseklikGoster()
     {
         panelBoyut = panel.transform.localScale;
-        yukseklik = panelBoyut.y;
+        yukseklik = Mathf.Round(panelBoyut.y * 100f) / 100f;
         yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
         for (int i = 0; i <= 5; i++)
         {
