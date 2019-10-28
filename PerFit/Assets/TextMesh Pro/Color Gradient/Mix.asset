@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
   m_Name: Mix
   m_EditorClassIdentifier: 
-  topLeft: {r: 0.8490566, g: 0.21226415, b: 0.7282054, a: 1}
-  topRight: {r: 0.39044145, g: 0.68811446, b: 0.7735849, a: 1}
-  bottomLeft: {r: 0.2991723, g: 0.764151, b: 0.34453604, a: 1}
-  bottomRight: {r: 0.8301887, g: 0.4918, b: 0.254539, a: 1}
+  topLeft: {r: 0, g: 0.60875654, b: 1, a: 1}
+  topRight: {r: 0.076087, g: 1, b: 0, a: 1}
+  bottomLeft: {r: 1, g: 0, b: 0.9654913, a: 1}
+  bottomRight: {r: 1, g: 0.6076496, b: 0, a: 1}

@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: squareMat
-  m_Shader: {fileID: 4800000, guid: 58c34f76cb52f394bb1b533bb0138ded, type: 3}
-  m_ShaderKeywords: _EMISSION _SPECULARHIGHLIGHTS_OFF
-  m_LightmapFlags: 1
+  m_Name: Outline
+  m_Shader: {fileID: 4800000, guid: de5d5c080039100468b1022e04759d4f, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -67,10 +67,12 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _Width: 0.02
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
