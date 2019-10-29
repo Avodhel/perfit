@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3579224, g: 0.8113208, b: 0.14159843, a: 1}
+  m_Color: {r: 0.3216374, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -413,9 +413,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d38ea5eff06a50848840298f93458567, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 24694051e5b1ffe42af02e0f319eec7b, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
@@ -920,9 +920,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d38ea5eff06a50848840298f93458567, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 24694051e5b1ffe42af02e0f319eec7b, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
@@ -2290,12 +2290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4bffae9c4627a47bacaec82734e9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ozelSekiller:
-  - {fileID: 1080689466250244, guid: ace6f393740aa024f990c94997c7e869, type: 2}
-  - {fileID: 1739709742197360, guid: a16f9d861c7c3e048b6152d9b29e22ff, type: 2}
-  - {fileID: 1624969688930248, guid: 81c5dc485a548f646b796e302cbb864c, type: 2}
-  - {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871, type: 2}
-  - {fileID: 1889621406255730, guid: c54e98c962290964cabce6c0fd2afce4, type: 2}
   spawnSuresi: 7
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 7
@@ -8414,10 +8408,6 @@ MonoBehaviour:
     amountToPool: 1
     shouldExpand: 1
   - objectToPool: {fileID: 1258074963309794, guid: 78d63595c20aaaa4c9729167a85cf871,
-      type: 2}
-    amountToPool: 1
-    shouldExpand: 1
-  - objectToPool: {fileID: 1889621406255730, guid: c54e98c962290964cabce6c0fd2afce4,
       type: 2}
     amountToPool: 1
     shouldExpand: 1
