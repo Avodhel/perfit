@@ -118,7 +118,8 @@ public class SekilKontrol : MonoBehaviour {
     {
         //Debug.Log(destroyingTimeForObject);
         yield return new WaitForSeconds(destroyingTimeForObject);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

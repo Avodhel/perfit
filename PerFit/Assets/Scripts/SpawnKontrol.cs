@@ -97,9 +97,13 @@ public class SpawnKontrol : MonoBehaviour {
             }
             else if (sekilCount < kacSekildeBirOzelSekil & countForLottery < kacSekildeBirLottery)
             {
-                Instantiate(sekil,
-                            transform.position,
-                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                //Instantiate(sekil,
+                //            transform.position,
+                //            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                GameObject square = SquarePooler.SharedInstance.GetPooledObject(0);
+                square.SetActive(true);
+                square.transform.position = transform.position;
+                square.transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z);
             }
 
             squares = GameObject.FindGameObjectsWithTag("squareTag");
