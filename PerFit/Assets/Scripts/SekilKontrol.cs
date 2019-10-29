@@ -6,7 +6,7 @@ public class SekilKontrol : MonoBehaviour {
 
     [Header("Speed")]
     [Range(0f, 1f)]
-    public float donmeHizi;
+    public float donmeHizi = 0.15f;
     [Header("Square Scale")]
     [Range(0f, 1f)]
     public float minSquareScale;
@@ -15,8 +15,10 @@ public class SekilKontrol : MonoBehaviour {
     [Header("Destroying Time")]
     public float destroyingTimeForObject;
 
+    [HideInInspector]
+    public bool sekliPaneleSabitleKontrol = false;
+
     float donmeYonu;
-    bool sekliPaneleSabitleKontrol = false;
     float rightOrLeft;
 
     GameObject Panel;
@@ -25,12 +27,17 @@ public class SekilKontrol : MonoBehaviour {
     OyunKontrol oyunKontrol;
     SpawnKontrol spawnKontrol;
 
-    public void Start()
+    public void OnEnable()
     {
         objeBul();
         sekilDonmeYonu();
         sekilBoyutAyarla();
     }
+
+    //public void Start()
+    //{
+    //    //objeBul();
+    //}
 
     public void Update()
     {
@@ -51,11 +58,6 @@ public class SekilKontrol : MonoBehaviour {
     {
         rightOrLeft = Random.value; //random.value 0 ile 1 arasında random deger secer
         donmeYonu = rightOrLeft <= 0.5f ? 1 : -1;
-
-        //if (rightOrLeft <= 0.5f) 
-        //    donmeYonu = 1; //sola donmesi icin
-        //else
-        //    donmeYonu = -1; // saga donmesi icin
     }
 
     public void sekilBoyutAyarla()
@@ -120,6 +122,8 @@ public class SekilKontrol : MonoBehaviour {
         yield return new WaitForSeconds(destroyingTimeForObject);
         //Destroy(gameObject);
         gameObject.SetActive(false);
+        sekliPaneleSabitleKontrol = false;
+        donmeHizi = 0.15f;
     }
 
 }

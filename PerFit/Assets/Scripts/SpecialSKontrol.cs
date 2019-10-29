@@ -5,18 +5,16 @@ class SpecialSKontrol : SekilKontrol
 
     SEffectsKontrol sEffectsKontrol;
 
-    private new void Start()
-    {
-        objeBul();
-        sekilDonmeYonu();
-        sekilBoyutAyarla();
-    }
+    //private new void Start()
+    //{
+    //    objeBul();
+    //}
 
-    private new void Update()
-    {
-        sekilDondur();
-        paneleSabitle();
-    }
+    //private new void Update()
+    //{
+    //    sekilDondur();
+    //    paneleSabitle();
+    //}
 
     public override void objeBul()
     {

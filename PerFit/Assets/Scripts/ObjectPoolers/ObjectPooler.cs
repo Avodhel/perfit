@@ -57,7 +57,8 @@ public class ObjectPooler : MonoBehaviour
 
             GameObject obj = (GameObject)Instantiate(itemsToPool[index].objectToPool);
             obj.SetActive(false);
-            obj.transform.parent = this.transform;
+            //obj.transform.parent = this.transform;
+            obj.transform.SetParent(this.transform);
             pooledObjectsList[index].Add(obj);
             return obj;
 
@@ -90,7 +91,8 @@ public class ObjectPooler : MonoBehaviour
         {
             GameObject obj = (GameObject)Instantiate(item.objectToPool);
             obj.SetActive(false);
-            obj.transform.parent = this.transform;
+            //obj.transform.parent = this.transform;
+            obj.transform.SetParent(this.transform);
             pooledObjects.Add(obj);
         }
         pooledObjectsList.Add(pooledObjects);

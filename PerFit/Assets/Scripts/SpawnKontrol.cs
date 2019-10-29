@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class SpawnKontrol : MonoBehaviour {
 
-    [Header("Square")]
-    public GameObject sekil;
+    //[Header("Square")]
+    //public GameObject sekil;
     [Header("Special Squares")]
     public GameObject[] ozelSekiller;
-    [Header("Lottery Square")]
-    public GameObject lottery;
+    //[Header("Lottery Square")]
+    //public GameObject lottery;
 
     GameObject ozelSekil;
-    GameObject square;
+    //GameObject square;
     GameObject[] squares;
 
     [Header("Spawn Time")]
@@ -61,11 +61,15 @@ public class SpawnKontrol : MonoBehaviour {
                 countForLottery += 1;
             }
 
-            if (countForLottery == kacSekildeBirLottery & !squareRainSpawnKontrol)
+            if (countForLottery == kacSekildeBirLottery & !squareRainSpawnKontrol) //spawn lottery
             {
-                Instantiate(lottery,
-                            transform.position,
-                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                //Instantiate(lottery,
+                //            transform.position,
+                //            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                GameObject lotterySquare = SquarePooler.SharedInstance.GetPooledObject(1);
+                lotterySquare.SetActive(true);
+                lotterySquare.transform.position = transform.position;
+                lotterySquare.transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z);
 
                 countForLottery = 0;
                 kacSekildeBirLottery = Random.Range(minSekildeBirLottery, maxSekildeBirLottery);
@@ -78,15 +82,19 @@ public class SpawnKontrol : MonoBehaviour {
             }
             else if (sekilCount == kacSekildeBirOzelSekil & !squareRainSpawnKontrol)
             {
-                ozelSekil = ozelSekiller[Random.Range(0, ozelSekiller.Length)];
-                Instantiate(ozelSekil,
-                            transform.position,
-                            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                //ozelSekil = ozelSekiller[Random.Range(0, ozelSekiller.Length)];
+                //Instantiate(ozelSekil,
+                //            transform.position,
+                //            Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z));
+                GameObject specialSquare = SpecialSquarePooler.SharedInstance.GetPooledObject(Random.Range(0, SpecialSquarePooler.SharedInstance.itemsToPool.Count));
+                specialSquare.SetActive(true);
+                specialSquare.transform.position = transform.position;
+                specialSquare.transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(-360f, 360f), transform.rotation.z);
 
                 sekilCount = 0;
                 kacSekildeBirOzelSekil = Random.Range(minSekildeBirOzelSekil, maxSekildeBirOzelSekil);
 
-                if (ozelSekil.name == "squareRain")
+                if (specialSquare.name == "squareRain")
                 {
                     //Debug.Log("squareRain spawnlandı");
                     squareRainSpawnKontrol = true;
