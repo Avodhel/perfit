@@ -8,7 +8,7 @@ public class OyunKontrol : MonoBehaviour {
 
     [Header("Game Speed")]
     [Range(1f, 10f)]
-    public float oyunHizi;
+    public float oyunHizi = 1.75f;
 
     [Header("Reset Scores")]
     public bool resetScoresControl;

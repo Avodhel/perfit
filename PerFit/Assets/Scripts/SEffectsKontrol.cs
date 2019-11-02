@@ -18,21 +18,21 @@ public class SEffectsKontrol : MonoBehaviour {
 
     [Header("Effects Time")]
     [Range(0f, 30f)]
-    public float fastEffectTime;
+    public float fastEffectTime = 20f;
     [Range(0f, 30f)]
-    public float slowEffectTime;
+    public float slowEffectTime = 14f;
     [Range(0f, 30f)]
-    public float reverseEffectTime;
+    public float reverseEffectTime = 13f;
     [Range(0f, 30f)]
-    public float squareRainEffectTime;
+    public float squareRainEffectTime = 12f;
     [Range(0f, 30f)]
-    public float expandEffectTime;
+    public float expandEffectTime = 15f;
 
     [Header("Speed after Effects")]
     [Range(0f, 5f)]
-    public float speedAfterFast;
+    public float speedAfterFast = 2.8f;
     [Range(0f, 5f)]
-    public float speedAfterSlow;
+    public float speedAfterSlow = 1f;
 
     void Start()
     {
@@ -120,26 +120,26 @@ public class SEffectsKontrol : MonoBehaviour {
             StartCoroutine(lotteryStart());
             effectAlert.enabled = false;
         }
-        else if (whichEffect == "squareRain(Clone)")
-        {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = squareRain;
+        //else if (whichEffect == "squareRain(Clone)")
+        //{
+        //    effectAlert.enabled = true;
+        //    effectAlert.overrideSprite = squareRain;
 
-            spawnKontrol.spawnSuresi = 3;
-            spawnKontrol.minSekildeBirOzelSekil = 0;
-            spawnKontrol.maxSekildeBirOzelSekil = 0;
-            spawnKontrol.minSekildeBirLottery = 0;
-            spawnKontrol.maxSekildeBirLottery = 0;
-            yield return new WaitForSeconds(squareRainEffectTime);
-            spawnKontrol.spawnSuresi = 7;
-            spawnKontrol.minSekildeBirOzelSekil = 3;
-            spawnKontrol.maxSekildeBirOzelSekil = 7;
-            spawnKontrol.minSekildeBirLottery = 6;
-            spawnKontrol.maxSekildeBirLottery = 18;
-            spawnKontrol.squareRainSpawnKontrol = false;
+        //    spawnKontrol.spawnSuresi = 3;
+        //    spawnKontrol.minSekildeBirOzelSekil = 0;
+        //    spawnKontrol.maxSekildeBirOzelSekil = 0;
+        //    spawnKontrol.minSekildeBirLottery = 0;
+        //    spawnKontrol.maxSekildeBirLottery = 0;
+        //    yield return new WaitForSeconds(squareRainEffectTime);
+        //    spawnKontrol.spawnSuresi = 7;
+        //    spawnKontrol.minSekildeBirOzelSekil = 3;
+        //    spawnKontrol.maxSekildeBirOzelSekil = 7;
+        //    spawnKontrol.minSekildeBirLottery = 6;
+        //    spawnKontrol.maxSekildeBirLottery = 18;
+        //    spawnKontrol.squareRainSpawnKontrol = false;
 
-            effectAlert.enabled = false;
-        }
+        //    effectAlert.enabled = false;
+        //}
         else if (whichEffect == "expandSquare(Clone)")
         {
             effectAlert.enabled = true;
