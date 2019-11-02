@@ -37,8 +37,8 @@ public class SpawnKontrol : MonoBehaviour {
 
     [HideInInspector]
     public bool squareRainSpawnKontrol = false;
-
-    private float cycleSeconds = 500f;
+    [HideInInspector]
+    public float cycleSeconds = 500f;
 
     void Awake()
     {

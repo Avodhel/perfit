@@ -2159,10 +2159,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1234846290}
+  - component: {fileID: 1234846291}
   - component: {fileID: 1234846289}
   - component: {fileID: 1234846288}
   - component: {fileID: 1234846287}
-  - component: {fileID: 1234846291}
   m_Layer: 0
   m_Name: Arkaplan
   m_TagString: arkaplanTag
@@ -2250,6 +2250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88bc36f0d4c6eb45a1e2858e7f12221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cycleSeconds: 500
+  colorRateR: 0
+  colorRateG: 0
+  colorRateB: 0
 --- !u!1 &1353233572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,6 +2300,7 @@ MonoBehaviour:
   minSekildeBirLottery: 6
   maxSekildeBirLottery: 18
   squareRainSpawnKontrol: 0
+  cycleSeconds: 500
 --- !u!1 &1435405824
 GameObject:
   m_ObjectHideFlags: 0

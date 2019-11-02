@@ -7,7 +7,8 @@ public class PanelKontrol : MonoBehaviour {
     [Range(1f, 250f)]
     public ParticleSystem panelParticle;
 
-    private float cycleSeconds = 500f;
+    [HideInInspector]
+    public float cycleSeconds = 500f;
 
     Material bottomPointMat;
     Material cutPointMat;
