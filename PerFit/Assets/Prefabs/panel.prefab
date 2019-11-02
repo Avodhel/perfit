@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4185253887054432}
+  - component: {fileID: 114568104160415986}
   - component: {fileID: 33984143442470648}
   - component: {fileID: 23215254262592404}
   - component: {fileID: 64708431188164730}
-  - component: {fileID: 114568104160415986}
   m_Layer: 0
   m_Name: panel
   m_TagString: panelTag
@@ -317,9 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be6bb9d7be2f6243a6e281aa125cfb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reverseActive: 0
   panelParticle: {fileID: 198723892626971264}
   panelHareketHizi: 50
+  reverseActive: 0
+  cycleSeconds: 500
 --- !u!198 &198723892626971264
 ParticleSystem:
   m_ObjectHideFlags: 1

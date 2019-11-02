@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SEffectsKontrol : MonoBehaviour {
 
     Image effectAlert;
-    ChanceKontrol chanceKontrol;
+    ChanceControl chanceKontrol;
     SpawnKontrol spawnKontrol;
     Sprite fast, slow, reverse, lottery, squareRain, expand;
     Sprite[] sprites;
@@ -45,7 +45,7 @@ public class SEffectsKontrol : MonoBehaviour {
         Panel             = GameObject.FindGameObjectWithTag("panelTag");
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
-        chanceKontrol     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceKontrol>();
+        chanceKontrol     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
         spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
     }
 
@@ -106,9 +106,9 @@ public class SEffectsKontrol : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = reverse;
-            Panel.GetComponent<PanelKontrol>().reverseActive = true;
+            Panel.GetComponent<PanelControl>().reverseActive = true;
             yield return new WaitForSeconds(reverseEffectTime);
-            Panel.GetComponent<PanelKontrol>().reverseActive = false;
+            Panel.GetComponent<PanelControl>().reverseActive = false;
             effectAlert.enabled = false;
         }
         else if (whichEffect == "lotterySquare(Clone)")

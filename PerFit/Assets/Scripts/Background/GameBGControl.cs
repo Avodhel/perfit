@@ -2,7 +2,7 @@
 
 public class GameBGControl : BackgroundControl {
 
-    private PanelKontrol panelKontrol;
+    private PanelControl panelKontrol;
     private SpawnKontrol spawnKontrol;
 
     private new void Start()
@@ -13,7 +13,7 @@ public class GameBGControl : BackgroundControl {
 
     private void findObjects()
     {
-        panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelKontrol>();
+        panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelControl>();
         spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
         assignCycleSeconds();
     }
@@ -32,7 +32,7 @@ public class GameBGControl : BackgroundControl {
 
     private void changeObjectColor()
     {
-        panelKontrol.panelRenkDegistir(colorRateR, colorRateG, colorRateB); //arkaplan ile birlikte panelin de rengini degistir
+        panelKontrol.panelChangeColor(colorRateR, colorRateG, colorRateB); //arkaplan ile birlikte panelin de rengini degistir
         spawnKontrol.sekilRenkDegistir(colorRateR, colorRateG, colorRateB); //arkaplan ile square'in de rengini degistir
     }
 }

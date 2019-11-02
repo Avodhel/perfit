@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChanceKontrol : MonoBehaviour {
+public class ChanceControl : MonoBehaviour {
 
     [Header("Chance for Start")]
     [Range(0, 10)]
