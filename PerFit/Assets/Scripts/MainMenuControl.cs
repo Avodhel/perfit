@@ -35,6 +35,11 @@ public class MainMenuControl : MonoBehaviour {
 #endif
     }
 
+    public void oyunuBaslat()
+    {
+        TransitionControl.transitionManager.fadeToNextScene();
+    }
+
     public void openCanvas(string whichCanvas)
     {
         if (whichCanvas == "tutorial")

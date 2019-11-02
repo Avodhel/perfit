@@ -54,8 +54,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4060505522288598}
-  - component: {fileID: 95357084953767288}
   - component: {fileID: 114730397619729132}
+  - component: {fileID: 95357084953767288}
   m_Layer: 0
   m_Name: SahneGecis
   m_TagString: Untagged

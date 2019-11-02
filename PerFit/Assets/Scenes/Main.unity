@@ -987,12 +987,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1593729117067556, guid: b2c67b2f26795c242b9110fe397f754a,
     type: 2}
   m_PrefabInternal: {fileID: 312244726}
---- !u!114 &426334759 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114730397619729132, guid: e13583d1b09071045bfb3f8bc9a1e2a5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1399556624}
-  m_Script: {fileID: 11500000, guid: 6aef8eb6ffc4e9d4eaae8a3e0ec174bb, type: 3}
 --- !u!1 &433237932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 426334759}
+      - m_Target: {fileID: 832004054}
         m_MethodName: oyunuBaslat
         m_Mode: 1
         m_Arguments:
@@ -1290,6 +1284,48 @@ MonoBehaviour:
   buttonsForPc: {fileID: 1387326065}
   tutorialPage1: {fileID: 379653504}
   tutorialPage2: {fileID: 2062443684}
+--- !u!1001 &862232550
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1063272716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 426334759}
+      - m_Target: {fileID: 832004054}
         m_MethodName: oyunuBaslat
         m_Mode: 1
         m_Arguments:
@@ -1842,53 +1878,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1399556624
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060505522288598, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114226912253148954, guid: e13583d1b09071045bfb3f8bc9a1e2a5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e13583d1b09071045bfb3f8bc9a1e2a5, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1470121595
 GameObject:
   m_ObjectHideFlags: 0
