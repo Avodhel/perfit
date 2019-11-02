@@ -8,7 +8,7 @@ public class GooglePlayControl : MonoBehaviour
 {
 #if UNITY_ANDROID
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);

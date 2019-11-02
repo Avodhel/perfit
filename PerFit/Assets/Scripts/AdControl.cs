@@ -6,7 +6,7 @@ public class AdControl : MonoBehaviour
 
     InterstitialAd interstitial;
 
-    void Start()
+    private void Start()
     {
         /*1.asama (platform kodunun eklenmesi)*/
 #if UNITY_ANDROID
@@ -48,7 +48,7 @@ public class AdControl : MonoBehaviour
     }
 
 #if UNITY_ANDROID
-    public void reklamiGoster()
+    public void showAd()
     {
         /*4.asama (test reklamlarının gösterilmesi)*/
         if (interstitial.IsLoaded())

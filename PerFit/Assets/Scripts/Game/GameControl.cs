@@ -36,7 +36,7 @@ public class GameControl : MonoBehaviour {
     private Vector3 panelScale;
 
 #if UNITY_ANDROID
-    AdControl reklamKontrol;
+    AdControl adControl;
 #endif
 
     private bool restartControl = false;
@@ -60,7 +60,7 @@ public class GameControl : MonoBehaviour {
         }
 
 #if UNITY_ANDROID
-        reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<AdControl>();
+        adControl = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<AdControl>();
 #endif
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
@@ -267,7 +267,7 @@ public class GameControl : MonoBehaviour {
         if (gameOverCounter == 5)
         {
 #if UNITY_ANDROID
-            reklamKontrol.reklamiGoster();
+            adControl.showAd();
 #endif
             PlayerPrefs.SetInt("oyunBittiSayac", 0);
         }
