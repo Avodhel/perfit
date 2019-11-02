@@ -2668,7 +2668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastEffectTime: 20
   slowEffectTime: 14
-  reverseEffectTime: 13
+  reverseEffectTime: 12
   squareRainEffectTime: 12
   expandEffectTime: 15
   speedAfterFast: 2.8

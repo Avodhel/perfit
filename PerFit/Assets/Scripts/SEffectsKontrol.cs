@@ -4,24 +4,13 @@ using UnityEngine.UI;
 
 public class SEffectsKontrol : MonoBehaviour {
 
-    Image effectAlert;
-    ChanceControl chanceKontrol;
-    SpawnKontrol spawnKontrol;
-    Sprite fast, slow, reverse, lottery, squareRain, expand;
-    Sprite[] sprites;
-    GameObject Panel;
-    Text increaseScoreText;
-    Text reduceScoreText;
-
-    int increase1OrReduce2OrChance3;
-
     [Header("Effects Time")]
     [Range(0f, 30f)]
     public float fastEffectTime = 20f;
     [Range(0f, 30f)]
     public float slowEffectTime = 14f;
     [Range(0f, 30f)]
-    public float reverseEffectTime = 13f;
+    public float reverseEffectTime = 12f;
     [Range(0f, 30f)]
     public float squareRainEffectTime = 12f;
     [Range(0f, 30f)]
@@ -33,13 +22,25 @@ public class SEffectsKontrol : MonoBehaviour {
     [Range(0f, 5f)]
     public float speedAfterSlow = 1f;
 
-    void Start()
+    private Image effectAlert;
+    private ChanceControl chanceKontrol;
+    private SpawnKontrol spawnKontrol;
+    private Sprite fast, slow, reverse, lottery, squareRain, expand;
+    private Sprite[] sprites;
+    private GameObject Panel;
+    private Text increaseScoreText;
+    private Text reduceScoreText;
+
+    private enum LotteryState { Increase, Reduce, ExtraChance}
+    private LotteryState lotteryResult;
+
+    private void Start()
     {
         findObjects();
         findSprites();
     }
 
-    void findObjects()
+    private void findObjects()
     {
         effectAlert       = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
         Panel             = GameObject.FindGameObjectWithTag("panelTag");
@@ -49,7 +50,7 @@ public class SEffectsKontrol : MonoBehaviour {
         spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
     }
 
-    void findSprites()
+    private void findSprites()
     {
         sprites = Resources.LoadAll<Sprite>("Textures"); //textures içindeki bütün spriteları bul
 
@@ -151,30 +152,26 @@ public class SEffectsKontrol : MonoBehaviour {
         }
     }
 
-    IEnumerator lotteryStart()
+    private IEnumerator lotteryStart()
     {
-        float lotteryRandomPoint = Random.value;
-        //Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
+        float lotteryPossibility = Random.value; //between 0 and 1
         float randomLotteryPoint = Random.Range(0f, GameControl.gameManager.score * 0.25f);
         float lotteryPoint = Mathf.Round(randomLotteryPoint * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
-        //Debug.Log("inc or reduce score: " + incOrReduceScore);
-        //float scoreBeforeLottery = GameControl.gameManager.score;
 
-        if (lotteryRandomPoint >= 0 & lotteryRandomPoint <= 0.45f)
+        if (lotteryPossibility >= 0 & lotteryPossibility <= 0.45f)
         {
-            increase1OrReduce2OrChance3 = 1;
+            lotteryResult = LotteryState.Increase;
         }
-        else if (lotteryRandomPoint > 0.45f & lotteryRandomPoint <= 0.9f)
+        else if (lotteryPossibility > 0.45f & lotteryPossibility <= 0.9f)
         {
-            increase1OrReduce2OrChance3 = 2;
+            lotteryResult = LotteryState.Reduce;
         }
-        else if (lotteryRandomPoint > 0.9f & lotteryRandomPoint <= 1f)
+        else if (lotteryPossibility > 0.9f & lotteryPossibility <= 1f)
         {
-            increase1OrReduce2OrChance3 = 3;
+            lotteryResult = LotteryState.ExtraChance;
         }
-        //Debug.Log("<color=blue>inc or red or cha</color> " + increase1OrReduce2OrChance3);
 
-        if (increase1OrReduce2OrChance3 == 1) //increase
+        if (lotteryResult == LotteryState.Increase) //increase
         {
             increaseScoreText.text = lotteryPoint.ToString();
             increaseScoreText.enabled = true;
@@ -182,7 +179,7 @@ public class SEffectsKontrol : MonoBehaviour {
             GameControl.gameManager.assignScore(lotteryPoint);
             //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
-        else if (increase1OrReduce2OrChance3 == 2) //reduce
+        else if (lotteryResult == LotteryState.Reduce) //reduce
         {
             reduceScoreText.text = lotteryPoint.ToString();
             reduceScoreText.enabled = true;
@@ -190,28 +187,28 @@ public class SEffectsKontrol : MonoBehaviour {
             GameControl.gameManager.assignScore(-lotteryPoint);
             //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
-        else if (increase1OrReduce2OrChance3 == 3) //chance
+        else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
             GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
             chanceKontrol.chanceIncOrRed("inc");
             chanceKontrol.brokenChanceFunc(true);
         }
 
-        yield return new WaitForSeconds(4f);
-        lotteryFinish(increase1OrReduce2OrChance3);
+        yield return new WaitForSeconds(6f);
+        lotteryFinish(lotteryResult);
     }
 
-    void lotteryFinish(int incOrReduceOrChance)
+    private void lotteryFinish(LotteryState lotteryResult)
     {
-        if (incOrReduceOrChance == 1) //increase
+        if (lotteryResult == LotteryState.Increase) //increase
         {
             increaseScoreText.enabled = false;
         }
-        else if (incOrReduceOrChance == 2) // reduce
+        else if (lotteryResult == LotteryState.Reduce) // reduce
         {
             reduceScoreText.enabled = false;
         }
-        else if (incOrReduceOrChance == 3)
+        else if (lotteryResult == LotteryState.ExtraChance)
         {
             chanceKontrol.brokenChanceFunc(false);
             GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
