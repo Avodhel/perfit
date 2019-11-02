@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 1559437570}
   - component: {fileID: 1559437569}
   m_Layer: 0
-  m_Name: SEffectsKontrol
+  m_Name: SpecialEffectsControl
   m_TagString: sEffectsKontrolTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

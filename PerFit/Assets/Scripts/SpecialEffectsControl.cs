@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SEffectsKontrol : MonoBehaviour {
+public class SpecialEffectsControl : MonoBehaviour {
 
     [Header("Effects Time")]
     [Range(0f, 30f)]
@@ -155,7 +155,7 @@ public class SEffectsKontrol : MonoBehaviour {
     private IEnumerator lotteryStart()
     {
         float lotteryPossibility = Random.value; //between 0 and 1
-        float randomLotteryPoint = Random.Range(0f, GameControl.gameManager.score * 0.25f);
+        float randomLotteryPoint = Random.Range(GameControl.gameManager.score * 0.10f, GameControl.gameManager.score * 0.50f);
         float lotteryPoint = Mathf.Round(randomLotteryPoint * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
 
         if (lotteryPossibility >= 0 & lotteryPossibility <= 0.45f)

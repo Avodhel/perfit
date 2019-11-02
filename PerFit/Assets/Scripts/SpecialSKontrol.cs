@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-class SpecialSKontrol : SekilKontrol
+class SpecialSKontrol : ShapeControl
 {
 
-    SEffectsKontrol sEffectsKontrol;
+    SpecialEffectsControl sEffectsKontrol;
 
     //private new void Start()
     //{
@@ -16,10 +16,10 @@ class SpecialSKontrol : SekilKontrol
     //    paneleSabitle();
     //}
 
-    public override void objeBul()
+    public override void findObjects()
     {
-        base.objeBul();
-        sEffectsKontrol = GameObject.FindGameObjectWithTag("sEffectsKontrolTag").GetComponent<SEffectsKontrol>();
+        base.findObjects();
+        sEffectsKontrol = GameObject.FindGameObjectWithTag("sEffectsKontrolTag").GetComponent<SpecialEffectsControl>();
     }
 
     protected override void OnTriggerEnter(Collider collision)
