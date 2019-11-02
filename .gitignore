@@ -37,5 +37,5 @@ sysinfo.txt
 *.unitypackage
 
 # Some specific Files
-Perfit/Assets/Scripts/AdControl.cs*
-Perfit/Assets/Scripts/GooglePlayControl.cs*
+PerFit/Assets/Scripts/AdControl.cs*
+PerFit/Assets/Scripts/GooglePlayControl.cs*
