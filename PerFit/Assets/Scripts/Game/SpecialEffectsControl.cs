@@ -23,8 +23,8 @@ public class SpecialEffectsControl : MonoBehaviour {
     public float speedAfterSlow = 1f;
 
     private Image effectAlert;
-    private ChanceControl chanceKontrol;
-    private SpawnControl spawnKontrol;
+    private ChanceControl chanceControl;
+    private SpawnControl spawnControl;
     private Sprite fast, slow, reverse, lottery, squareRain, expand;
     private Sprite[] sprites;
     private GameObject Panel;
@@ -46,8 +46,8 @@ public class SpecialEffectsControl : MonoBehaviour {
         Panel             = GameObject.FindGameObjectWithTag("panelTag");
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
-        chanceKontrol     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
-        spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
+        chanceControl     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
+        spawnControl      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
     }
 
     private void findSprites()
@@ -190,8 +190,8 @@ public class SpecialEffectsControl : MonoBehaviour {
         else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
             GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
-            chanceKontrol.chanceIncOrRed("inc");
-            chanceKontrol.brokenChanceFunc(true);
+            chanceControl.chanceIncOrRed("inc");
+            chanceControl.brokenChanceFunc(true);
         }
 
         yield return new WaitForSeconds(6f);
@@ -210,7 +210,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
         else if (lotteryResult == LotteryState.ExtraChance)
         {
-            chanceKontrol.brokenChanceFunc(false);
+            chanceControl.brokenChanceFunc(false);
             GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
         }
     }

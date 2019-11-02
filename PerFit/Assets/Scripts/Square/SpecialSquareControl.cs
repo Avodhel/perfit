@@ -1,20 +1,8 @@
 ﻿using UnityEngine;
 
-class SpecialSKontrol : ShapeControl
-{
+class SpecialSquareControl : SquareControl{
 
     SpecialEffectsControl sEffectsKontrol;
-
-    //private new void Start()
-    //{
-    //    objeBul();
-    //}
-
-    //private new void Update()
-    //{
-    //    sekilDondur();
-    //    paneleSabitle();
-    //}
 
     public override void findObjects()
     {

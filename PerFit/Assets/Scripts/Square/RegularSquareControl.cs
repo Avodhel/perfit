@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class SquareKontrol : ShapeControl {
+class RegularSquareControl : SquareControl{
 
     private new void OnTriggerEnter(Collider collision)
     {

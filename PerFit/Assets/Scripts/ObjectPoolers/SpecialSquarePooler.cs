@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SpecialSquarePooler : ObjectPooler {
+﻿public class SpecialSquarePooler : ObjectPooler {
 
     public static SpecialSquarePooler SharedInstance { get; private set; }
 

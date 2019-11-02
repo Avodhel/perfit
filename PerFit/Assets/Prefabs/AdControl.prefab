@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4485887636458752}
   - component: {fileID: 114667810037077356}
   m_Layer: 0
-  m_Name: ReklamKontrol
+  m_Name: AdControl
   m_TagString: reklamKontrolTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

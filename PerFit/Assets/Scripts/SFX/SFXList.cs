@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable] //diğer classlardan erişilebilmesi için
-public class SeslerListesi {
+public class SFXList {
 
 
     public string sesAdi;

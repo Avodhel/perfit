@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ShapeControl : MonoBehaviour {
+public class SquareControl : MonoBehaviour {
 
     [Header("Speed")]
     [Range(0f, 1f)]
@@ -94,7 +94,7 @@ public class ShapeControl : MonoBehaviour {
         if (other.name == "FitPoint")
         {
             panel.GetComponent<PanelControl>().panelParticlePlay(true);
-            FindObjectOfType<SesKontrol>().sesOynat("FitSound");
+            FindObjectOfType<SFXControl>().sesOynat("FitSound");
             rotateSpeed = 0f;
             GameControl.gameManager.assignHeight(); //increase panel scale
             GameControl.gameManager.assignScore(1f);

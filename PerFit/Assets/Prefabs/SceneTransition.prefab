@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114730397619729132}
   - component: {fileID: 95357084953767288}
   m_Layer: 0
-  m_Name: SahneGecis
+  m_Name: SceneTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

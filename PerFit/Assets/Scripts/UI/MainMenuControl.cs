@@ -79,7 +79,7 @@ public class MainMenuControl : MonoBehaviour {
 #if UNITY_ANDROID
     public void ShowLeaderboards()
     {
-        GooglePlayKontrol.ShowLeaderboardsUI();
+        GooglePlayControl.ShowLeaderboardsUI();
     }
 #endif
 }

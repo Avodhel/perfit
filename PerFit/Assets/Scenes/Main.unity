@@ -6909,21 +6909,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
         type: 2}
-      propertyPath: sesiAcSprite
+      propertyPath: soundMuteUnmuteButton
+      value: 
+      objectReference: {fileID: 2031472421}
+    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
+        type: 2}
+      propertyPath: soundUnmuteSprite
       value: 
       objectReference: {fileID: 21300006, guid: c1c81a223f005b94ba5645880bd801c9,
         type: 3}
     - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
         type: 2}
-      propertyPath: sesiKapaSprite
+      propertyPath: soundMuteSprite
       value: 
       objectReference: {fileID: 21300008, guid: c1c81a223f005b94ba5645880bd801c9,
         type: 3}
-    - target: {fileID: 114866131709186208, guid: 3e52c7542ba976f4baeca381153aa421,
-        type: 2}
-      propertyPath: sesiKapaAcButonu
-      value: 
-      objectReference: {fileID: 2031472421}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e52c7542ba976f4baeca381153aa421, type: 2}
   m_IsPrefabAsset: 0
@@ -7051,7 +7051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1889294639}
-        m_MethodName: sesleriKapatveAc
+        m_MethodName: soundMuteAndUnmute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

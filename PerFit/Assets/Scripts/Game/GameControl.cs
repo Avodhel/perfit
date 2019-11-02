@@ -36,7 +36,7 @@ public class GameControl : MonoBehaviour {
     private Vector3 panelScale;
 
 #if UNITY_ANDROID
-    ReklamKontrol reklamKontrol;
+    AdControl reklamKontrol;
 #endif
 
     private bool restartControl = false;
@@ -60,7 +60,7 @@ public class GameControl : MonoBehaviour {
         }
 
 #if UNITY_ANDROID
-        reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
+        reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<AdControl>();
 #endif
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
@@ -129,9 +129,9 @@ public class GameControl : MonoBehaviour {
             bestHeightText.text = "Best \nHeight " + "\n" + height.ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
-            string yukseklikString = string.Format("{0:0.0000}", yukseklik);
-            long longHeight = long.Parse(yukseklikString.Replace(".", ""));
-            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_heights, longHeight);
+            string heightStr = string.Format("{0:0.0000}", height);
+            long longHeight = long.Parse(heightStr.Replace(".", ""));
+            GooglePlayControl.AddScoreToLeaderboard(GPGSIds.leaderboard_best_heights, longHeight);
 #endif
         }
     }
@@ -166,7 +166,7 @@ public class GameControl : MonoBehaviour {
 #if UNITY_ANDROID
             string scoreString = string.Format("{0:0.0000}", score);
             long longScore = long.Parse(scoreString.Replace(".", ""));
-            GooglePlayKontrol.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
+            GooglePlayControl.AddScoreToLeaderboard(GPGSIds.leaderboard_best_scores, longScore);
 #endif
         }
     }
@@ -181,7 +181,7 @@ public class GameControl : MonoBehaviour {
             newBestCountForHeight == 1)
         {
             newBestHeight.enabled = true;
-            FindObjectOfType<SesKontrol>().sesOynat("NewBestSound");
+            FindObjectOfType<SFXControl>().sesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestHeight.enabled = false;
         }
@@ -190,7 +190,7 @@ public class GameControl : MonoBehaviour {
             newBestCountForScore == 1)
         {
             newBestScore.enabled = true;
-            FindObjectOfType<SesKontrol>().sesOynat("NewBestSound");
+            FindObjectOfType<SFXControl>().sesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestScore.enabled = false;
         }
@@ -276,7 +276,7 @@ public class GameControl : MonoBehaviour {
 #if UNITY_ANDROID
     public void ShowLeaderboards()
     {
-        GooglePlayKontrol.ShowLeaderboardsUI();
+        GooglePlayControl.ShowLeaderboardsUI();
     }
 #endif
     #endregion

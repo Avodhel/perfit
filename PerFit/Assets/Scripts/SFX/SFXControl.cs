@@ -2,16 +2,19 @@
 using System;
 using UnityEngine.UI;
 
-public class SesKontrol : MonoBehaviour {
+public class SFXControl : MonoBehaviour {
 
-    public GameObject sesiKapaAcButonu;
-    public Sprite sesiAcSprite;
-    public Sprite sesiKapaSprite;
-    public SeslerListesi[] sesler; //seslerlistesi classımıza erişiyoruz.
+    [Header("Mute Unmute Button")]
+    public GameObject soundMuteUnmuteButton;
+    public Sprite soundUnmuteSprite;
+    public Sprite soundMuteSprite;
 
-    void Awake() //start metoduna benzer ancak oyun başladığından değil başlamadan önce çalışır
+    [Header("SFX List")]
+    public SFXList[] sesler; //seslerlistesi classımıza erişiyoruz.
+
+    private void Awake() //start metoduna benzer ancak oyun başladığından değil başlamadan önce çalışır
     {
-        foreach (SeslerListesi s in sesler) //sesler listesindeki her bir ses(s) için
+        foreach (SFXList s in sesler) //sesler listesindeki her bir ses(s) için
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -22,14 +25,14 @@ public class SesKontrol : MonoBehaviour {
         }
     }
 
-    void Start()
+    private void Start()
     {
-        sesAcikMiKapaliMi();
+        soundMuteUnmuteCheck();
     }
 
     public void sesOynat(string sesAdi) //bu metot ile ismine göre seslerimizi istediğimiz yerde oynatacağız.
     {
-        SeslerListesi s = Array.Find(sesler, ses => ses.sesAdi == sesAdi);
+        SFXList s = Array.Find(sesler, ses => ses.sesAdi == sesAdi);
         if (s == null)
         {
             Debug.LogWarning(sesAdi + " adli ses dosyasi bulunamadi.");
@@ -38,32 +41,32 @@ public class SesKontrol : MonoBehaviour {
         s.source.Play();
     }
 
-    public void sesleriKapatveAc()
+    public void soundMuteAndUnmute()
     {
         if (PlayerPrefs.GetInt("sesAcikMiKapaliMi") == 0) //ses açıksa
         {
-            sesiKapaAcButonu.GetComponent<Image>().sprite = sesiKapaSprite;
+            soundMuteUnmuteButton.GetComponent<Image>().sprite = soundMuteSprite;
             AudioListener.volume = 0f; //sesi kapat
             PlayerPrefs.SetInt("sesAcikMiKapaliMi", 1);
         }
         else if (PlayerPrefs.GetInt("sesAcikMiKapaliMi") == 1) //ses kapalıysa
         {
-            sesiKapaAcButonu.GetComponent<Image>().sprite = sesiAcSprite;
+            soundMuteUnmuteButton.GetComponent<Image>().sprite = soundUnmuteSprite;
             AudioListener.volume = 1f; //sesi ac
             PlayerPrefs.SetInt("sesAcikMiKapaliMi", 0);
         }
     }
 
-    void sesAcikMiKapaliMi() //restart sonrası ses acik veya kapali sprite sorununu çözen fonksiyon
+    private void soundMuteUnmuteCheck() //restart sonrası ses acik veya kapali sprite sorununu çözen fonksiyon
     {
         if ((PlayerPrefs.GetInt("sesAcikMiKapaliMi")) == 0)
         {
-            sesiKapaAcButonu.GetComponent<Image>().sprite = sesiAcSprite;
+            soundMuteUnmuteButton.GetComponent<Image>().sprite = soundUnmuteSprite;
             AudioListener.volume = 1f; //sesi ac
         }
         else if ((PlayerPrefs.GetInt("sesAcikMiKapaliMi")) == 1)
         {
-            sesiKapaAcButonu.GetComponent<Image>().sprite = sesiKapaSprite;
+            soundMuteUnmuteButton.GetComponent<Image>().sprite = soundMuteSprite;
             AudioListener.volume = 0f; //sesi kapat
         }
     }

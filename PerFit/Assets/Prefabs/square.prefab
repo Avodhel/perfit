@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4407188583139002}
-  - component: {fileID: 114946220168483398}
+  - component: {fileID: 114765703281383610}
   - component: {fileID: 33852162541819684}
   - component: {fileID: 23261635415217636}
   - component: {fileID: 54453506991095466}
@@ -115,7 +115,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8e9d2246c0cf89c4ca9ff39eed5c4484, type: 3}
---- !u!114 &114946220168483398
+--- !u!114 &114765703281383610
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,6 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0.15
   minSquareScale: 0.87
-  maxSquareScale: 0.94
+  maxSquareScale: 0.93
   destroyingTimeForObject: 3
   fixSquareToPanelControl: 0
