@@ -2,19 +2,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
-public class OyunKontrol : MonoBehaviour {
+public class GameControl : MonoBehaviour {
 
     [Header("Game Speed")]
     [Range(1f, 10f)]
-    public float oyunHizi = 1.75f;
+    public float gameSpeedValue = 1.75f;
+
+    [Header("Game Objects")]
+    public GameObject panel;
 
     [Header("Reset Scores")]
     public bool resetScoresControl;
 
     [Header("Panels")]
-    public GameObject oyunBittiPanel;
+    public GameObject gameOverPanel;
 
     [Header("Buttons")]
     public GameObject buttonsForMobile;
@@ -31,53 +33,52 @@ public class OyunKontrol : MonoBehaviour {
     [HideInInspector]
     public float score = 0f;
 
-    GameObject panel;
-    Vector3 panelBoyut;
+    private Vector3 panelScale;
 
 #if UNITY_ANDROID
     ReklamKontrol reklamKontrol;
 #endif
 
-    bool restartKontrol = false;
-    bool assignNewBestScoreControl = false;
-    float yukseklik;
-    string yukseklikStr;
-    int newBestCountForHeight = 0;
-    int newBestCountForScore = 0;
-    int oyunBittiSayac;
+    private bool restartControl = false;
+    private bool assignNewBestScoreControl = false;
+    private float height;
+    //private string heightStr;
+    private int newBestCountForHeight = 0;
+    private int newBestCountForScore = 0;
+    private int gameOverCounter;
 
-    void Awake()
+    public static GameControl gameManager { get; private set; }
+
+    private void Awake()
     {
-        panel = GameObject.FindGameObjectWithTag("panelTag");
+        if (gameManager == null)
+        {
+            gameManager = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
 #if UNITY_ANDROID
         reklamKontrol = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<ReklamKontrol>();
 #endif
         //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
-        PlayerPrefs.SetFloat("oyunHizi", oyunHizi);
     }
 
-    void Start ()
+    private void Start ()
     {
-        Time.timeScale = 1f;
-        scoreText.text = "" + score;
-        bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
-        bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
-        newBestCountForHeight = 0;
-        //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
-        newBestCountForScore = 0;
-        //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForHeight);
+        resetGameValues();
         resetScores();
         //Debug.Log("<color=yellow>best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
 
-    void Update ()
+    private void Update ()
     {
-        oyunHiziAyarla();
-        yenidenBaslatPc();
-        scoreGoster();
-        yukseklikGoster();
+        restartForPC();
     }
 
+    #region Reset
     private void resetScores()
     {
         if (resetScoresControl)
@@ -87,32 +88,46 @@ public class OyunKontrol : MonoBehaviour {
         }
     }
 
-    void yukseklikGoster()
+    private void resetGameValues()
     {
-        panelBoyut = panel.transform.localScale;
-        yukseklik = Mathf.Round(panelBoyut.y * 100f) / 100f;
-        yukseklikStr = yukseklik.ToString(); //yukseklik bilgisini string'e çevir
-        for (int i = 0; i <= 5; i++)
-        {
-            if (yukseklikStr.Length < i) //stringin uzunluğu i'den küçükse hata verme, devam et
-            {
-                continue;
-            }
-            heightText.text = yukseklikStr.Substring(0, i); //substring ile i kadar basamağı göster
-        }
+        gameSpeed(gameSpeedValue);
 
-        eniyiyukseklikGoster();
+        scoreText.text = "" + score;
+        bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
+        bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
+
+        newBestCountForHeight = 0;
+        //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
+        newBestCountForScore = 0;
+        //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForHeight);
+    }
+    #endregion
+
+    public void gameSpeed(float gameSpeed)
+    {
+        Time.timeScale = gameSpeed;
     }
 
-    void eniyiyukseklikGoster()
+    #region Height Info
+    public void assignHeight()
     {
-        if (yukseklik > PlayerPrefs.GetFloat("BestHeight", 0.2f))
+        panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
+        panelScale = panel.transform.localScale;
+        height = panelScale.y;
+        heightText.text = roundValue(height).ToString();
+
+        showBestHeight();
+    }
+
+    private void showBestHeight()
+    {
+        if (height > PlayerPrefs.GetFloat("BestHeight", 0.2f))
         {
             newBestCountForHeight += 1;
             //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
             StartCoroutine(showNewBest(1));
-            PlayerPrefs.SetFloat("BestHeight", yukseklik);
-            bestHeightText.text = "Best \nHeight " + "\n" + yukseklik.ToString(); //en iyi yükseklik
+            PlayerPrefs.SetFloat("BestHeight", height);
+            bestHeightText.text = "Best \nHeight " + "\n" + height.ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
             string yukseklikString = string.Format("{0:0.0000}", yukseklik);
@@ -121,15 +136,18 @@ public class OyunKontrol : MonoBehaviour {
 #endif
         }
     }
+    #endregion
 
-    void scoreGoster()
+    #region Score Info
+    public void assignScore(float scoreValue)
     {
-        scoreText.text = "" + score;
+        score += scoreValue;
+        scoreText.text = "" + roundValue(score);
 
-        eniyiscoregoster();
+        showBestScore();
     }
 
-    void eniyiscoregoster()
+    private void showBestScore()
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
@@ -153,8 +171,10 @@ public class OyunKontrol : MonoBehaviour {
 #endif
         }
     }
+    #endregion
 
-    IEnumerator showNewBest(int height1Orscore2)
+    #region New Best
+    private IEnumerator showNewBest(int height1Orscore2)
     {
 
         if (height1Orscore2 == 1 & 
@@ -176,17 +196,34 @@ public class OyunKontrol : MonoBehaviour {
             newBestScore.enabled = false;
         }
     }
+    #endregion
 
-    private void oyunHiziAyarla()
+    #region Restart Game
+    public void restartForMobile()
     {
-        Time.timeScale = oyunHizi;
+        if (restartControl)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartControl = false;
+        }
     }
 
-    public void oyunBitti(bool oyunBittiKontrol)
+    private void restartForPC()
     {
-        if (oyunBittiKontrol)
+        if (restartControl & Input.GetKeyDown(KeyCode.R))
         {
-            oyunBittiPanel.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartControl = false;
+        }
+    }
+    #endregion
+
+    #region Game Over
+    public void gameOver(bool gameOverControl)
+    {
+        if (gameOverControl)
+        {
+            gameOverPanel.SetActive(true);
 
 #if UNITY_WEBGL
             buttonsForPc.SetActive(true);
@@ -199,40 +236,36 @@ public class OyunKontrol : MonoBehaviour {
 #endif
 
             assignNewBestScoreControl = true;
-            oyunHizi = 0f;
-            oyunBittiKontrol = false;
-            restartKontrol = true;
+            gameSpeed(0f);
+            gameOverControl = false;
+            restartControl = true;
 
-            reklamGoster();
+            showAd();
         }
     }
+    #endregion
 
-    public void yenidenBaslatMobile()
+    private float roundValue(float value)
     {
-        if (restartKontrol)
+        if (value < 0) //eğer reduce sonrası value 0'ın altına düşerse value olarak 0 gönder.
         {
-            SceneManager.LoadScene("Scene_1");
-            restartKontrol = false;
+            return 0;
         }
-    }
-
-    void yenidenBaslatPc()
-    {
-        if (restartKontrol & Input.GetKeyDown(KeyCode.R))
+        else
         {
-            SceneManager.LoadScene("Scene_1");
-            restartKontrol = false;
+            return (Mathf.Round(value * 100f) / 100f);
         }
     }
 
-    void reklamGoster()
+    #region Show Ad and LeaderBoard
+    private void showAd()
     {
-        oyunBittiSayac = PlayerPrefs.GetInt("oyunBittiSayac");
-        oyunBittiSayac++;
-        PlayerPrefs.SetInt("oyunBittiSayac", oyunBittiSayac);
-        Debug.Log(oyunBittiSayac);
+        gameOverCounter = PlayerPrefs.GetInt("oyunBittiSayac");
+        gameOverCounter++;
+        PlayerPrefs.SetInt("oyunBittiSayac", gameOverCounter);
+        //Debug.Log(gameOverCounter);
 
-        if (oyunBittiSayac == 5)
+        if (gameOverCounter == 5)
         {
 #if UNITY_ANDROID
             reklamKontrol.reklamiGoster();
@@ -247,4 +280,5 @@ public class OyunKontrol : MonoBehaviour {
         GooglePlayKontrol.ShowLeaderboardsUI();
     }
 #endif
+    #endregion
 }

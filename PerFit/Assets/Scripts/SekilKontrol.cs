@@ -24,7 +24,6 @@ public class SekilKontrol : MonoBehaviour {
     GameObject Panel;
     GameObject cutPoint;
     GameObject fitPoint;
-    OyunKontrol oyunKontrol;
     SpawnKontrol spawnKontrol;
 
     public void OnEnable()
@@ -33,11 +32,6 @@ public class SekilKontrol : MonoBehaviour {
         sekilDonmeYonu();
         sekilBoyutAyarla();
     }
-
-    //public void Start()
-    //{
-    //    //objeBul();
-    //}
 
     public void Update()
     {
@@ -50,7 +44,6 @@ public class SekilKontrol : MonoBehaviour {
         Panel        = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint     = GameObject.FindGameObjectWithTag("fitPointTag");
-        oyunKontrol  = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>(); 
     }
 
@@ -99,8 +92,9 @@ public class SekilKontrol : MonoBehaviour {
             Panel.GetComponent<PanelKontrol>().panelParticleOynat(true);
             FindObjectOfType<SesKontrol>().sesOynat("FitSound");
             donmeHizi = 0f;
-            Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
-            oyunKontrol.score += 1;
+            //Panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
+            GameControl.gameManager.assignHeight(); //increase panel scale
+            GameControl.gameManager.assignScore(1f);
             sekliPaneleSabitleKontrol = true;
         }
     }

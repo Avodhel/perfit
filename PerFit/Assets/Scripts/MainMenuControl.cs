@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class AnaMenuKontrol : MonoBehaviour {
+public class MainMenuControl : MonoBehaviour {
 
     [Header("Buttons")]
     public Button playButton;
@@ -11,7 +11,7 @@ public class AnaMenuKontrol : MonoBehaviour {
     public Text versionCode;
 
     [Header("Canvas")]
-    public Canvas anaMenuCanvas;
+    public Canvas mainMenuCanvas;
     public Canvas tutorialCanvas;
 
     [Header("Gameobjects")]
@@ -39,12 +39,12 @@ public class AnaMenuKontrol : MonoBehaviour {
     {
         if (whichCanvas == "tutorial")
         {
-            anaMenuCanvas.enabled = false;
+            mainMenuCanvas.enabled = false;
             tutorialCanvas.enabled = true;
         }
         else if (whichCanvas == "leaderboard")
         {
-            anaMenuCanvas.enabled = false;
+            mainMenuCanvas.enabled = false;
         }
     }
 
@@ -59,7 +59,7 @@ public class AnaMenuKontrol : MonoBehaviour {
         }
         else if (whichButton == "home")
         {
-            anaMenuCanvas.enabled = true;
+            mainMenuCanvas.enabled = true;
             tutorialCanvas.enabled = false;
         }
         else if (whichButton == "next")

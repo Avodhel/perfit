@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class SEffectsKontrol : MonoBehaviour {
 
     Image effectAlert;
-    OyunKontrol oyunKontrol;
     ChanceKontrol chanceKontrol;
     SpawnKontrol spawnKontrol;
     Sprite fast, slow, reverse, lottery, squareRain, expand;
@@ -43,7 +42,6 @@ public class SEffectsKontrol : MonoBehaviour {
     void findObjects()
     {
         effectAlert       = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
-        oyunKontrol       = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
         Panel             = GameObject.FindGameObjectWithTag("panelTag");
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
@@ -90,18 +88,18 @@ public class SEffectsKontrol : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = fast;
-            oyunKontrol.oyunHizi = speedAfterFast;
+            GameControl.gameManager.gameSpeed(speedAfterFast);
             yield return new WaitForSeconds(fastEffectTime);
-            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
+            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false;
         }
         else if (whichEffect == "slowSquare(Clone)")
         {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
-            oyunKontrol.oyunHizi = speedAfterSlow;
+            GameControl.gameManager.gameSpeed(speedAfterSlow);
             yield return new WaitForSeconds(slowEffectTime);
-            oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
+            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false; //effect alert image kapat
         }
         else if (whichEffect == "reverseSquare(Clone)")
@@ -157,10 +155,10 @@ public class SEffectsKontrol : MonoBehaviour {
     {
         float lotteryRandomPoint = Random.value;
         //Debug.Log("<color=black>Random Value:</color>" + lotteryRandomPoint);
-        float randomIncOrReduceScore = Random.Range(0.1f, 5f);
-        float incOrReduceScore = Mathf.Round(randomIncOrReduceScore * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
+        float randomLotteryPoint = Random.Range(0f, GameControl.gameManager.score * 0.25f);
+        float lotteryPoint = Mathf.Round(randomLotteryPoint * 100f) / 100f; //noktadan sonra sadece 2 basamak gözüksün
         //Debug.Log("inc or reduce score: " + incOrReduceScore);
-        float scoreAfterLottery = oyunKontrol.score;
+        //float scoreBeforeLottery = GameControl.gameManager.score;
 
         if (lotteryRandomPoint >= 0 & lotteryRandomPoint <= 0.45f)
         {
@@ -178,43 +176,29 @@ public class SEffectsKontrol : MonoBehaviour {
 
         if (increase1OrReduce2OrChance3 == 1) //increase
         {
-            increaseScoreText.text = incOrReduceScore.ToString();
+            increaseScoreText.text = lotteryPoint.ToString();
             increaseScoreText.enabled = true;
             //Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
-            scoreAfterLottery += incOrReduceScore;
-            oyunKontrol.score = fixScoreFunc(scoreAfterLottery);
+            GameControl.gameManager.assignScore(lotteryPoint);
             //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
         else if (increase1OrReduce2OrChance3 == 2) //reduce
         {
-            reduceScoreText.text = incOrReduceScore.ToString();
+            reduceScoreText.text = lotteryPoint.ToString();
             reduceScoreText.enabled = true;
             //Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
-            scoreAfterLottery -= incOrReduceScore;
-            oyunKontrol.score = fixScoreFunc(scoreAfterLottery);
+            GameControl.gameManager.assignScore(-lotteryPoint);
             //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
         else if (increase1OrReduce2OrChance3 == 3) //chance
         {
-            oyunKontrol.oyunHizi = 0.5f;
+            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
             chanceKontrol.chanceIncOrRed("inc");
             chanceKontrol.brokenChanceFunc(true);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         lotteryFinish(increase1OrReduce2OrChance3);
-    }
-
-    float fixScoreFunc(float scoreForFix)
-    {
-        if (scoreForFix < 0) //eğer reduce sonrası skor 0'ın altına düşerse skor olarak 0 gönder.
-        {
-            return 0;
-        }
-        else
-        {
-            return (Mathf.Round(scoreForFix * 100f) / 100f);
-        }
     }
 
     void lotteryFinish(int incOrReduceOrChance)
@@ -230,7 +214,7 @@ public class SEffectsKontrol : MonoBehaviour {
         else if (incOrReduceOrChance == 3)
         {
             chanceKontrol.brokenChanceFunc(false);
-            oyunKontrol.oyunHizi = 1.75f;
+            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
         }
     }
 }

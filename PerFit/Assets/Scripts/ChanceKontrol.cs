@@ -6,11 +6,11 @@ public class ChanceKontrol : MonoBehaviour {
 
     [Header("Chance for Start")]
     [Range(0, 10)]
-    public int startChance;
+    public int startChance = 2;
 
     [Header("Broken and Chance Panel")]
     [Range(0, 10)]
-    public float exitTimeForBCPanel;
+    public float exitTimeForBCPanel = 1.5f;
 
     public GameObject brokenAndChancePanel;
     public Image brokenAndChanceImage;
@@ -26,30 +26,27 @@ public class ChanceKontrol : MonoBehaviour {
     [HideInInspector]
     public int chanceCounter;
 
-    Sprite chance, brokenChance;
-    Sprite[] sprites;
-    OyunKontrol oyunKontrol;
+    private Sprite chance, brokenChance;
+    private Sprite[] sprites;
 
-    bool bcPanelisActive = false;
+    private bool bcPanelisActive = false;
 
-    void Start ()
+    private void Start ()
     {
         chanceCounter = startChance;
         chanceText.text = "x " + startChance;
         findSprites();
         exitBCPanelSlider.minValue = 0f;
         exitBCPanelSlider.maxValue = exitTimeForBCPanel;
-
-        oyunKontrol = GameObject.FindGameObjectWithTag("oyunKontrolTag").GetComponent<OyunKontrol>();
     }
 	
-	void Update ()
+	private void Update ()
     {
         chanceText.text = "x " + chanceCounter;
         countDownTimer();
     }
 
-    void findSprites()
+    private void findSprites()
     {
         sprites = Resources.LoadAll<Sprite>("Textures");
 
@@ -99,7 +96,7 @@ public class ChanceKontrol : MonoBehaviour {
         }
     }
 
-    public void countDownTimer()
+    private void countDownTimer()
     {
 
         if (bcPanelisActive)
@@ -117,21 +114,21 @@ public class ChanceKontrol : MonoBehaviour {
 
     public IEnumerator chanceControlFunc()
     {
-        Debug.Log(chanceControlOnOffControl);
+        //Debug.Log(chanceControlOnOffControl);
         if (!chanceControlOnOffControl) // squareRain
         {
             if (chanceCounter == 0) // hiç chance kalmadıysa
             {
-                oyunKontrol.oyunBitti(true);
+                GameControl.gameManager.gameOver(true);
             }
             else
             {
-                oyunKontrol.oyunHizi = 0.5f;
+                GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
                 chanceIncOrRed("red");
                 brokenChanceFunc(true);
                 yield return new WaitForSeconds(exitTimeForBCPanel);
                 brokenChanceFunc(false);
-                oyunKontrol.oyunHizi = PlayerPrefs.GetFloat("oyunHizi");
+                GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
             }
         }
     }

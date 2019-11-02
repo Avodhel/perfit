@@ -2,17 +2,6 @@
 
 class SquareKontrol : SekilKontrol {
 
-    //private new void Start()
-    //{
-    //    objeBul();
-    //}
-
-    //private new void Update()
-    //{
-    //    sekilDondur();
-    //    paneleSabitle();
-    //}
-
     private new void OnTriggerEnter(Collider collision)
     {
         base.OnTriggerEnter(collision);
