@@ -42,7 +42,6 @@ public class ChanceKontrol : MonoBehaviour {
 	
 	private void Update ()
     {
-        chanceText.text = "x " + chanceCounter;
         countDownTimer();
     }
 
@@ -79,6 +78,8 @@ public class ChanceKontrol : MonoBehaviour {
             brokenAndChanceImage.overrideSprite = brokenChance;
             exitBCPanelSlider.GetComponentInChildren<Image>().color = Color.red; //sliderdaki renk
         }
+
+        chanceText.text = "x " + chanceCounter;
     }
 
     public void brokenChanceFunc(bool brokenChanceActive)

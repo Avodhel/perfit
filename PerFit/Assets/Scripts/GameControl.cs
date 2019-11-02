@@ -42,7 +42,6 @@ public class GameControl : MonoBehaviour {
     private bool restartControl = false;
     private bool assignNewBestScoreControl = false;
     private float height;
-    //private string heightStr;
     private int newBestCountForHeight = 0;
     private int newBestCountForScore = 0;
     private int gameOverCounter;

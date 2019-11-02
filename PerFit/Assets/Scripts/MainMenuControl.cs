@@ -20,7 +20,7 @@ public class MainMenuControl : MonoBehaviour {
     public GameObject tutorialPage1;
     public GameObject tutorialPage2;
 
-    void Awake()
+    private void Awake()
     {
 //#if UNITY_EDITOR
         //buttonsForPc.SetActive(true);
