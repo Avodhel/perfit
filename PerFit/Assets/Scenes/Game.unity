@@ -2337,7 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4bffae9c4627a47bacaec82734e9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSuresi: 7
+  spawnSuresi: 6
   minSekildeBirOzelSekil: 3
   maxSekildeBirOzelSekil: 7
   minSekildeBirLottery: 6

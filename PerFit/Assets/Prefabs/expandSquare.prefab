@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224233394090542232}
+  - component: {fileID: 114294566736847748}
   - component: {fileID: 33611845867565542}
   - component: {fileID: 23978593098027538}
   - component: {fileID: 54060383753735726}
   - component: {fileID: 64522776974880844}
-  - component: {fileID: 114294566736847748}
   - component: {fileID: 222395137927391590}
   m_Layer: 0
   m_Name: expandSquare
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018a546e10c26e4bae03c073f1621d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.91
   maxSquareScale: 0.97
   destroyingTimeForObject: 50
+  fixSquareToPanelControl: 0
 --- !u!212 &212492828957407040
 SpriteRenderer:
   m_ObjectHideFlags: 1

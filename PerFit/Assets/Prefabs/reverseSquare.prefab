@@ -35,11 +35,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224721667436324742}
+  - component: {fileID: 114640965192274802}
   - component: {fileID: 33982347559299596}
   - component: {fileID: 23357462622870760}
   - component: {fileID: 54351171216505558}
   - component: {fileID: 64772650477108228}
-  - component: {fileID: 114640965192274802}
   - component: {fileID: 222733713088933444}
   m_Layer: 0
   m_Name: reverseSquare
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018a546e10c26e4bae03c073f1621d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.91
   maxSquareScale: 0.97
   destroyingTimeForObject: 50
+  fixSquareToPanelControl: 0
 --- !u!212 &212877014702987366
 SpriteRenderer:
   m_ObjectHideFlags: 1

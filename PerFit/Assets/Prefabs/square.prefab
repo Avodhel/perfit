@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4407188583139002}
+  - component: {fileID: 114946220168483398}
   - component: {fileID: 33852162541819684}
   - component: {fileID: 23261635415217636}
   - component: {fileID: 54453506991095466}
   - component: {fileID: 64108144062857902}
-  - component: {fileID: 114946220168483398}
   m_Layer: 0
   m_Name: square
   m_TagString: squareTag
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b81d802f3046447ad62f772886a626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.87
   maxSquareScale: 0.94
   destroyingTimeForObject: 3
+  fixSquareToPanelControl: 0

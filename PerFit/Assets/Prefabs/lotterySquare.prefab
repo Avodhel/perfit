@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224849566578911564}
+  - component: {fileID: 114385492148633902}
   - component: {fileID: 33450862913236068}
   - component: {fileID: 23907048075759110}
   - component: {fileID: 54904755516881176}
   - component: {fileID: 64011947926505606}
-  - component: {fileID: 114385492148633902}
   - component: {fileID: 222455938578717564}
   m_Layer: 0
   m_Name: lotterySquare
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018a546e10c26e4bae03c073f1621d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.95
   maxSquareScale: 1
   destroyingTimeForObject: 50
+  fixSquareToPanelControl: 0
 --- !u!212 &212487298144696378
 SpriteRenderer:
   m_ObjectHideFlags: 1

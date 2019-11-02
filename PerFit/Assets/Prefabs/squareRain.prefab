@@ -35,11 +35,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224025129891866086}
+  - component: {fileID: 114438454018856810}
   - component: {fileID: 33363658024218898}
   - component: {fileID: 23374690271378108}
   - component: {fileID: 54946184197253414}
   - component: {fileID: 64364740679412802}
-  - component: {fileID: 114438454018856810}
   - component: {fileID: 222927758113919778}
   m_Layer: 0
   m_Name: squareRain
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018a546e10c26e4bae03c073f1621d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.91
   maxSquareScale: 0.97
   destroyingTimeForObject: 50
+  fixSquareToPanelControl: 0
 --- !u!212 &212456340655106242
 SpriteRenderer:
   m_ObjectHideFlags: 1

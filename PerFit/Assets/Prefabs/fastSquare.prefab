@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224841201506362360}
+  - component: {fileID: 114385743883833716}
   - component: {fileID: 33554051694828270}
   - component: {fileID: 23639751931616976}
   - component: {fileID: 54911445739774126}
   - component: {fileID: 64606550073814154}
-  - component: {fileID: 114385743883833716}
   - component: {fileID: 222724270595496004}
   m_Layer: 0
   m_Name: fastSquare
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018a546e10c26e4bae03c073f1621d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  donmeHizi: 0.15
+  rotateSpeed: 0.15
   minSquareScale: 0.91
   maxSquareScale: 0.97
   destroyingTimeForObject: 50
+  fixSquareToPanelControl: 0
 --- !u!212 &212759484992100374
 SpriteRenderer:
   m_ObjectHideFlags: 1

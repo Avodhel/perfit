@@ -24,7 +24,7 @@ public class SpecialEffectsControl : MonoBehaviour {
 
     private Image effectAlert;
     private ChanceControl chanceKontrol;
-    private SpawnKontrol spawnKontrol;
+    private SpawnControl spawnKontrol;
     private Sprite fast, slow, reverse, lottery, squareRain, expand;
     private Sprite[] sprites;
     private GameObject Panel;
@@ -47,7 +47,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
         chanceKontrol     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
-        spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnKontrol>();
+        spawnKontrol      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
     }
 
     private void findSprites()
