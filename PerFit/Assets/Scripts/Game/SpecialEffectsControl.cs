@@ -178,7 +178,7 @@ public class SpecialEffectsControl : MonoBehaviour {
             increaseScoreText.text = lotteryPoint.ToString();
             increaseScoreText.enabled = true;
             //Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
-            GameControl.gameManager.assignScore(lotteryPoint);
+            GameControl.gameManager.assignScore("lottery", lotteryPoint);
             //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
         else if (lotteryResult == LotteryState.Reduce) //reduce
@@ -186,7 +186,7 @@ public class SpecialEffectsControl : MonoBehaviour {
             reduceScoreText.text = lotteryPoint.ToString();
             reduceScoreText.enabled = true;
             //Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
-            GameControl.gameManager.assignScore(-lotteryPoint);
+            GameControl.gameManager.assignScore("lottery", -lotteryPoint);
             //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
         else if (lotteryResult == LotteryState.ExtraChance) //chance

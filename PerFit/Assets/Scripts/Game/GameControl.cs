@@ -31,6 +31,8 @@ public class GameControl : MonoBehaviour {
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
     public Text gameSpeedText;
+    public Text comboTextLeft;
+    public Text comboTextRight;
 
     [HideInInspector]
     public float score = 0f;
@@ -39,12 +41,13 @@ public class GameControl : MonoBehaviour {
 
     private Vector3 panelScale;
 
+    private int comboCounter = 0;
+
 #if UNITY_ANDROID
     AdControl adControl;
 #endif
 
     private bool restartControl = false;
-    private bool assignNewBestScoreControl = false;
     private float height;
     private int newBestCountForHeight = 0;
     private int newBestCountForScore = 0;
@@ -66,7 +69,6 @@ public class GameControl : MonoBehaviour {
 #if UNITY_ANDROID
         adControl = GameObject.FindGameObjectWithTag("reklamKontrolTag").GetComponent<AdControl>();
 #endif
-        //Debug.Log("<color=gray>awake best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
 
     private void Start ()
@@ -96,9 +98,9 @@ public class GameControl : MonoBehaviour {
     {
         gameSpeed("assign", defaultSpeedValue);
 
-        scoreText.text = "" + score;
+        scoreText.text = score.ToString();
         bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
-        bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f);
+        bestScoreText.text = "Best \nScore " + "\n" + PlayerPrefs.GetFloat("BestScore", 0f).ToString();
 
         newBestCountForHeight = 0;
         //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
@@ -107,6 +109,7 @@ public class GameControl : MonoBehaviour {
     }
     #endregion
 
+    #region Game Speed
     public void gameSpeed(string state, float newSpeedValue)
     {
         if (state == "default")
@@ -127,6 +130,7 @@ public class GameControl : MonoBehaviour {
         }
         //Debug.Log(Time.timeScale);
     }
+    #endregion
 
     #region Height Info
     public void assignHeight()
@@ -147,7 +151,7 @@ public class GameControl : MonoBehaviour {
             //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
             StartCoroutine(showNewBest(1));
             PlayerPrefs.SetFloat("BestHeight", height);
-            bestHeightText.text = "Best \nHeight " + "\n" + height.ToString(); //en iyi yükseklik
+            bestHeightText.text = "Best \nHeight " + "\n" + roundValue(height).ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
             string heightStr = string.Format("{0:0.0000}", height);
@@ -159,11 +163,18 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Score Info
-    public void assignScore(float scoreValue)
+    public void assignScore(string state, float scoreValue)
     {
-        score += scoreValue;
-        scoreText.text = "" + roundValue(score);
+        if (state == "lottery")
+        {
+            score += scoreValue;
+        }
+        else if (state == "regular")
+        {
+            score += scoreValue * (comboCounter * 0.25f);
+        }
 
+        scoreText.text = roundValue(score).ToString();
         showBestScore();
     }
 
@@ -178,11 +189,14 @@ public class GameControl : MonoBehaviour {
                 StartCoroutine(showNewBest(2));
             }
         }
+    }
 
-        if (score > PlayerPrefs.GetFloat("BestScore", 0f) & assignNewBestScoreControl)
+    private void assignBestScore()
+    {
+        if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
             PlayerPrefs.SetFloat("BestScore", score);
-            bestScoreText.text = "Best \nScore " + "\n" + score; //en iyi skor
+            bestScoreText.text = "Best \nScore " + "\n" + roundValue(score).ToString(); //en iyi skor
 
 #if UNITY_ANDROID
             string scoreString = string.Format("{0:0.0000}", score);
@@ -254,8 +268,7 @@ public class GameControl : MonoBehaviour {
 #else
         Debug.Log("platform bulunamadı");
 #endif
-
-            assignNewBestScoreControl = true;
+            assignBestScore();
             gameSpeed("assign", 0f);
             gameOverControl = false;
             restartControl = true;
@@ -264,18 +277,6 @@ public class GameControl : MonoBehaviour {
         }
     }
     #endregion
-
-    private float roundValue(float value)
-    {
-        if (value < 0) //eğer reduce sonrası value 0'ın altına düşerse value olarak 0 gönder.
-        {
-            return 0;
-        }
-        else
-        {
-            return (Mathf.Round(value * 100f) / 100f);
-        }
-    }
 
     #region Show Ad and LeaderBoard
     private void showAd()
@@ -301,4 +302,53 @@ public class GameControl : MonoBehaviour {
     }
 #endif
     #endregion
+
+    #region Combo System
+    private void comboSystem()
+    {
+        if (comboCounter == 0)
+        {
+            comboTextRight.enabled = false;
+            comboTextLeft.enabled = false;
+        }
+        else if (comboCounter % 2 == 0)
+        {
+            comboTextRight.text = "Combo x " + comboCounter.ToString();
+            comboTextRight.enabled = true;
+            comboTextLeft.enabled = false;
+        }
+        else if (comboCounter % 2 == 1)
+        {
+            comboTextLeft.text = "Combo x " + comboCounter.ToString();
+            comboTextRight.enabled = false;
+            comboTextLeft.enabled = true;
+        }
+    }
+
+    public void comboCount(string state)
+    {
+        if (state == "reset")
+        {
+            comboCounter = 0;
+        }
+        else if (state == "inc")
+        {
+            comboCounter++;
+        }
+
+        comboSystem();
+    }
+    #endregion
+
+    private float roundValue(float value)
+    {
+        if (value < 0) //eğer reduce sonrası value 0'ın altına düşerse value olarak 0 gönder.
+        {
+            return 0;
+        }
+        else
+        {
+            return (Mathf.Round(value * 100f) / 100f);
+        }
+    }
 }
