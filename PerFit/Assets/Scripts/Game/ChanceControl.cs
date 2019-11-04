@@ -39,8 +39,8 @@ public class ChanceControl : MonoBehaviour {
         exitBCPanelSlider.minValue = 0f;
         exitBCPanelSlider.maxValue = exitTimeForBCPanel;
     }
-	
-	private void Update ()
+
+    private void Update()
     {
         countDownTimer();
     }
@@ -99,7 +99,6 @@ public class ChanceControl : MonoBehaviour {
 
     private void countDownTimer()
     {
-
         if (bcPanelisActive)
         {
             exitTimeForBCPanel -= Time.deltaTime;
@@ -124,7 +123,7 @@ public class ChanceControl : MonoBehaviour {
             }
             else
             {
-                GameControl.gameManager.gameSpeed("assign", Time.timeScale * 0.5f);
+                GameControl.gameManager.gameSpeed("assign", 1f);
                 chanceIncOrRed("red");
                 brokenChanceFunc(true);
                 yield return new WaitForSeconds(exitTimeForBCPanel);

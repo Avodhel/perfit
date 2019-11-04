@@ -85,22 +85,24 @@ public class SpecialEffectsControl : MonoBehaviour {
 
     public IEnumerator specialSquareEffects(string whichEffect)
     {
-        if (whichEffect == "fastSquare(Clone)")
-        {
-            effectAlert.enabled = true;
-            effectAlert.overrideSprite = fast;
-            GameControl.gameManager.gameSpeed("assign", speedAfterFast);
-            yield return new WaitForSeconds(fastEffectTime);
-            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
-            effectAlert.enabled = false;
-        }
-        else if (whichEffect == "slowSquare(Clone)")
+        //if (whichEffect == "fastSquare(Clone)")
+        //{
+        //    effectAlert.enabled = true;
+        //    effectAlert.overrideSprite = fast;
+        //    //GameControl.gameManager.gameSpeed("assign", speedAfterFast);
+        //    GameControl.gameManager.gameSpeed("operation", 0.45f);
+        //    yield return new WaitForSeconds(fastEffectTime);
+        //    //GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
+        //    effectAlert.enabled = false;
+        //}
+        if (whichEffect == "slowSquare(Clone)")
         {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
-            GameControl.gameManager.gameSpeed("assign", speedAfterSlow);
+            //GameControl.gameManager.gameSpeed("assign", speedAfterSlow);
+            GameControl.gameManager.gameSpeed("operation", -0.35f);
             yield return new WaitForSeconds(slowEffectTime);
-            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
+            //GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false; //effect alert image kapat
         }
         else if (whichEffect == "reverseSquare(Clone)")
@@ -189,7 +191,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
         else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
-            GameControl.gameManager.gameSpeed("assign", Time.timeScale * 0.5f);
+            GameControl.gameManager.gameSpeed("assign", 1f);
             chanceControl.chanceIncOrRed("inc");
             chanceControl.brokenChanceFunc(true);
         }
