@@ -107,6 +107,7 @@ public class PanelControl : MonoBehaviour {
         if (Mathf.Approximately(angle, 180)) //panele üstten çarptıysa
         {
             FindObjectOfType<SFXControl>().sesOynat("HitSound");
+            GameControl.gameManager.gameSpeed("default", GameControl.gameManager.defaultSpeedValue);
             StartCoroutine(chanceControl.chanceControlFunc()); //chance kalıp kalmadığını kontrol et
         }
     }

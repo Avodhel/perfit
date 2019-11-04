@@ -124,12 +124,12 @@ public class ChanceControl : MonoBehaviour {
             }
             else
             {
-                GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
+                GameControl.gameManager.gameSpeed("assign", Time.timeScale * 0.5f);
                 chanceIncOrRed("red");
                 brokenChanceFunc(true);
                 yield return new WaitForSeconds(exitTimeForBCPanel);
                 brokenChanceFunc(false);
-                GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
+                GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             }
         }
     }

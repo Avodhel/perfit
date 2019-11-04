@@ -97,7 +97,8 @@ public class SquareControl : MonoBehaviour {
             FindObjectOfType<SFXControl>().sesOynat("FitSound");
             rotateSpeed = 0f;
             GameControl.gameManager.assignHeight(); //increase panel scale
-            GameControl.gameManager.assignScore(1f);
+            GameControl.gameManager.assignScore(1f); //increase score
+            GameControl.gameManager.gameSpeed("operation", 0.05f); //increase game speed
             fixSquareToPanelControl = true;
         }
     }

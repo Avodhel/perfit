@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameControl : MonoBehaviour {
@@ -29,9 +30,12 @@ public class GameControl : MonoBehaviour {
     public TMP_Text bestHeightText;
     public TMP_Text newBestHeight;
     public TMP_Text newBestScore;
+    public Text gameSpeedText;
 
     [HideInInspector]
     public float score = 0f;
+    [HideInInspector]
+    public float defaultSpeedValue;
 
     private Vector3 panelScale;
 
@@ -67,6 +71,7 @@ public class GameControl : MonoBehaviour {
 
     private void Start ()
     {
+        defaultSpeedValue = gameSpeedValue; //put default game speed
         resetGameValues();
         resetScores();
         //Debug.Log("<color=yellow>best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
@@ -89,7 +94,7 @@ public class GameControl : MonoBehaviour {
 
     private void resetGameValues()
     {
-        gameSpeed(gameSpeedValue);
+        gameSpeed("assign", defaultSpeedValue);
 
         scoreText.text = "" + score;
         bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
@@ -102,9 +107,25 @@ public class GameControl : MonoBehaviour {
     }
     #endregion
 
-    public void gameSpeed(float gameSpeed)
+    public void gameSpeed(string state, float newSpeedValue)
     {
-        Time.timeScale = gameSpeed;
+        if (state == "default")
+        {
+            gameSpeedValue = newSpeedValue;
+            gameSpeedText.text = roundValue(gameSpeedValue).ToString();
+        }
+        else if (state == "assign")
+        {
+            Time.timeScale = newSpeedValue;
+            gameSpeedText.text = roundValue(Time.timeScale).ToString();
+        }
+        else if (state == "operation")
+        {
+            gameSpeedValue += newSpeedValue;
+            Time.timeScale = gameSpeedValue;
+            gameSpeedText.text = roundValue(gameSpeedValue).ToString();
+        }
+        //Debug.Log(Time.timeScale);
     }
 
     #region Height Info
@@ -235,7 +256,7 @@ public class GameControl : MonoBehaviour {
 #endif
 
             assignNewBestScoreControl = true;
-            gameSpeed(0f);
+            gameSpeed("assign", 0f);
             gameOverControl = false;
             restartControl = true;
 

@@ -24,7 +24,7 @@ public class SpecialEffectsControl : MonoBehaviour {
 
     private Image effectAlert;
     private ChanceControl chanceControl;
-    private SpawnControl spawnControl;
+    //private SpawnControl spawnControl;
     private Sprite fast, slow, reverse, lottery, squareRain, expand;
     private Sprite[] sprites;
     private GameObject Panel;
@@ -47,7 +47,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         increaseScoreText = GameObject.FindGameObjectWithTag("increaseScoreTag").GetComponent<Text>();
         reduceScoreText   = GameObject.FindGameObjectWithTag("reduceScoreTag").GetComponent<Text>();
         chanceControl     = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
-        spawnControl      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
+        //spawnControl      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
     }
 
     private void findSprites()
@@ -89,18 +89,18 @@ public class SpecialEffectsControl : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = fast;
-            GameControl.gameManager.gameSpeed(speedAfterFast);
+            GameControl.gameManager.gameSpeed("assign", speedAfterFast);
             yield return new WaitForSeconds(fastEffectTime);
-            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
+            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false;
         }
         else if (whichEffect == "slowSquare(Clone)")
         {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
-            GameControl.gameManager.gameSpeed(speedAfterSlow);
+            GameControl.gameManager.gameSpeed("assign", speedAfterSlow);
             yield return new WaitForSeconds(slowEffectTime);
-            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
+            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false; //effect alert image kapat
         }
         else if (whichEffect == "reverseSquare(Clone)")
@@ -189,12 +189,12 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
         else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
-            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue * 0.5f);
+            GameControl.gameManager.gameSpeed("assign", Time.timeScale * 0.5f);
             chanceControl.chanceIncOrRed("inc");
             chanceControl.brokenChanceFunc(true);
         }
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(2f);
         lotteryFinish(lotteryResult);
     }
 
@@ -211,7 +211,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         else if (lotteryResult == LotteryState.ExtraChance)
         {
             chanceControl.brokenChanceFunc(false);
-            GameControl.gameManager.gameSpeed(GameControl.gameManager.gameSpeedValue);
+            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
         }
     }
 }
