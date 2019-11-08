@@ -101,6 +101,7 @@ public class ChanceControl : MonoBehaviour {
     {
         if (bcPanelisActive)
         {
+            GameControl.gameManager.gameSpeed("assign", 1f);
             exitTimeForBCPanel -= Time.deltaTime;
             exitBCPanelSlider.value = exitTimeForBCPanel;
             //Debug.Log("<color=gray>exit time for bc panel:</color>" + exitTimeForBCPanel);
@@ -123,7 +124,7 @@ public class ChanceControl : MonoBehaviour {
             }
             else
             {
-                GameControl.gameManager.gameSpeed("assign", 1f);
+                //GameControl.gameManager.gameSpeed("assign", 1f);
                 chanceIncOrRed("red");
                 brokenChanceFunc(true);
                 yield return new WaitForSeconds(exitTimeForBCPanel);

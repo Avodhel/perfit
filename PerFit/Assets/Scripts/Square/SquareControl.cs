@@ -27,7 +27,7 @@ public class SquareControl : MonoBehaviour {
     private GameObject panel;
     private GameObject cutPoint;
     private GameObject fitPoint;
-    private SpawnControl spawnControl;
+    //private SpawnControl spawnControl;
 
     public void OnEnable()
     {
@@ -48,7 +48,7 @@ public class SquareControl : MonoBehaviour {
         panel        = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
         fitPoint     = GameObject.FindGameObjectWithTag("fitPointTag");
-        spawnControl = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>(); 
+        //spawnControl = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>(); 
     }
 
     public void determineRotateSide()

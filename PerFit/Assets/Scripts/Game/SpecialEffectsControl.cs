@@ -191,7 +191,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
         else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
-            GameControl.gameManager.gameSpeed("assign", 1f);
+            //GameControl.gameManager.gameSpeed("assign", 1f);
             chanceControl.chanceIncOrRed("inc");
             chanceControl.brokenChanceFunc(true);
         }

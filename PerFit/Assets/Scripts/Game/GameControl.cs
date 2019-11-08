@@ -115,18 +115,18 @@ public class GameControl : MonoBehaviour {
         if (state == "default")
         {
             gameSpeedValue = newSpeedValue;
-            gameSpeedText.text = roundValue(gameSpeedValue).ToString();
+            gameSpeedText.text = "Speed: " + roundValue(gameSpeedValue).ToString();
         }
         else if (state == "assign")
         {
             Time.timeScale = newSpeedValue;
-            gameSpeedText.text = roundValue(Time.timeScale).ToString();
+            gameSpeedText.text = "Speed: " + roundValue(Time.timeScale).ToString();
         }
         else if (state == "operation")
         {
             gameSpeedValue += newSpeedValue;
             Time.timeScale = gameSpeedValue;
-            gameSpeedText.text = roundValue(gameSpeedValue).ToString();
+            gameSpeedText.text = "Speed: " + roundValue(gameSpeedValue).ToString();
         }
         //Debug.Log(Time.timeScale);
     }
