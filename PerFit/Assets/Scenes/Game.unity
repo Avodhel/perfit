@@ -647,7 +647,7 @@ RectTransform:
   - {fileID: 1550363044}
   - {fileID: 511527684}
   m_Father: {fileID: 1885607240}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1052,7 +1052,7 @@ RectTransform:
   - {fileID: 1471903822}
   - {fileID: 1937111828}
   m_Father: {fileID: 1885607240}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1310,7 +1310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Combo x 0
+  m_Text: PerFit x 0
 --- !u!222 &511527686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1485,8 +1485,8 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  m_enableVertexGradient: 1
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
@@ -2907,7 +2907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Combo x 0
+  m_Text: PerFit x 0
 --- !u!222 &1550363046
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7930,8 +7930,8 @@ RectTransform:
   - {fileID: 1435405825}
   - {fileID: 46671554}
   - {fileID: 614553551}
-  - {fileID: 384606777}
   - {fileID: 290221148}
+  - {fileID: 384606777}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8305,8 +8305,8 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  m_enableVertexGradient: 1
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}

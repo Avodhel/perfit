@@ -27,11 +27,6 @@ public class DistanceControl : MonoBehaviour {
         calculateDistance();
 	}
 
-	private void LateUpdate ()
-    {
-        setDistance();
-	}
-
     private void findObjects()
     {
         topPoint       = GameObject.FindGameObjectWithTag("topPointTag");
@@ -57,7 +52,7 @@ public class DistanceControl : MonoBehaviour {
         distanceBetweenPanelParticleAndTop  = panelParticle.transform.position - topPoint.transform.position;
     }
 
-    private void setDistance()
+    public void setDistance()
     {
         fitPoint.transform.position       = topPoint.transform.position + distanceBetweenFitAndTop;
         cutPoint.transform.position       = topPoint.transform.position + distanceBetweenCutAndTop;

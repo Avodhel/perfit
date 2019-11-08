@@ -48,7 +48,7 @@ public class GameControl : MonoBehaviour {
 #endif
 
     private bool restartControl = false;
-    private float height;
+    private float height = 0.2f;
     private int newBestCountForHeight = 0;
     private int newBestCountForScore = 0;
     private int gameOverCounter;
@@ -135,9 +135,13 @@ public class GameControl : MonoBehaviour {
     #region Height Info
     public void assignHeight()
     {
-        panel.transform.localScale += new Vector3(0f, 0.2f, 0f);
-        panelScale = panel.transform.localScale;
-        height = panelScale.y;
+        if (panel.transform.localScale.y <= 5f)
+        {
+            panel.transform.localScale += new Vector3(0f, 0.2f, 0f); //increase panel's height scale
+            gameObject.transform.GetComponent<DistanceControl>().setDistance(); //keep object's distance according to panel
+        }
+
+        height += 0.2f;
         heightText.text = roundValue(height).ToString();
 
         showBestHeight();
@@ -150,7 +154,7 @@ public class GameControl : MonoBehaviour {
             newBestCountForHeight += 1;
             //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
             StartCoroutine(showNewBest(1));
-            PlayerPrefs.SetFloat("BestHeight", height);
+            PlayerPrefs.SetFloat("BestHeight", roundValue(height));
             bestHeightText.text = "Best \nHeight " + "\n" + roundValue(height).ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
@@ -195,7 +199,7 @@ public class GameControl : MonoBehaviour {
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
-            PlayerPrefs.SetFloat("BestScore", score);
+            PlayerPrefs.SetFloat("BestScore", roundValue(score));
             bestScoreText.text = "Best \nScore " + "\n" + roundValue(score).ToString(); //en iyi skor
 
 #if UNITY_ANDROID
@@ -313,13 +317,13 @@ public class GameControl : MonoBehaviour {
         }
         else if (comboCounter % 2 == 0)
         {
-            comboTextRight.text = "Combo x " + comboCounter.ToString();
+            comboTextRight.text = "PerFit x " + comboCounter.ToString();
             comboTextRight.enabled = true;
             comboTextLeft.enabled = false;
         }
         else if (comboCounter % 2 == 1)
         {
-            comboTextLeft.text = "Combo x " + comboCounter.ToString();
+            comboTextLeft.text = "PerFit x " + comboCounter.ToString();
             comboTextRight.enabled = false;
             comboTextLeft.enabled = true;
         }

@@ -100,7 +100,7 @@ public class SpecialEffectsControl : MonoBehaviour {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
             //GameControl.gameManager.gameSpeed("assign", speedAfterSlow);
-            GameControl.gameManager.gameSpeed("operation", -0.35f);
+            GameControl.gameManager.gameSpeed("operation", -0.15f);
             yield return new WaitForSeconds(slowEffectTime);
             //GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false; //effect alert image kapat
