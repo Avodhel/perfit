@@ -8,31 +8,31 @@ public class GameBGControl : BackgroundControl {
     private new void Start()
     {
         base.Start();
-        findObjects();
+        FindObjects();
     }
 
-    private void findObjects()
+    private void FindObjects()
     {
         panelKontrol = GameObject.FindGameObjectWithTag("panelTag").GetComponent<PanelControl>();
         spawnKontrol = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
-        assignCycleSeconds();
+        AssignCycleSeconds();
     }
 
-    private void assignCycleSeconds()
+    private void AssignCycleSeconds()
     {
         panelKontrol.cycleSeconds = cycleSeconds;
         spawnKontrol.cycleSeconds = cycleSeconds;
     }
 
-    public override void changeBGColor()
+    public override void ChangeBGColor()
     {
-        base.changeBGColor();
+        base.ChangeBGColor();
         changeObjectColor();
     }
 
     private void changeObjectColor()
     {
-        panelKontrol.panelChangeColor(colorRateR, colorRateG, colorRateB); //arkaplan ile birlikte panelin de rengini degistir
-        spawnKontrol.squareChangeColor(colorRateR, colorRateG, colorRateB); //arkaplan ile square'in de rengini degistir
+        panelKontrol.PanelChangeColor(colorRateR, colorRateG, colorRateB); //arkaplan ile birlikte panelin de rengini degistir
+        spawnKontrol.SquareChangeColor(colorRateR, colorRateG, colorRateB); //arkaplan ile square'in de rengini degistir
     }
 }

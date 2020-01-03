@@ -35,17 +35,17 @@ public class ChanceControl : MonoBehaviour {
     {
         chanceCounter = startChance;
         chanceText.text = "x " + startChance;
-        findSprites();
+        FindSprites();
         exitBCPanelSlider.minValue = 0f;
         exitBCPanelSlider.maxValue = exitTimeForBCPanel;
     }
 
     private void Update()
     {
-        countDownTimer();
+        CountDownTimer();
     }
 
-    private void findSprites()
+    private void FindSprites()
     {
         sprites = Resources.LoadAll<Sprite>("Textures");
 
@@ -62,7 +62,7 @@ public class ChanceControl : MonoBehaviour {
         }
     }
 
-    public void chanceIncOrRed(string incOrRed)
+    public void ChanceIncOrRed(string incOrRed)
     {
         if (incOrRed == "inc") //increase
         {
@@ -82,7 +82,7 @@ public class ChanceControl : MonoBehaviour {
         chanceText.text = "x " + chanceCounter;
     }
 
-    public void brokenChanceFunc(bool brokenChanceActive)
+    public void BrokenChanceState(bool brokenChanceActive)
     {
         if (brokenChanceActive)
         {
@@ -97,11 +97,11 @@ public class ChanceControl : MonoBehaviour {
         }
     }
 
-    private void countDownTimer()
+    private void CountDownTimer()
     {
         if (bcPanelisActive)
         {
-            GameControl.gameManager.gameSpeed("assign", 1f);
+            GameControl.gameManager.GameSpeed("assign", 1f);
             exitTimeForBCPanel -= Time.deltaTime;
             exitBCPanelSlider.value = exitTimeForBCPanel;
             //Debug.Log("<color=gray>exit time for bc panel:</color>" + exitTimeForBCPanel);
@@ -113,23 +113,23 @@ public class ChanceControl : MonoBehaviour {
         }
     }
 
-    public IEnumerator chanceControlFunc()
+    public IEnumerator ChanceState()
     {
         //Debug.Log(chanceControlOnOffControl);
         if (!chanceControlOnOffControl) // squareRain
         {
             if (chanceCounter == 0) // hiç chance kalmadıysa
             {
-                GameControl.gameManager.gameOver(true);
+                GameControl.gameManager.GameOver(true);
             }
             else
             {
                 //GameControl.gameManager.gameSpeed("assign", 1f);
-                chanceIncOrRed("red");
-                brokenChanceFunc(true);
+                ChanceIncOrRed("red");
+                BrokenChanceState(true);
                 yield return new WaitForSeconds(exitTimeForBCPanel);
-                brokenChanceFunc(false);
-                GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
+                BrokenChanceState(false);
+                GameControl.gameManager.GameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             }
         }
     }

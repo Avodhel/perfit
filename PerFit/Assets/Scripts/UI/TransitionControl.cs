@@ -20,18 +20,18 @@ public class TransitionControl : MonoBehaviour {
         }
     }
 
-    public void fadeToNextScene()
+    public void FadeToNextScene()
     {
-        fadeToScene(SceneManager.GetActiveScene().buildIndex + 1);
+        FadeToScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    private void fadeToScene (int sceneIndex)
+    private void FadeToScene (int sceneIndex)
     {
         sceneToLoad = sceneIndex;
         animator.SetTrigger("FadeOut");
     }
 
-    private void onFadeComplete()
+    private void OnFadeComplete()
     {
         SceneManager.LoadScene(sceneToLoad);
     }

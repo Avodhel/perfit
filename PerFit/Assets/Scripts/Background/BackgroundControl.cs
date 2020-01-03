@@ -14,22 +14,22 @@ public class BackgroundControl : MonoBehaviour {
 
     public void Start()
     {
-        assignColorRate();
+        AssignColorRate();
     }
 
     public void Update()
     {
-        changeBGColor();
+        ChangeBGColor();
     }
 
-    public void assignColorRate()
+    public void AssignColorRate()
     {
         colorRateR = Random.Range(1f, 359f);
         colorRateG = Random.Range(0.3f, 0.8f);
         colorRateB = Random.Range(0.3f, 0.8f);
     }
 
-    public virtual void changeBGColor()
+    public virtual void ChangeBGColor()
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB
             (

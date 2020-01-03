@@ -4,9 +4,9 @@ class SpecialSquareControl : SquareControl{
 
     SpecialEffectsControl sEffectsKontrol;
 
-    public override void findObjects()
+    public override void FindObjects()
     {
-        base.findObjects();
+        base.FindObjects();
         sEffectsKontrol = GameObject.FindGameObjectWithTag("sEffectsKontrolTag").GetComponent<SpecialEffectsControl>();
     }
 
@@ -16,7 +16,7 @@ class SpecialSquareControl : SquareControl{
 
         if (collision.name == "FitPoint")
         {
-            StartCoroutine(sEffectsKontrol.specialSquareEffects(gameObject.name));
+            StartCoroutine(sEffectsKontrol.SpecialSquareEffects(gameObject.name));
         }
     }
 

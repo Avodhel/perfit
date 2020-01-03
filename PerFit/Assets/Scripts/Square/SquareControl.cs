@@ -31,19 +31,19 @@ public class SquareControl : MonoBehaviour {
 
     public void OnEnable()
     {
-        findObjects();
-        determineRotateSide();
-        determineSquareScale();
+        FindObjects();
+        DetermineRotateSide();
+        DetermineSquareScale();
         putRotateSpeed = rotateSpeed;
     }
 
     public void Update()
     {
-        rotateSquare();
-        fixToPanel();
+        RotateSquare();
+        FixSquareToPanel();
     }
 
-    public virtual void findObjects() //override yapabilmemiz icin "virtual" 
+    public virtual void FindObjects() //override yapabilmemiz icin "virtual" 
     {
         panel        = GameObject.FindGameObjectWithTag("panelTag");
         cutPoint     = GameObject.FindGameObjectWithTag("cutPointTag");
@@ -51,13 +51,13 @@ public class SquareControl : MonoBehaviour {
         //spawnControl = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>(); 
     }
 
-    public void determineRotateSide()
+    public void DetermineRotateSide()
     {
         rightOrLeft = Random.value; //random.value 0 ile 1 arasında random deger secer
         rotateSide = rightOrLeft <= 0.5f ? 1 : -1;
     }
 
-    public void determineSquareScale()
+    public void DetermineSquareScale()
     {
         float squareScale = Random.Range(minSquareScale, maxSquareScale);
         //Debug.Log("<color=black>sekil boyutu:</color> " + sekilBoyut);
@@ -70,7 +70,7 @@ public class SquareControl : MonoBehaviour {
         //}
     }
 
-    public void rotateSquare()
+    public void RotateSquare()
     {
         if (!fixSquareToPanelControl)
         {
@@ -78,7 +78,7 @@ public class SquareControl : MonoBehaviour {
         }
     }
 
-    public void fixToPanel() //objeleri panele sabitleyerek onunla birlikte hereket etmesini sağlayan fonksiyon
+    public void FixSquareToPanel() //objeleri panele sabitleyerek onunla birlikte hereket etmesini sağlayan fonksiyon
     {
         if (fixSquareToPanelControl)
         {
@@ -93,13 +93,13 @@ public class SquareControl : MonoBehaviour {
     {
         if (other.name == "FitPoint")
         {
-            panel.GetComponent<PanelControl>().panelParticlePlay(true);
-            FindObjectOfType<SFXControl>().sesOynat("FitSound");
+            panel.GetComponent<PanelControl>().PanelParticlePlay(true);
+            FindObjectOfType<SFXControl>().SesOynat("FitSound");
             rotateSpeed = 0f;
-            GameControl.gameManager.assignHeight(); //increase panel scale
-            GameControl.gameManager.assignScore("regular", 1f); //increase score
-            GameControl.gameManager.gameSpeed("operation", 0.05f); //increase game speed
-            GameControl.gameManager.comboCount("inc");
+            GameControl.gameManager.AssignHeight(); //increase panel scale
+            GameControl.gameManager.AssignScore("regular", 1f); //increase score
+            GameControl.gameManager.GameSpeed("operation", 0.1f); //increase game speed
+            GameControl.gameManager.ComboCount("inc");
             fixSquareToPanelControl = true;
         }
     }
@@ -111,11 +111,11 @@ public class SquareControl : MonoBehaviour {
             other.transform.localScale = new Vector3(gameObject.transform.localScale.x/5,
                                                      other.transform.localScale.y,
                                                      gameObject.transform.localScale.z/5);
-            StartCoroutine(destroySquare());
+            StartCoroutine(DestroySquare());
         }
     }
 
-    public IEnumerator destroySquare()
+    public IEnumerator DestroySquare()
     {
         yield return new WaitForSeconds(destroyingTimeForObject);
         gameObject.SetActive(false);

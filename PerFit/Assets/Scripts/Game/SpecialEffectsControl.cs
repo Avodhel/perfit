@@ -36,11 +36,11 @@ public class SpecialEffectsControl : MonoBehaviour {
 
     private void Start()
     {
-        findObjects();
-        findSprites();
+        FindObjects();
+        FindSprites();
     }
 
-    private void findObjects()
+    private void FindObjects()
     {
         effectAlert       = GameObject.FindGameObjectWithTag("effectAlertTag").GetComponent<Image>();
         Panel             = GameObject.FindGameObjectWithTag("panelTag");
@@ -50,7 +50,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         //spawnControl      = GameObject.FindGameObjectWithTag("spawnPointTag").GetComponent<SpawnControl>();
     }
 
-    private void findSprites()
+    private void FindSprites()
     {
         sprites = Resources.LoadAll<Sprite>("Textures"); //textures içindeki bütün spriteları bul
 
@@ -83,7 +83,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
     }
 
-    public IEnumerator specialSquareEffects(string whichEffect)
+    public IEnumerator SpecialSquareEffects(string whichEffect)
     {
         //if (whichEffect == "fastSquare(Clone)")
         //{
@@ -100,7 +100,7 @@ public class SpecialEffectsControl : MonoBehaviour {
             effectAlert.enabled = true; //effect alert image ac
             effectAlert.overrideSprite = slow; //slow spriteini effect alert olarak ata
             //GameControl.gameManager.gameSpeed("assign", speedAfterSlow);
-            GameControl.gameManager.gameSpeed("operation", -0.15f);
+            GameControl.gameManager.GameSpeed("operation", -0.25f);
             yield return new WaitForSeconds(slowEffectTime);
             //GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
             effectAlert.enabled = false; //effect alert image kapat
@@ -118,7 +118,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         {
             effectAlert.enabled = true;
             effectAlert.overrideSprite = lottery;
-            StartCoroutine(lotteryStart());
+            StartCoroutine(LotteryStart());
             effectAlert.enabled = false;
         }
         //else if (whichEffect == "squareRain(Clone)")
@@ -154,7 +154,7 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
     }
 
-    private IEnumerator lotteryStart()
+    private IEnumerator LotteryStart()
     {
         float lotteryPossibility = Random.value; //between 0 and 1
         float randomLotteryPoint = Random.Range(GameControl.gameManager.score * 0.10f, GameControl.gameManager.score * 0.50f);
@@ -178,7 +178,7 @@ public class SpecialEffectsControl : MonoBehaviour {
             increaseScoreText.text = lotteryPoint.ToString();
             increaseScoreText.enabled = true;
             //Debug.Log("<color=green>score before inc</color>" + oyunKontrol.score);
-            GameControl.gameManager.assignScore("lottery", lotteryPoint);
+            GameControl.gameManager.AssignScore("lottery", lotteryPoint);
             //Debug.Log("<color=green>score after inc</color> " + oyunKontrol.score);
         }
         else if (lotteryResult == LotteryState.Reduce) //reduce
@@ -186,21 +186,21 @@ public class SpecialEffectsControl : MonoBehaviour {
             reduceScoreText.text = lotteryPoint.ToString();
             reduceScoreText.enabled = true;
             //Debug.Log("<color=red>score before red</color>" + oyunKontrol.score);
-            GameControl.gameManager.assignScore("lottery", -lotteryPoint);
+            GameControl.gameManager.AssignScore("lottery", -lotteryPoint);
             //Debug.Log("<color=red>score after red</color> " + oyunKontrol.score);
         }
         else if (lotteryResult == LotteryState.ExtraChance) //chance
         {
             //GameControl.gameManager.gameSpeed("assign", 1f);
-            chanceControl.chanceIncOrRed("inc");
-            chanceControl.brokenChanceFunc(true);
+            chanceControl.ChanceIncOrRed("inc");
+            chanceControl.BrokenChanceState(true);
         }
 
         yield return new WaitForSeconds(2f);
-        lotteryFinish(lotteryResult);
+        LotteryFinish(lotteryResult);
     }
 
-    private void lotteryFinish(LotteryState lotteryResult)
+    private void LotteryFinish(LotteryState lotteryResult)
     {
         if (lotteryResult == LotteryState.Increase) //increase
         {
@@ -212,8 +212,8 @@ public class SpecialEffectsControl : MonoBehaviour {
         }
         else if (lotteryResult == LotteryState.ExtraChance)
         {
-            chanceControl.brokenChanceFunc(false);
-            GameControl.gameManager.gameSpeed("assign", GameControl.gameManager.gameSpeedValue);
+            chanceControl.BrokenChanceState(false);
+            GameControl.gameManager.GameSpeed("assign", GameControl.gameManager.gameSpeedValue);
         }
     }
 }

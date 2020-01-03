@@ -24,22 +24,22 @@ public class PanelControl : MonoBehaviour {
 
     private void Start()
     {
-        findObjects();
+        FindObjects();
     }
 
     private void Update ()
     {
-        panelMovement();
+        PanelMovement();
     }
 
-    private void findObjects()
+    private void FindObjects()
     {
         bottomPointMat = GameObject.FindGameObjectWithTag("bottomPointTag").GetComponent<Renderer>().material;
         cutPointMat = GameObject.FindGameObjectWithTag("cutPointTag").GetComponent<Renderer>().material;
         chanceControl = GameObject.FindGameObjectWithTag("chanceKontrolTag").GetComponent<ChanceControl>();
     }
 
-    private void panelMovement()
+    private void PanelMovement()
     {
         int assignRotateDir;
         assignRotateDir = !reverseActive ? 1 : -1;
@@ -59,7 +59,7 @@ public class PanelControl : MonoBehaviour {
 
     }
 
-    public void panelChangeColor(float colorRateR, float colorRateG, float colorRateB)
+    public void PanelChangeColor(float colorRateR, float colorRateG, float colorRateB)
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB
                 (
@@ -83,7 +83,7 @@ public class PanelControl : MonoBehaviour {
                 );
     }
 
-    public void panelParticlePlay(bool particleKontrol)
+    public void PanelParticlePlay(bool particleKontrol)
     {
         if (particleKontrol)
         {
@@ -95,21 +95,21 @@ public class PanelControl : MonoBehaviour {
     {
         if (col.gameObject.tag.Equals("squareTag"))
         {
-            determineHitAngle(col);
+            DetectHitAngle(col);
         }
     }
 
-    private void determineHitAngle(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
+    private void DetectHitAngle(Collision col) //panele carpan sekillerin hangi acidan carptigini saptama
     {
         Vector3 hit = col.contacts[0].normal;
         float angle = Vector3.Angle(hit, Vector3.up);
 
         if (Mathf.Approximately(angle, 180)) //panele üstten çarptıysa
         {
-            FindObjectOfType<SFXControl>().sesOynat("HitSound");
-            GameControl.gameManager.gameSpeed("default", GameControl.gameManager.defaultSpeedValue); //reset speed
-            GameControl.gameManager.comboCount("reset");
-            StartCoroutine(chanceControl.chanceControlFunc()); //chance kalıp kalmadığını kontrol et
+            FindObjectOfType<SFXControl>().SesOynat("HitSound");
+            GameControl.gameManager.GameSpeed("default", GameControl.gameManager.defaultSpeedValue); //reset speed
+            GameControl.gameManager.ComboCount("reset");
+            StartCoroutine(chanceControl.ChanceState()); //chance kalıp kalmadığını kontrol et
         }
     }
 

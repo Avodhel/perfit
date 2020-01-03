@@ -40,11 +40,11 @@ public class SpawnControl : MonoBehaviour {
 
     private void Start ()
     {        
-        StartCoroutine(spawnSquare());  
+        StartCoroutine(SpawnSquare());  
     }
 
     #region Spawn Square
-    private IEnumerator spawnSquare()
+    private IEnumerator SpawnSquare()
     {
         while (true)
         {
@@ -54,7 +54,7 @@ public class SpawnControl : MonoBehaviour {
                 counterForLottery += 1;
             }
 
-            chooseSquare();
+            ChooseSquare();
 
             squares = GameObject.FindGameObjectsWithTag("squareTag");
 
@@ -65,7 +65,7 @@ public class SpawnControl : MonoBehaviour {
         }
     }
 
-    private void chooseSquare()
+    private void ChooseSquare()
     {
         /*----------spawn lottery----------*/
         if (counterForLottery == lotteryRate & !squareRainSpawnControl)
@@ -112,7 +112,7 @@ public class SpawnControl : MonoBehaviour {
     }
     #endregion
 
-    public void squareChangeColor(float renkSinirR, float renkSinirG, float renkSinirB)
+    public void SquareChangeColor(float renkSinirR, float renkSinirG, float renkSinirB)
     {
 
         if (squareSpawnedControl && !colorChangedControl)

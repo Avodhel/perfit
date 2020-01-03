@@ -2384,7 +2384,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222546667}
-        m_MethodName: restartForMobile
+        m_MethodName: RestartForMobile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8409,7 +8409,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 712131202}
-        m_MethodName: soundMuteAndUnmute
+        m_MethodName: SoundMuteAndUnmute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

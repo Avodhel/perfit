@@ -74,18 +74,18 @@ public class GameControl : MonoBehaviour {
     private void Start ()
     {
         defaultSpeedValue = gameSpeedValue; //put default game speed
-        resetGameValues();
-        resetScores();
+        ResetGameValues();
+        ResetScores();
         //Debug.Log("<color=yellow>best height</color>" + PlayerPrefs.GetFloat("BestHeight", 0.2f));
     }
 
     private void Update ()
     {
-        restartForPC();
+        RestartForPC();
     }
 
     #region Reset
-    private void resetScores()
+    private void ResetScores()
     {
         if (resetScoresControl)
         {
@@ -94,9 +94,9 @@ public class GameControl : MonoBehaviour {
         }
     }
 
-    private void resetGameValues()
+    private void ResetGameValues()
     {
-        gameSpeed("assign", defaultSpeedValue);
+        GameSpeed("assign", defaultSpeedValue);
 
         scoreText.text = score.ToString();
         bestHeightText.text = "Best \nHeight " + "\n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString();
@@ -110,52 +110,52 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Game Speed
-    public void gameSpeed(string state, float newSpeedValue)
+    public void GameSpeed(string state, float newSpeedValue)
     {
         if (state == "default")
         {
             gameSpeedValue = newSpeedValue;
-            gameSpeedText.text = "Speed: " + roundValue(gameSpeedValue).ToString();
+            gameSpeedText.text = "Speed: " + RoundValue(gameSpeedValue).ToString();
         }
         else if (state == "assign")
         {
             Time.timeScale = newSpeedValue;
-            gameSpeedText.text = "Speed: " + roundValue(Time.timeScale).ToString();
+            gameSpeedText.text = "Speed: " + RoundValue(Time.timeScale).ToString();
         }
         else if (state == "operation")
         {
             gameSpeedValue += newSpeedValue;
             Time.timeScale = gameSpeedValue;
-            gameSpeedText.text = "Speed: " + roundValue(gameSpeedValue).ToString();
+            gameSpeedText.text = "Speed: " + RoundValue(gameSpeedValue).ToString();
         }
         //Debug.Log(Time.timeScale);
     }
     #endregion
 
     #region Height Info
-    public void assignHeight()
+    public void AssignHeight()
     {
         if (panel.transform.localScale.y <= 5f)
         {
             panel.transform.localScale += new Vector3(0f, 0.2f, 0f); //increase panel's height scale
-            gameObject.transform.GetComponent<DistanceControl>().setDistance(); //keep object's distance according to panel
+            gameObject.transform.GetComponent<DistanceControl>().SetDistance(); //keep object's distance according to panel
         }
 
         height += 0.2f;
-        heightText.text = roundValue(height).ToString();
+        heightText.text = RoundValue(height).ToString();
 
-        showBestHeight();
+        ShowBestHeight();
     }
 
-    private void showBestHeight()
+    private void ShowBestHeight()
     {
         if (height > PlayerPrefs.GetFloat("BestHeight", 0.2f))
         {
             newBestCountForHeight += 1;
             //Debug.Log("<color=green>new best count for height:</color>" + newBestCountForHeight);
-            StartCoroutine(showNewBest(1));
-            PlayerPrefs.SetFloat("BestHeight", roundValue(height));
-            bestHeightText.text = "Best \nHeight " + "\n" + roundValue(height).ToString(); //en iyi yükseklik
+            StartCoroutine(ShowNewBest(1));
+            PlayerPrefs.SetFloat("BestHeight", RoundValue(height));
+            bestHeightText.text = "Best \nHeight " + "\n" + RoundValue(height).ToString(); //en iyi yükseklik
 
 #if UNITY_ANDROID
             string heightStr = string.Format("{0:0.0000}", height);
@@ -167,7 +167,7 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Score Info
-    public void assignScore(string state, float scoreValue)
+    public void AssignScore(string state, float scoreValue)
     {
         if (state == "lottery")
         {
@@ -178,11 +178,11 @@ public class GameControl : MonoBehaviour {
             score += scoreValue * (comboCounter * 0.25f);
         }
 
-        scoreText.text = roundValue(score).ToString();
-        showBestScore();
+        scoreText.text = RoundValue(score).ToString();
+        ShowBestScore();
     }
 
-    private void showBestScore()
+    private void ShowBestScore()
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
@@ -190,17 +190,17 @@ public class GameControl : MonoBehaviour {
             {
                 newBestCountForScore += 1;
                 //Debug.Log("<color=blue>new best count for score:</color>" + newBestCountForScore);
-                StartCoroutine(showNewBest(2));
+                StartCoroutine(ShowNewBest(2));
             }
         }
     }
 
-    private void assignBestScore()
+    private void AssignBestScore()
     {
         if (score > PlayerPrefs.GetFloat("BestScore", 0f))
         {
-            PlayerPrefs.SetFloat("BestScore", roundValue(score));
-            bestScoreText.text = "Best \nScore " + "\n" + roundValue(score).ToString(); //en iyi skor
+            PlayerPrefs.SetFloat("BestScore", RoundValue(score));
+            bestScoreText.text = "Best \nScore " + "\n" + RoundValue(score).ToString(); //en iyi skor
 
 #if UNITY_ANDROID
             string scoreString = string.Format("{0:0.0000}", score);
@@ -212,7 +212,7 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region New Best
-    private IEnumerator showNewBest(int height1Orscore2)
+    private IEnumerator ShowNewBest(int height1Orscore2)
     {
 
         if (height1Orscore2 == 1 & 
@@ -220,7 +220,7 @@ public class GameControl : MonoBehaviour {
             newBestCountForHeight == 1)
         {
             newBestHeight.enabled = true;
-            FindObjectOfType<SFXControl>().sesOynat("NewBestSound");
+            FindObjectOfType<SFXControl>().SesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestHeight.enabled = false;
         }
@@ -229,7 +229,7 @@ public class GameControl : MonoBehaviour {
             newBestCountForScore == 1)
         {
             newBestScore.enabled = true;
-            FindObjectOfType<SFXControl>().sesOynat("NewBestSound");
+            FindObjectOfType<SFXControl>().SesOynat("NewBestSound");
             yield return new WaitForSeconds(5f);
             newBestScore.enabled = false;
         }
@@ -237,7 +237,7 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Restart Game
-    public void restartForMobile()
+    public void RestartForMobile()
     {
         if (restartControl)
         {
@@ -246,7 +246,7 @@ public class GameControl : MonoBehaviour {
         }
     }
 
-    private void restartForPC()
+    private void RestartForPC()
     {
         if (restartControl & Input.GetKeyDown(KeyCode.R))
         {
@@ -257,7 +257,7 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Game Over
-    public void gameOver(bool gameOverControl)
+    public void GameOver(bool gameOverControl)
     {
         if (gameOverControl)
         {
@@ -272,18 +272,18 @@ public class GameControl : MonoBehaviour {
 #else
         Debug.Log("platform bulunamadı");
 #endif
-            assignBestScore();
-            gameSpeed("assign", 0f);
+            AssignBestScore();
+            GameSpeed("assign", 0f);
             gameOverControl = false;
             restartControl = true;
 
-            showAd();
+            ShowAd();
         }
     }
     #endregion
 
     #region Show Ad and LeaderBoard
-    private void showAd()
+    private void ShowAd()
     {
         gameOverCounter = PlayerPrefs.GetInt("oyunBittiSayac");
         gameOverCounter++;
@@ -293,7 +293,7 @@ public class GameControl : MonoBehaviour {
         if (gameOverCounter == 5)
         {
 #if UNITY_ANDROID
-            adControl.showAd();
+            adControl.ShowAd();
 #endif
             PlayerPrefs.SetInt("oyunBittiSayac", 0);
         }
@@ -308,7 +308,7 @@ public class GameControl : MonoBehaviour {
     #endregion
 
     #region Combo System
-    private void comboSystem()
+    private void ComboSystem()
     {
         if (comboCounter == 0)
         {
@@ -329,7 +329,7 @@ public class GameControl : MonoBehaviour {
         }
     }
 
-    public void comboCount(string state)
+    public void ComboCount(string state)
     {
         if (state == "reset")
         {
@@ -340,19 +340,22 @@ public class GameControl : MonoBehaviour {
             comboCounter++;
         }
 
-        comboSystem();
+        ComboSystem();
     }
     #endregion
 
-    private float roundValue(float value)
+    private float RoundValue(float _value)
     {
-        if (value < 0) //eğer reduce sonrası value 0'ın altına düşerse value olarak 0 gönder.
-        {
-            return 0;
-        }
-        else
-        {
-            return (Mathf.Round(value * 100f) / 100f);
-        }
+        float value = _value < 0 ? 0 : (Mathf.Round(_value * 100f) / 100f);
+        return value;
+
+        //if (_value < 0) //eğer reduce sonrası value 0'ın altına düşerse value olarak 0 gönder.
+        //{
+        //    return 0;
+        //}
+        //else
+        //{
+        //    return (Mathf.Round(_value * 100f) / 100f);
+        //}
     }
 }

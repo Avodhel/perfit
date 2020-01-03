@@ -23,11 +23,11 @@ public class DistanceControl : MonoBehaviour {
 
     private void Start ()
     {
-        findObjects();
-        calculateDistance();
+        FindObjects();
+        CalculateDistance();
 	}
 
-    private void findObjects()
+    private void FindObjects()
     {
         topPoint       = GameObject.FindGameObjectWithTag("topPointTag");
         fitPoint       = GameObject.FindGameObjectWithTag("fitPointTag");
@@ -40,7 +40,7 @@ public class DistanceControl : MonoBehaviour {
         panelParticle  = GameObject.FindGameObjectWithTag("panelParticleTag");
     }
 
-    private void calculateDistance()
+    private void CalculateDistance()
     {
         distanceBetweenFitAndTop            = fitPoint.transform.position      - topPoint.transform.position;
         distanceBetweenCutAndTop            = cutPoint.transform.position      - topPoint.transform.position;
@@ -52,7 +52,7 @@ public class DistanceControl : MonoBehaviour {
         distanceBetweenPanelParticleAndTop  = panelParticle.transform.position - topPoint.transform.position;
     }
 
-    public void setDistance()
+    public void SetDistance()
     {
         fitPoint.transform.position       = topPoint.transform.position + distanceBetweenFitAndTop;
         cutPoint.transform.position       = topPoint.transform.position + distanceBetweenCutAndTop;

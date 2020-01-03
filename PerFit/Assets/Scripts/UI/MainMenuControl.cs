@@ -35,12 +35,12 @@ public class MainMenuControl : MonoBehaviour {
 #endif
     }
 
-    public void oyunuBaslat()
+    public void OyunuBaslat()
     {
-        TransitionControl.transitionManager.fadeToNextScene();
+        TransitionControl.transitionManager.FadeToNextScene();
     }
 
-    public void openCanvas(string whichCanvas)
+    public void OpenCanvas(string whichCanvas)
     {
         if (whichCanvas == "tutorial")
         {
@@ -53,7 +53,7 @@ public class MainMenuControl : MonoBehaviour {
         }
     }
 
-    public void actionsForButtons(string whichButton)
+    public void ActionsForButtons(string whichButton)
     {
         if (whichButton == "back")
         {
