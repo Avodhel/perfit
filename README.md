@@ -14,11 +14,9 @@ PerFit is a simple 3D game. There are squares and a panel, for the *Perfect Fit*
 ## LINKS
 
 - [Google Play](https://play.google.com/store/apps/details?id=com.NordicebearGames.PerFit)
-- [Itch.io](https://nordicebear.itch.io/perfit)
+- [Itch.io](https://avodhel.itch.io/perfit)
 
 ## CREDITS
 
 - All of 3D objects created with Blender.
 - All of sounds created by differents artists from [FreeSound](https://freesound.org).
-
-## ʕ•㉨•ʔ
